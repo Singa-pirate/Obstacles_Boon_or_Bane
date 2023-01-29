@@ -16,6 +16,10 @@ func _physics_process(delta):
 			charge -= 1
 
 
+func get_class():
+	return "Charged"
+
+
 func _on_Area2D_mouse_entered():
 	mouse_hovering = true
 
