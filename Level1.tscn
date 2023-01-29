@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://StartButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Obstacles/RigidObstacle.tscn" type="PackedScene" id=2]
+
+[node name="Level1" type="Node2D"]
+
+[node name="StartButton" parent="." instance=ExtResource( 1 )]
+margin_left = 723.0
+margin_top = 463.0
+margin_right = 723.0
+margin_bottom = 463.0
+rect_scale = Vector2( 1.8, 1.8 )
+
+[node name="RigidObstacle1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 446, 138 )
+
+[node name="RigidObstacle2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 448, 428 )
