@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
 const MAX_HEALTH = 100
-const INIT_SPEED = 30
+const INIT_SPEED = 100
 const INIT_ANGULAR_SPEED = 30
 const MAX_CHARGE = 10
 const MIN_CHARGE = -10
-const MAX_SPEED = 100
+const MAX_SPEED = 200
+const coefficient = 2
 
 var direction
 var angular_speed = 0
@@ -21,16 +22,18 @@ func _ready():
 	charge = 0
 	direction = Vector2(1,0) # TODO: ask parent
 	velocity = Vector2(0,0)
-	start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(charge)
 	if mouse_hovering:
 		if Input.is_action_just_pressed("ui_up") and charge < MAX_CHARGE:
 			charge += 1
 		if Input.is_action_just_pressed("ui_down") and charge > MIN_CHARGE:
 			charge -= 1
+	if charge >= 0:
+		get_node("ChargeLabel").text = "+" + str(charge)
+	else:
+		get_node("ChargeLabel").text = str(charge)
 	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.01)
 	change_velocity()
 	position += velocity * delta
@@ -40,16 +43,11 @@ func change_velocity():
 	var acceleration = Vector2.ZERO;
 	for ch in nearby_charges:
 		var vector = ch.position - position
-		if ch.charge * charge < 0:
-			# same charges repel
-			vector *= -1
-		var effective_charge = 10 * abs(charge)
-		if charge == 0:
-			effective_charge = 5
 		if vector.length() == 0:
 			continue
-		var strength = effective_charge / vector.length() / vector.length()
+		var strength = - coefficient * charge * ch.charge / vector.length() / vector.length()
 		acceleration += vector * strength
+	print(acceleration)
 	velocity += acceleration
 	
 	var ratio = float(velocity.length()) / MAX_SPEED
@@ -61,7 +59,9 @@ func start():
 	angular_speed = INIT_ANGULAR_SPEED
 	
 func _on_Charge_detector_body_entered(body):
+	print("yo")
 	if body != self && body.get_class() == "charged":
+		print("working!")
 		nearby_charges.append(body)
 
 func _on_Charge_detector_body_exited(body):
