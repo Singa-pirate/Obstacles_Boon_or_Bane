@@ -6,7 +6,7 @@ const INIT_ANGULAR_SPEED = 30
 const MAX_CHARGE = 10
 const MIN_CHARGE = -10
 const MAX_SPEED = 200
-const coefficient = 2
+const coefficient = 10
 
 var direction
 var angular_speed = 0
@@ -37,7 +37,6 @@ func _process(delta):
 	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.01)
 	change_velocity()
 	position += velocity * delta
-	rotation_degrees += angular_speed * delta
 
 func change_velocity():
 	var acceleration = Vector2.ZERO;
