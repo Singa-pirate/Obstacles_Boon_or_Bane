@@ -3,8 +3,8 @@ extends Node
 var level_number = 1
 
 var levels = {
-	1: preload("res://Level1.tscn"),
-	2: preload("res://Level2.tscn")
+	1: preload("res://Levels/Level1.tscn"),
+	2: preload("res://Levels/Level2.tscn")
 }
 
 var current_level = levels[1].instance()
