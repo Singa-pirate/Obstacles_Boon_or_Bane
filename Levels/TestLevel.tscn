@@ -1,12 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Enemies/ConstantDirection.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemies/Constant2Directions.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Obstacles/BlackHole.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Astronaut.tscn" type="PackedScene" id=2]
+[ext_resource path="res://StartButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Portal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/test_level.gd" type="Script" id=5]
+[ext_resource path="res://Indicator.tscn" type="PackedScene" id=6]
 
 [node name="TestLevel" type="Node"]
+script = ExtResource( 5 )
 
-[node name="ConstantDirection" parent="." instance=ExtResource( 1 )]
-position = Vector2( 380, 247 )
+[node name="StartButton" parent="." instance=ExtResource( 3 )]
+margin_left = 781.0
+margin_top = 528.0
+margin_right = 781.0
+margin_bottom = 528.0
 
-[node name="Constant2Directions" parent="." instance=ExtResource( 2 )]
-position = Vector2( 467, 169 )
+[node name="Astronaut" parent="." instance=ExtResource( 2 )]
+position = Vector2( 71, 303 )
+
+[node name="Portal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 910, 100 )
+
+[node name="BlackHole" parent="." instance=ExtResource( 1 )]
+position = Vector2( 501, 389 )
+
+[node name="Indicator" parent="." instance=ExtResource( 6 )]
+position = Vector2( 71, 303 )

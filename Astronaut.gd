@@ -16,12 +16,13 @@ var charge
 var label
 var mouse_hovering = false
 var nearby_charges = []
+var nearby_blackholes = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = MAX_HEALTH
 	charge = 0
-	direction = Vector2(1,0) # TODO: ask parent
+	direction = get_parent().astronaut_direction
 	velocity = Vector2(0,0)
 	label = get_node("ChargeLabel")
 
@@ -39,6 +40,7 @@ func _process(delta):
 	position += velocity * delta
 
 func change_velocity():
+	# acceleration due to charge
 	var acceleration = Vector2.ZERO;
 	for ch in nearby_charges:
 		var vector = ch.position - position
@@ -46,8 +48,18 @@ func change_velocity():
 			continue
 		var strength = - coefficient * charge * ch.charge / vector.length() / vector.length()
 		acceleration += vector * strength
+	
+	# acceleration due to blackholes
+	for blackhole in nearby_blackholes:
+		var vector = blackhole.position - position
+		if vector.length() == 0:
+			continue
+		acceleration += vector * blackhole.strength
+	
+	# change velocity
 	velocity += acceleration
 	
+	# cap at max speed
 	var ratio = float(velocity.length()) / MAX_SPEED
 	if ratio > 1:
 		velocity /= ratio
@@ -85,3 +97,7 @@ func update_charge():
 		label.modulate = Color(1 ,1 ,1)
 		label.text = "+0"
 		
+
+func _on_Charge_detector_area_entered(area):
+	if area.get_class() == "blackhole":
+		nearby_blackholes.append(area)
