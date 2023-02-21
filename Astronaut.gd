@@ -96,7 +96,10 @@ func update_charge():
 	else:
 		label.modulate = Color(1 ,1 ,1)
 		label.text = "+0"
-		
+
+func take_damage(damage):
+	# TODO
+	pass
 
 func _on_Charge_detector_area_entered(area):
 	if area.get_class() == "blackhole":
