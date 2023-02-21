@@ -50,7 +50,7 @@ func change_velocity():
 	
 	var ratio = float(velocity.length()) / MAX_SPEED
 	if ratio > 1:
-		velocity /= ratio	
+		velocity /= ratio
 	
 func start():
 	velocity = INIT_SPEED * direction
