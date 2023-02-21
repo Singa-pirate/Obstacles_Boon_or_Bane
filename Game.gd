@@ -1,10 +1,28 @@
 extends Node
 
-var Level2 = preload("res://Level2.tscn")
-var level2
+var level_number = 1
 
-# Go to the level_num level
+var levels = {
+	1: preload("res://Level1.tscn"),
+	2: preload("res://Level2.tscn")
+}
+
+var current_level = levels[1].instance()
+
+func _ready():
+	add_child(current_level)
+
+# Go to the level_number level
 func next_level():
-	get_node("Level1").queue_free()
-	level2 = Level2.instance()
-	add_child(level2)
+	remove_child(current_level)
+	current_level.queue_free()
+	level_number += 1
+	current_level = levels[level_number].instance()
+	add_child(current_level)
+
+# Restart current level
+func restart():
+	remove_child(current_level)
+	current_level.queue_free()
+	current_level = levels[level_number].instance()
+	add_child(current_level)
