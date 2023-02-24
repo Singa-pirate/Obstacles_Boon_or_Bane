@@ -14,6 +14,10 @@ config/name="Obstacles-Boon-or-Bane"
 run/main_scene="res://Game&UI/Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/fullscreen=true
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
