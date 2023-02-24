@@ -1,5 +1,6 @@
 [gd_scene format=2]
 
-[node name="LevelButton" type="Button"]
+[node name="Home_button" type="Button"]
 margin_right = 12.0
 margin_bottom = 20.0
+text = "Home"
