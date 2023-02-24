@@ -13,3 +13,4 @@ func _physics_process(delta):
 func _on_ConstantDirectionBullet_body_entered(body):
 	if body.name == "Astronaut":
 		body.take_damage(DAMAGE)
+		print("damaging the player")

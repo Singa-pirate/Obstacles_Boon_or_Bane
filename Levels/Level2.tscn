@@ -1,9 +1,40 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Elements/StartButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level2.gd" type="Script" id=2]
+[ext_resource path="res://Elements/Indicator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Astronaut/Astronaut.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Obstacles/RigidObstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Constant2Directions.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Elements/Portal.tscn" type="PackedScene" id=7]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="StartButton" parent="." instance=ExtResource( 1 )]
+margin_left = 715.0
+margin_top = 478.0
+margin_right = 715.0
+margin_bottom = 478.0
+rect_scale = Vector2( 1.77448, 1.77448 )
+
+[node name="Astronaut" parent="." instance=ExtResource( 4 )]
+position = Vector2( 210, 94 )
+scale = Vector2( 2.5276, 2.5276 )
+
+[node name="Indicator" parent="." instance=ExtResource( 3 )]
+position = Vector2( 210, 93 )
+
+[node name="RigidObstacle" parent="." instance=ExtResource( 5 )]
+position = Vector2( 154, 513 )
+scale = Vector2( 0.784158, 0.784158 )
+
+[node name="RigidObstacle2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 557, 78 )
+scale = Vector2( 0.690322, 0.690322 )
+
+[node name="Constant2Directions" parent="." instance=ExtResource( 6 )]
+position = Vector2( 520, 297 )
+
+[node name="Portal" parent="." instance=ExtResource( 7 )]
+position = Vector2( 860, 213 )
