@@ -4,8 +4,9 @@ extends KinematicBody2D
 var charge = 0
 const UPPER_BOUND = 10
 const LOWER_BOUND = -10
-const DAMAGE = 5
 
+
+var damage = 5
 var mouse_hovering = false
 var label
 

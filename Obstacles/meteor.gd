@@ -18,6 +18,6 @@ func get_class():
 	return "meteor"
 
 
-func _on_Meteor_body_entered(body):
-	if body.name == "Astronaut":
-		body.take_damage(damage)
+#func _on_Meteor_body_entered(body):
+#	if body.name == "Astronaut":
+#		body.take_damage(damage)
