@@ -5,4 +5,5 @@ var object
 
 
 func _process(delta):
-	value = object.health
+	if weakref(object).get_ref():
+		value = object.health / object.MAX_HEALTH * 100

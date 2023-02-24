@@ -15,12 +15,34 @@ var current_level   # type: instance of a level
 var level_selection = Level_selection.instance()
 var level_transition
 
+const HealthBar = preload("res://Game&UI/HealthBar.tscn")
+
+
 func _ready():
 	add_child(level_selection)
 
 func _process(delta):
 	if restartable == true and Input.is_action_just_pressed("ui_restart"):
 		restart()
+
+
+func new_level_object(level_number):
+	current_level = levels[level_number].instance()
+	add_child(current_level)
+	current_level.get_node("Indicator").rotation_degrees = rad2deg(Vector2.RIGHT.angle_to(current_level.astronaut_direction))
+	for child in current_level.get_children():
+		if (child.is_in_group("Character") and child.name != "Astronaut") or child.is_in_group("Enemies"):
+			var health_bar = HealthBar.instance()
+			health_bar.get_node("HealthBar").object = child
+			health_bar.set_position(Vector2(-50, 20))
+			health_bar.set_scale(Vector2(0.1, 0.1))
+			child.add_child(health_bar)
+		elif child.name == "Astronaut":
+			var health_bar = HealthBar.instance()
+			health_bar.get_node("HealthBar").object = child
+			health_bar.set_position(Vector2(700, 30))
+			health_bar.set_scale(Vector2(0.3, 0.3))
+			current_level.add_child(health_bar)
 
 
 # show popup after level passed
@@ -33,16 +55,14 @@ func level_passed():
 func start_level(level_number):
 	self.level_number = level_number
 	remove_child(level_selection)
-	current_level = levels[level_number].instance()
-	add_child(current_level)
+	new_level_object(level_number)
 	restartable = true
 
 # Restart current level
 func restart():
 	remove_child(current_level)
 	current_level.queue_free()
-	current_level = levels[level_number].instance()
-	add_child(current_level)
+	new_level_object(level_number)
 
 # called when home button at each level is pressed
 func go_home():
@@ -83,6 +103,5 @@ func next_level_from_popup():
 	remove_child(current_level)
 	current_level.queue_free()
 	level_number += 1
-	current_level = levels[level_number].instance()
-	add_child(current_level)
+	new_level_object(level_number)
 	restartable = true
