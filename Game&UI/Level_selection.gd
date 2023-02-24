@@ -2,8 +2,8 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-var UNIT_HORIZONTAL = 50
-var UNIT_VERTICAL = 20
+var UNIT_HORIZONTAL = 100
+var UNIT_VERTICAL = 50
 
 
 # Called when the node enters the scene tree for the first time.
