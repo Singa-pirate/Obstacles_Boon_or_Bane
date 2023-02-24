@@ -33,6 +33,7 @@ var is_visible = true
 var mutable_name = "Player"
 var is_invincible = false
 
+
 var portal
 
 var saber_cooldown = 1
@@ -45,6 +46,8 @@ func _ready():
 	direction = get_parent().astronaut_direction
 	velocity = Vector2(0,0)
 	label = get_node("ChargeLabel")
+	$AnimationPlayer.get_animation("EnterPortal").track_set_key_value(0, 0, scale)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -167,7 +170,7 @@ func update_charge():
 	else:
 		label.modulate = Color(1 ,1 ,1)
 		label.text = "+0"
-
+		
 func take_damage(damage):
 	#print(damage)
 	if not is_invincible:
@@ -207,3 +210,7 @@ func _on_Hurtbox_body_entered(body):
 
 func _on_InvincibilityTimer_timeout():
 	is_invincible = false
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "EnterPortal":
+		visible = false
