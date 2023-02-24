@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://StartButton.gd" type="Script" id=1]
+[ext_resource path="res://Elements/StartButton.gd" type="Script" id=1]
 
 [node name="StartButton" type="Control"]
 anchor_right = 1.0
