@@ -48,10 +48,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if mouse_hovering:
-		if Input.is_action_just_pressed("ui_up") and charge < MAX_CHARGE:
+		if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_scroll_up")) and charge < MAX_CHARGE:
 			charge += 1
 			update_charge()
-		if Input.is_action_just_pressed("ui_down") and charge > MIN_CHARGE:
+		if (Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_scroll_down")) and charge > MIN_CHARGE:
 			charge -= 1
 			update_charge()
 	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.01)
