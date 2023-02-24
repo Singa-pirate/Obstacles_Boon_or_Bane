@@ -18,7 +18,7 @@ radius = 13.6015
 
 [sub_resource type="CircleShape2D" id=5]
 
-[node name="Astronaut" type="KinematicBody2D"]
+[node name="Astronaut" type="KinematicBody2D" groups=["Character"]]
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]

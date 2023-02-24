@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
 
-const MAX_HEALTH = 20 # to be reset
+var MAX_HEALTH = 20 # to be reset
 var health = MAX_HEALTH
+
+var damage = 5
 
 var unit_direction = Vector2.RIGHT # to be reset
 const bullet_position_offset = Vector2.ZERO
