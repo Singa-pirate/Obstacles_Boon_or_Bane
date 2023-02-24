@@ -15,7 +15,7 @@ const MIN_X = -1000
 const MAX_X = 10000
 const MIN_Y = -1000
 const MAX_Y = 10000
-const PORTAL_ATTRACT_RANGE = 120
+const PORTAL_ATTRACT_RANGE = 100
 
 const SABER_DAMAGE = 20
 
@@ -31,6 +31,7 @@ var nearby_blackholes = []
 var nearby_enemies = []
 var is_visible = true
 var mutable_name = "Player"
+var is_invincible = false
 
 var portal
 
@@ -47,6 +48,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(velocity)
 	if mouse_hovering:
 		if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_scroll_up")) and charge < MAX_CHARGE:
 			charge += 1
@@ -54,7 +56,7 @@ func _process(delta):
 		if (Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_scroll_down")) and charge > MIN_CHARGE:
 			charge -= 1
 			update_charge()
-	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.01)
+	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.005)
 	change_velocity()
 	if check_near_portal():
 		var target_velocity = (portal.position - position).normalized() * INIT_SPEED \
@@ -64,7 +66,7 @@ func _process(delta):
 		actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
 	elif !nearby_enemies.empty():
 		 actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
-	move_and_collide(velocity * delta)
+	move_and_slide(velocity)
 	
 	if true and saber_ready: #enemies nearby
 		saber_attack()
@@ -167,8 +169,14 @@ func update_charge():
 		label.text = "+0"
 
 func take_damage(damage):
-	print(damage)
-
+	#print(damage)
+	if not is_invincible:
+		$TakeDamage.play("TakeDamage")
+		health -= damage
+		is_invincible = true
+		$Timers/InvincibilityTimer.start()
+		
+	
 func _on_Charge_detector_area_entered(area):
 	if area.get_class() == "blackhole":
 		nearby_blackholes.append(area)
@@ -194,4 +202,9 @@ func _on_SaberTimer_timeout():
 
 func _on_Hurtbox_body_entered(body):
 	if body.is_in_group("Enemies") or body.is_in_group("ObstaclesWithDamage"):
+		var target_velocity = (position - body.position).normalized() * INIT_SPEED / 10
+		velocity = lerp(velocity, target_velocity, 0.2)
 		take_damage(body.damage)
+
+func _on_InvincibilityTimer_timeout():
+	is_invincible = false

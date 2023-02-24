@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/m3x6.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -19,6 +19,22 @@ radius = 13.6015
 [sub_resource type="CircleShape2D" id=6]
 
 [sub_resource type="CircleShape2D" id=5]
+
+[sub_resource type="Animation" id=7]
+resource_name = "TakeDamage"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Astronaut" type="KinematicBody2D" groups=["Character"]]
 script = ExtResource( 3 )
@@ -70,11 +86,17 @@ shape = SubResource( 5 )
 scale = Vector2( 0.999998, 0.999998 )
 
 [node name="InvisibilityTimer" type="Timer" parent="Timers"]
-wait_time = 2.0
 one_shot = true
 
 [node name="SaberTimer" type="Timer" parent="Timers"]
 one_shot = true
+
+[node name="InvincibilityTimer" type="Timer" parent="Timers"]
+wait_time = 1.5
+one_shot = true
+
+[node name="TakeDamage" type="AnimationPlayer" parent="."]
+anims/TakeDamage = SubResource( 7 )
 
 [connection signal="area_entered" from="Charge_detector" to="." method="_on_Charge_detector_area_entered"]
 [connection signal="area_exited" from="Charge_detector" to="." method="_on_Charge_detector_area_exited"]
@@ -87,3 +109,4 @@ one_shot = true
 [connection signal="body_exited" from="NearbyObjectsDetector" to="." method="_on_NearbyObjectsDetector_body_exited"]
 [connection signal="timeout" from="Timers/InvisibilityTimer" to="." method="_on_InvisibilityTimer_timeout"]
 [connection signal="timeout" from="Timers/SaberTimer" to="." method="_on_SaberTimer_timeout"]
+[connection signal="timeout" from="Timers/InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
