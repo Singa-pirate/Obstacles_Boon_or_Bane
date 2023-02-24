@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/m3x6.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -15,6 +15,8 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 13.6015
+
+[sub_resource type="CircleShape2D" id=6]
 
 [sub_resource type="CircleShape2D" id=5]
 
@@ -48,8 +50,15 @@ text = "+0"
 z_index = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2( 1.19791, 1.19791 )
 z_index = 1
 shape = SubResource( 2 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2( 1.24461, 1.24461 )
+shape = SubResource( 6 )
 
 [node name="NearbyObjectsDetector" type="Area2D" parent="."]
 
@@ -58,6 +67,7 @@ scale = Vector2( 3.7829, 3.7829 )
 shape = SubResource( 5 )
 
 [node name="Timers" type="Node2D" parent="."]
+scale = Vector2( 0.999998, 0.999998 )
 
 [node name="InvisibilityTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
@@ -72,6 +82,7 @@ one_shot = true
 [connection signal="body_exited" from="Charge_detector" to="." method="_on_Charge_detector_body_exited"]
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
 [connection signal="body_entered" from="NearbyObjectsDetector" to="." method="_on_NearbyObjectsDetector_body_entered"]
 [connection signal="body_exited" from="NearbyObjectsDetector" to="." method="_on_NearbyObjectsDetector_body_exited"]
 [connection signal="timeout" from="Timers/InvisibilityTimer" to="." method="_on_InvisibilityTimer_timeout"]

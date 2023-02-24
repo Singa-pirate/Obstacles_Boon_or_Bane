@@ -4,6 +4,7 @@ const MAX_HEALTH = 100
 const INIT_SPEED = 100
 const ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT = 0.1
 const EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT = 0.01
+const PORTAL_ACTIVE_SLOW_SPEED_COEFFICIENT = 0.5
 const INIT_ANGULAR_SPEED = 30
 const MAX_CHARGE = 10
 const MIN_CHARGE = -10
@@ -14,6 +15,7 @@ const MIN_X = -1000
 const MAX_X = 10000
 const MIN_Y = -1000
 const MAX_Y = 10000
+const PORTAL_ATTRACT_RANGE = 120
 
 const SABER_DAMAGE = 20
 
@@ -26,9 +28,11 @@ var label
 var mouse_hovering = false
 var nearby_charges = []
 var nearby_blackholes = []
-var nearby_objects = []
+var nearby_enemies = []
 var is_visible = true
 var mutable_name = "Player"
+
+var portal
 
 var saber_cooldown = 1
 var saber_ready = true
@@ -51,12 +55,16 @@ func _process(delta):
 			charge -= 1
 			update_charge()
 	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.01)
-	if check_near_edge():
-		actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
-	if !nearby_objects.empty():
-		 actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
 	change_velocity()
-	position += velocity * delta
+	if check_near_portal():
+		var target_velocity = (portal.position - position).normalized() * INIT_SPEED \
+								* PORTAL_ACTIVE_SLOW_SPEED_COEFFICIENT
+		velocity = lerp(velocity, target_velocity, 0.01)		
+	elif check_near_edge():
+		actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
+	elif !nearby_enemies.empty():
+		 actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
+	move_and_collide(velocity * delta)
 	
 	if true and saber_ready: #enemies nearby
 		saber_attack()
@@ -96,6 +104,12 @@ func check_near_edge():
 		return true
 	return false
 	
+func check_near_portal():
+	portal = get_tree().get_nodes_in_group("Portal")[0]
+	if (portal.position - position).length() < PORTAL_ATTRACT_RANGE:
+		return true
+	return false
+	
 func toggle_visibility():
 	if is_visible:
 		mutable_name = "Invisible"
@@ -110,7 +124,7 @@ func toggle_visibility():
 	
 func saber_attack():
 	saber_ready = false
-	for obj in nearby_objects:
+	for obj in nearby_enemies:
 		if obj.is_in_group("EnemiesWithHealth"):
 			print("Saber Attack!")
 			obj.take_damage(SABER_DAMAGE)
@@ -153,8 +167,7 @@ func update_charge():
 		label.text = "+0"
 
 func take_damage(damage):
-	# TODO
-	pass
+	print(damage)
 
 func _on_Charge_detector_area_entered(area):
 	if area.get_class() == "blackhole":
@@ -165,12 +178,12 @@ func _on_Charge_detector_area_exited(area):
 		nearby_blackholes.erase(area)
 
 func _on_NearbyObjectsDetector_body_entered(body):
-	if body != self:
-		nearby_objects.append(body)
+	if body.is_in_group("Enemies"):
+		nearby_enemies.append(body)
 
 func _on_NearbyObjectsDetector_body_exited(body):
-	if body != self:
-		nearby_objects.erase(body)
+	if body.is_in_group("Enemies"):
+		nearby_enemies.erase(body)
 		
 func _on_InvisibilityTimer_timeout():
 	if !is_visible:
@@ -178,3 +191,7 @@ func _on_InvisibilityTimer_timeout():
 
 func _on_SaberTimer_timeout():
 	saber_ready = true
+
+func _on_Hurtbox_body_entered(body):
+	if body.is_in_group("Enemies") or body.is_in_group("ObstaclesWithDamage"):
+		take_damage(body.damage)
