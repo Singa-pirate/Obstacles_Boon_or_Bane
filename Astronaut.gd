@@ -155,6 +155,10 @@ func _on_Charge_detector_area_entered(area):
 	if area.get_class() == "blackhole":
 		nearby_blackholes.append(area)
 
+func _on_Charge_detector_area_exited(area):
+	if area.get_class() == "blackhole":
+		nearby_blackholes.erase(area)
+
 func _on_NearbyObjectsDetector_body_entered(body):
 	if body != self:
 		nearby_objects.append(body)
