@@ -1,36 +1,41 @@
 extends Node
 
-var level_number = 1
-var at_level_scene = false
+var level_number
+var restartable = false
 
 var levels = {
 	1: preload("res://Levels/Level1.tscn"),
-	2: preload("res://Levels/Level2.tscn")
+	2: preload("res://Levels/Level2.tscn"),
+	3: preload("res://Levels/Level3.tscn")
 }
 var Level_selection = preload("res://Game&UI/Level_selection.tscn")
+var Level_transition = preload("res://Game&UI/Level_transition.tscn")
 
-var current_level = levels[1].instance()
+var current_level   # type: instance of a level
 var level_selection = Level_selection.instance()
+var level_transition
 
 func _ready():
 	add_child(level_selection)
 
-# Go to the next level from previous level
-func next_level():
-	remove_child(current_level)
-	current_level.queue_free()
-	level_number += 1
-	current_level = levels[level_number].instance()
-	add_child(current_level)
+func _process(delta):
+	if restartable == true and Input.is_action_just_pressed("ui_restart"):
+		restart()
+
+
+# level passed
+func level_passed():
+	level_transition = Level_transition.instance()
+	add_child(level_transition)
+	restartable = false
 
 # Go to a selected level from level selection scene
 func start_level(level_number):
 	self.level_number = level_number
 	remove_child(level_selection)
-	level_selection.queue_free()
 	current_level = levels[level_number].instance()
 	add_child(current_level)
-	at_level_scene = true
+	restartable = true
 
 # Restart current level
 func restart():
@@ -39,6 +44,36 @@ func restart():
 	current_level = levels[level_number].instance()
 	add_child(current_level)
 
-func _process(delta):
-	if at_level_scene == true and Input.is_action_just_pressed("ui_restart"):
-		restart()
+
+
+
+
+# The 3 functions below are only called
+# when buttons in the level transition
+# popup are pressed
+
+
+# called by the replay button in level 
+# transition popup
+func replay_this_level():
+	remove_child(level_transition)
+	restart()
+	restartable = true
+
+# called by the home button in level 
+# transition popup
+func go_home():
+	remove_child(level_transition)
+	remove_child(current_level)
+	current_level.queue_free()
+	add_child(level_selection)
+
+# called by the next level button in level transition popup
+func next_level():
+	remove_child(level_transition)
+	remove_child(current_level)
+	current_level.queue_free()
+	level_number += 1
+	current_level = levels[level_number].instance()
+	add_child(current_level)
+	restartable = true

@@ -24,4 +24,4 @@ func open_portal():
 
 func _on_PortalBox_body_entered(body):
 	if body.name == "Astronaut" and portal_opened:
-		get_parent().get_parent().next_level()
+		get_parent().get_parent().level_passed()
