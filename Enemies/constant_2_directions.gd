@@ -14,6 +14,9 @@ const bullet_position_offset2 = Vector2.ZERO
 var Bullet = preload("res://Enemies/ConstantDirectionBullet.tscn") # to be reset
 var Bullet2 = preload("res://Enemies/ConstantDirectionBullet.tscn")
 
+func _physics_process(delta):
+	if health <= 0:
+		die()
 
 func reset_bullet_rate(duration):
 	$BulletTimer.wait_time = duration
@@ -23,6 +26,8 @@ func take_damage(damage):
 	health -= damage
 	# play animation
 
+func die():
+	queue_free()
 
 func _on_BulletTimer_timeout():
 	var bullet = Bullet.instance()

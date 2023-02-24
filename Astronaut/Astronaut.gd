@@ -17,7 +17,7 @@ const MIN_Y = -1000
 const MAX_Y = 10000
 const PORTAL_ATTRACT_RANGE = 100
 
-const SABER_DAMAGE = 20
+const SABER_DAMAGE = 10
 
 var direction
 var angular_speed = 0
@@ -171,12 +171,11 @@ func update_charge():
 func take_damage(damage):
 	#print(damage)
 	if not is_invincible:
-		$TakeDamage.play("TakeDamage")
+		$AnimationPlayer.play("TakeDamage")
 		health -= damage
 		is_invincible = true
 		$Timers/InvincibilityTimer.start()
 		
-	
 func _on_Charge_detector_area_entered(area):
 	if area.get_class() == "blackhole":
 		nearby_blackholes.append(area)
