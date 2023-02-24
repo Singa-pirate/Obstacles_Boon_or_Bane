@@ -3,17 +3,19 @@ extends Node
 var level_number
 var restartable = false
 
-var levels = {
+const levels = {
 	1: preload("res://Levels/Level1.tscn"),
 	2: preload("res://Levels/Level2.tscn"),
 	3: preload("res://Levels/Level3.tscn")
 }
-var Level_selection = preload("res://Game&UI/Level_selection.tscn")
-var Level_transition = preload("res://Game&UI/Level_transition.tscn")
+const Level_selection = preload("res://Game&UI/Level_selection.tscn")
+const Level_transition = preload("res://Game&UI/Level_transition.tscn")
+const Level_failed = preload("res://Game&UI/Level_failed.tscn")
 
 var current_level   # type: instance of a level
 var level_selection = Level_selection.instance()
-var level_transition
+var level_transition = Level_transition.instance()
+var level_failed = Level_failed.instance()
 
 const HealthBar = preload("res://Game&UI/HealthBar.tscn")
 
@@ -47,7 +49,6 @@ func new_level_object(level_number):
 
 # show popup after level passed
 func level_passed():
-	level_transition = Level_transition.instance()
 	add_child(level_transition)
 	restartable = false
 
@@ -72,8 +73,8 @@ func go_home():
 
 # called when player died
 func level_failed():
-	# TO DO!!!
-	pass
+	add_child(level_failed)
+	restartable = false
 
 
 
