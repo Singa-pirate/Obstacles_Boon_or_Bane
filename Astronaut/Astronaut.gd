@@ -15,6 +15,7 @@ const MAX_X = 10000
 const MIN_Y = -1000
 const MAX_Y = 10000
 
+const SABER_DAMAGE = 20
 
 var direction
 var angular_speed = 0
@@ -109,7 +110,11 @@ func toggle_visibility():
 	
 func saber_attack():
 	saber_ready = false
-	# Attack!
+	for obj in nearby_objects:
+		if obj.is_in_group("EnemiesWithHealth"):
+			print("Saber Attack!")
+			obj.take_damage(SABER_DAMAGE)
+		
 	$Timers/SaberTimer.wait_time = saber_cooldown	
 	$Timers/SaberTimer.start()
 	
