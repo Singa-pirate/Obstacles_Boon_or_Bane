@@ -1,10 +1,15 @@
 extends Area2D
 
 
-const DAMAGE = 5
+var DAMAGE = 5 # to be changed
 
 var unit_direction
 const SPEED = 20
+
+
+func _ready():
+	rotation_degrees = rad2deg(Vector2.RIGHT.angle_to(unit_direction))
+
 
 func _physics_process(delta):
 	position += SPEED * unit_direction
