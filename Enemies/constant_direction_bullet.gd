@@ -8,7 +8,7 @@ const SPEED = 20
 
 
 func _ready():
-	rotation_degrees = rad2deg(Vector2.RIGHT.angle_to(unit_direction))
+	rotation_degrees = rad_to_deg(Vector2.RIGHT.angle_to(unit_direction))
 
 
 func _physics_process(delta):

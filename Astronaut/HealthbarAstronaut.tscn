@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Health Bar Asset/greenbar (2).png" type="Texture" id=2]
-[ext_resource path="res://Assets/Health Bar Asset/greenbar (3).png" type="Texture" id=3]
+[ext_resource path="res://Assets/Health Bar Asset/greenbar (2).png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Health Bar Asset/greenbar (3).png" type="Texture2D" id=3]
 
 [node name="HealthbarAstronaut" type="Node2D"]
 
-[node name="TextureProgress" type="TextureProgress" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 2 )

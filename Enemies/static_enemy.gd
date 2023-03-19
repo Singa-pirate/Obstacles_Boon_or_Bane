@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 const MAX_HEALTH = 20 # to be reset

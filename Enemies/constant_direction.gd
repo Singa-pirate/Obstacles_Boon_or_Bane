@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 var MAX_HEALTH = 20 # to be reset
@@ -27,7 +27,7 @@ func die():
 	queue_free()
 
 func _on_BulletTimer_timeout():
-	var bullet = Bullet.instance()
+	var bullet = Bullet.instantiate()
 	bullet.unit_direction = unit_direction
 	bullet.position = position + bullet_position_offset
 	get_parent().add_child(bullet)

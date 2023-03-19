@@ -3,8 +3,8 @@
 [ext_resource path="res://Elements/Buttons/HomeButton.gd" type="Script" id=1]
 
 [node name="HomeButton" type="Button"]
-margin_right = 12.0
-margin_bottom = 20.0
+offset_right = 12.0
+offset_bottom = 20.0
 text = "Home"
 script = ExtResource( 1 )
 

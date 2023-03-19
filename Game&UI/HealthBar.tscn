@@ -25,12 +25,12 @@ expand_margin_top = 7.0
 expand_margin_bottom = 7.0
 
 [node name="Control" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-margin_right = 1000.0
-margin_bottom = 100.0
+offset_right = 1000.0
+offset_bottom = 100.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 30.0

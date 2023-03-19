@@ -1,0 +1,5 @@
+res://default_env.tres
+res://Game&UI/Game.tscn
+res://Levels/Level1.tscn
+res://Game&UI/Game.gd
+res://Obstacles/rigid_obstacle.gd

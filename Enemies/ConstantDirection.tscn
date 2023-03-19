@@ -4,7 +4,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="ConstantDirection" type="KinematicBody2D" groups=["Enemies", "EnemiesWithHealth"]]
+[node name="ConstantDirection" type="CharacterBody2D" groups=["Enemies", "EnemiesWithHealth"]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

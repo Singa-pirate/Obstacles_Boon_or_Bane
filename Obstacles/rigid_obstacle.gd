@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 var charge = 0
@@ -33,9 +33,6 @@ func update_charge():
 	else:
 		label.modulate = Color(1 ,1 ,1)
 		label.text = "+0"
-			
-func get_class():
-	return "charged"
 
 
 func _on_Area2D_mouse_entered():

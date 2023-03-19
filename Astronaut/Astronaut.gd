@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const MAX_HEALTH = 100
 const INIT_SPEED = 100
@@ -67,9 +67,10 @@ func _process(delta):
 		velocity = lerp(velocity, target_velocity, 0.01)		
 	elif check_near_edge():
 		actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
-	elif !nearby_enemies.empty():
+	elif !nearby_enemies.is_empty():
 		 actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
-	move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
 	
 	if true and saber_ready: #enemies nearby
 		saber_attack()
@@ -119,12 +120,12 @@ func toggle_visibility():
 	if is_visible:
 		mutable_name = "Invisible"
 		name = mutable_name
-		$Sprite.modulate.a = 0.5
+		$Sprite2D.modulate.a = 0.5
 		$Timers/InvisibilityTimer.start()
 	else:
 		mutable_name = "Player"
 		name = mutable_name
-		$Sprite.modulate.a = 1
+		$Sprite2D.modulate.a = 1
 	is_visible = !is_visible
 	
 func saber_attack():

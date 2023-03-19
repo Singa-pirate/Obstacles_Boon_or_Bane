@@ -13,9 +13,9 @@ const Level_transition = preload("res://Game&UI/Level_transition.tscn")
 const Level_failed = preload("res://Game&UI/Level_failed.tscn")
 
 var current_level   # type: instance of a level
-var level_selection = Level_selection.instance()
-var level_transition = Level_transition.instance()
-var level_failed = Level_failed.instance()
+var level_selection = Level_selection.instantiate()
+var level_transition = Level_transition.instantiate()
+var level_failed_scene = Level_failed.instantiate()
 
 const HealthBar = preload("res://Game&UI/HealthBar.tscn")
 
@@ -29,18 +29,18 @@ func _process(delta):
 
 
 func new_level_object(level_number):
-	current_level = levels[level_number].instance()
+	current_level = levels[level_number].instantiate()
 	add_child(current_level)
-	current_level.get_node("Indicator").rotation_degrees = rad2deg(Vector2.RIGHT.angle_to(current_level.astronaut_direction))
+	current_level.get_node("Indicator").rotation_degrees = rad_to_deg(Vector2.RIGHT.angle_to(current_level.astronaut_direction))
 	for child in current_level.get_children():
 		if (child.is_in_group("Character") and child.name != "Astronaut") or child.is_in_group("Enemies"):
-			var health_bar = HealthBar.instance()
+			var health_bar = HealthBar.instantiate()
 			health_bar.get_node("HealthBar").object = child
 			health_bar.set_position(Vector2(-50, 20))
 			health_bar.set_scale(Vector2(0.1, 0.1))
 			child.add_child(health_bar)
 		elif child.name == "Astronaut":
-			var health_bar = HealthBar.instance()
+			var health_bar = HealthBar.instantiate()
 			health_bar.get_node("HealthBar").object = child
 			health_bar.set_position(Vector2(700, 30))
 			health_bar.set_scale(Vector2(0.3, 0.3))
@@ -73,7 +73,7 @@ func go_home():
 
 # called when player died
 func level_failed():
-	add_child(level_failed)
+	add_child(level_failed_scene)
 	restartable = false
 
 

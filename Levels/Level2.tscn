@@ -13,11 +13,11 @@
 script = ExtResource( 2 )
 
 [node name="StartButton" parent="." instance=ExtResource( 1 )]
-margin_left = 715.0
-margin_top = 478.0
-margin_right = 715.0
-margin_bottom = 478.0
-rect_scale = Vector2( 1.77448, 1.77448 )
+offset_left = 715.0
+offset_top = 478.0
+offset_right = 715.0
+offset_bottom = 478.0
+scale = Vector2( 1.77448, 1.77448 )
 
 [node name="Astronaut" parent="." instance=ExtResource( 4 )]
 position = Vector2( 210, 94 )

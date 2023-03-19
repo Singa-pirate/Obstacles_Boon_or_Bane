@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	self.position = get_viewport_rect().size / 2
-	$Sprite.scale = Vector2(2,2)
+	$Sprite2D.scale = Vector2(2,2)
 	$Label.set_position(Vector2(-100,-100))
 	$Home_button.set_position(Vector2(-150,0))
 	$Next_level_button.set_position(Vector2(-60,0))

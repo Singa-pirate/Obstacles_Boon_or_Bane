@@ -1,16 +1,16 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Assets/m3x6.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 14.png" type="Texture" id=2]
+[ext_resource path="res://Assets/m3x6.ttf" type="FontFile" id=1]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 14.png" type="Texture2D" id=2]
 [ext_resource path="res://Astronaut/Astronaut.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 18.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 19.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 16.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 17.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 11.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 12.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 15.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 13.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 18.png" type="Texture2D" id=4]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 19.png" type="Texture2D" id=5]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 16.png" type="Texture2D" id=6]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 17.png" type="Texture2D" id=7]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 11.png" type="Texture2D" id=8]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 12.png" type="Texture2D" id=9]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 15.png" type="Texture2D" id=10]
+[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 13.png" type="Texture2D" id=11]
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
@@ -35,7 +35,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=3]
 radius = 50.6464
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -56,8 +56,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
 }
@@ -66,10 +66,10 @@ tracks/0/keys = {
 resource_name = "TakeDamage"
 length = 0.8
 
-[node name="Astronaut" type="KinematicBody2D" groups=["Character"]]
+[node name="Astronaut" type="CharacterBody2D" groups=["Character"]]
 script = ExtResource( 3 )
 
-[node name="Appearance" type="AnimatedSprite" parent="."]
+[node name="Appearance" type="AnimatedSprite2D" parent="."]
 scale = Vector2( 0.610052, 0.610052 )
 frames = SubResource( 9 )
 animation = "Flying"
@@ -86,11 +86,11 @@ scale = Vector2( 2.01638, 2.01638 )
 shape = SubResource( 3 )
 
 [node name="ChargeLabel" type="RichTextLabel" parent="."]
-margin_left = -6.0
-margin_top = -27.0
-margin_right = 24.0
-margin_bottom = 3.0
-rect_scale = Vector2( 0.790165, 0.790165 )
+offset_left = -6.0
+offset_top = -27.0
+offset_right = 24.0
+offset_bottom = 3.0
+scale = Vector2( 0.790165, 0.790165 )
 custom_fonts/normal_font = SubResource( 4 )
 text = "+0"
 

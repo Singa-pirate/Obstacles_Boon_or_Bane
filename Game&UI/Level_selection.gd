@@ -12,9 +12,9 @@ func _ready():
 	$Level2Button.text = "2"
 	$Level3Button.text = "3"
 	
-	$Level1Button.rect_position += Vector2(UNIT_HORIZONTAL, UNIT_VERTICAL)
-	$Level2Button.rect_position += Vector2(UNIT_HORIZONTAL * 2, UNIT_VERTICAL)
-	$Level3Button.rect_position += Vector2(UNIT_HORIZONTAL * 3, UNIT_VERTICAL)
+	$Level1Button.position += Vector2(UNIT_HORIZONTAL, UNIT_VERTICAL)
+	$Level2Button.position += Vector2(UNIT_HORIZONTAL * 2, UNIT_VERTICAL)
+	$Level3Button.position += Vector2(UNIT_HORIZONTAL * 3, UNIT_VERTICAL)
 
 func _on_Level1Button_pressed():
 	get_parent().start_level(1)
