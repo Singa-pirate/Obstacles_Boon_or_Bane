@@ -4,3 +4,8 @@ res://Levels/Level1.tscn
 res://Astronaut/Astronaut.tscn
 res://Astronaut/Astronaut.gd
 res://Obstacles/RigidObstacle.tscn
+res://Obstacles/BlackHole.tscn
+res://Levels/TestLevel.tscn
+res://Obstacles/meteor.gd
+res://Obstacles/Meteor.tscn
+res://Elements/Buttons/StartButton.gd

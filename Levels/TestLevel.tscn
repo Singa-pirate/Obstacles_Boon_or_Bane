@@ -1,33 +1,37 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://ca1e13emo76f7"]
 
-[ext_resource path="res://Obstacles/BlackHole.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Astronaut/Astronaut.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Elements/Buttons/StartButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Elements/Portal.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/test_level.gd" type="Script" id=5]
-[ext_resource path="res://Elements/Indicator.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Obstacles/Meteor.tscn" type="PackedScene" id=7]
+[ext_resource type="PackedScene" uid="uid://cnny1ykrb8rm5" path="res://Obstacles/BlackHole.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="4"]
+[ext_resource type="Script" path="res://Levels/test_level.gd" id="5"]
+[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dwdj11vyiqgme" path="res://Obstacles/Meteor.tscn" id="7"]
 
 [node name="TestLevel" type="Node"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 
-[node name="StartButton" parent="." instance=ExtResource( 3 )]
+[node name="StartButton" parent="." instance=ExtResource("3")]
+layout_mode = 3
+anchors_preset = 15
 offset_left = 781.0
 offset_top = 528.0
 offset_right = 781.0
 offset_bottom = 528.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Astronaut" parent="." instance=ExtResource( 2 )]
-position = Vector2( 71, 303 )
+[node name="Astronaut" parent="." instance=ExtResource("2")]
+position = Vector2(71, 303)
 
-[node name="Portal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 910, 100 )
+[node name="Portal" parent="." instance=ExtResource("4")]
+position = Vector2(910, 100)
 
-[node name="BlackHole" parent="." instance=ExtResource( 1 )]
-position = Vector2( 501, 389 )
+[node name="BlackHole" parent="." instance=ExtResource("1")]
+position = Vector2(501, 389)
 
-[node name="Indicator" parent="." instance=ExtResource( 6 )]
-position = Vector2( 71, 303 )
+[node name="Indicator" parent="." instance=ExtResource("6")]
+position = Vector2(71, 303)
 
-[node name="Meteor" parent="." instance=ExtResource( 7 )]
-position = Vector2( 640, 398 )
+[node name="Meteor" parent="." instance=ExtResource("7")]
+position = Vector2(640, 398)
