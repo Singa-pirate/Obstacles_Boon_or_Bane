@@ -1,121 +1,165 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=3 uid="uid://cihvfsatpvpkr"]
 
-[ext_resource path="res://Assets/m3x6.ttf" type="FontFile" id=1]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 14.png" type="Texture2D" id=2]
-[ext_resource path="res://Astronaut/Astronaut.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 18.png" type="Texture2D" id=4]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 19.png" type="Texture2D" id=5]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 16.png" type="Texture2D" id=6]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 17.png" type="Texture2D" id=7]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 11.png" type="Texture2D" id=8]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 12.png" type="Texture2D" id=9]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 15.png" type="Texture2D" id=10]
-[ext_resource path="res://Assets/Astronaut/Untitled_Artwork 13.png" type="Texture2D" id=11]
+[ext_resource type="Texture2D" uid="uid://d33yamlr1sk0w" path="res://Assets/Astronaut/Untitled_Artwork 14.png" id="2"]
+[ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://dbxffpsfmeg2a" path="res://Assets/Astronaut/Untitled_Artwork 18.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dco0picdhg1ci" path="res://Assets/Astronaut/Untitled_Artwork 19.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cdamooaif55jp" path="res://Assets/Astronaut/Untitled_Artwork 16.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://ci18v0hitidlw" path="res://Assets/Astronaut/Untitled_Artwork 17.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bhkc0yx6ag0ol" path="res://Assets/Astronaut/Untitled_Artwork 11.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://8e0mevuh6dh5" path="res://Assets/Astronaut/Untitled_Artwork 12.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://b8n4nhtttbenn" path="res://Assets/Astronaut/Untitled_Artwork 15.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://dtlwmqoqbhgej" path="res://Assets/Astronaut/Untitled_Artwork 13.png" id="11"]
 
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ) ],
+[sub_resource type="SpriteFrames" id="9"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
 "loop": true,
-"name": "Flying",
+"name": &"Flying",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}],
 "loop": true,
-"name": "Idle",
+"name": &"Idle",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
 "loop": true,
-"name": "TakingOff",
+"name": &"TakingOff",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id="3"]
 radius = 50.6464
 
-[sub_resource type="FontFile" id=4]
-size = 32
-font_data = ExtResource( 1 )
-
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id="2"]
 radius = 13.6015
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id="6"]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id="5"]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id="8"]
 resource_name = "EnterPortal"
 length = 1.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 1.5 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+"values": [Vector2(1, 1), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="7"]
 resource_name = "TakeDamage"
 length = 0.8
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4cuid"]
+_data = {
+"EnterPortal": SubResource("8"),
+"TakeDamage": SubResource("7")
+}
+
 [node name="Astronaut" type="CharacterBody2D" groups=["Character"]]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="Appearance" type="AnimatedSprite2D" parent="."]
-scale = Vector2( 0.610052, 0.610052 )
-frames = SubResource( 9 )
-animation = "Flying"
+scale = Vector2(0.610052, 0.610052)
+sprite_frames = SubResource("9")
+animation = &"Flying"
 frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="Charge_detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Charge_detector"]
-scale = Vector2( 2.01638, 2.01638 )
-shape = SubResource( 3 )
+scale = Vector2(2.01638, 2.01638)
+shape = SubResource("3")
 
 [node name="ChargeLabel" type="RichTextLabel" parent="."]
 offset_left = -6.0
 offset_top = -27.0
 offset_right = 24.0
 offset_bottom = 3.0
-scale = Vector2( 0.790165, 0.790165 )
-custom_fonts/normal_font = SubResource( 4 )
+scale = Vector2(0.790165, 0.790165)
 text = "+0"
 
 [node name="Hitbox" type="Area2D" parent="."]
 z_index = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="Hitbox"]
-scale = Vector2( 1.19791, 1.19791 )
 z_index = 1
-shape = SubResource( 2 )
+scale = Vector2(1.19791, 1.19791)
+shape = SubResource("2")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Hurtbox"]
-scale = Vector2( 1.24461, 1.24461 )
-shape = SubResource( 6 )
+scale = Vector2(1.24461, 1.24461)
+shape = SubResource("6")
 
 [node name="NearbyObjectsDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NearbyObjectsDetector"]
-scale = Vector2( 3.7829, 3.7829 )
-shape = SubResource( 5 )
+scale = Vector2(3.7829, 3.7829)
+shape = SubResource("5")
 
 [node name="Timers" type="Node2D" parent="."]
-scale = Vector2( 0.999998, 0.999998 )
+scale = Vector2(0.999998, 0.999998)
 
 [node name="InvisibilityTimer" type="Timer" parent="Timers"]
 one_shot = true
@@ -128,8 +172,9 @@ wait_time = 1.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/EnterPortal = SubResource( 8 )
-anims/TakeDamage = SubResource( 7 )
+libraries = {
+"": SubResource("AnimationLibrary_4cuid")
+}
 
 [connection signal="area_entered" from="Charge_detector" to="." method="_on_Charge_detector_area_entered"]
 [connection signal="area_exited" from="Charge_detector" to="." method="_on_Charge_detector_area_exited"]

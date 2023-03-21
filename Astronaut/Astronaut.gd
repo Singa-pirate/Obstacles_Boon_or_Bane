@@ -21,7 +21,6 @@ const SABER_DAMAGE = 10
 
 var direction
 var angular_speed = 0
-var velocity
 var health
 var charge
 var label
@@ -51,7 +50,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(velocity)
 	if mouse_hovering:
 		if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_scroll_up")) and charge < MAX_CHARGE:
 			charge += 1
@@ -68,7 +66,7 @@ func _process(delta):
 	elif check_near_edge():
 		actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
 	elif !nearby_enemies.is_empty():
-		 actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
+		actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
 	set_velocity(velocity)
 	move_and_slide()
 	
@@ -143,11 +141,11 @@ func start():
 	angular_speed = INIT_ANGULAR_SPEED
 	
 func _on_Charge_detector_body_entered(body):
-	if body != self && body.get_class() == "charged":
+	if body != self && body.is_in_group("ObstaclesWithDamage"):
 		nearby_charges.append(body)
 
 func _on_Charge_detector_body_exited(body):
-	if body != self && body.get_class() == "charged":
+	if body != self && body.is_in_group("ObstaclesWithDamage"):
 		nearby_charges.erase(body)
 		
 		
@@ -156,9 +154,6 @@ func _on_Hitbox_mouse_entered():
 
 func _on_Hitbox_mouse_exited():
 	mouse_hovering = false
-
-func get_class():
-	return "charged"
 
 func update_charge():
 	var c = float(charge) / 10

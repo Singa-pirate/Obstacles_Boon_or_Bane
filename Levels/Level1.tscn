@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bi21jyhbr6c5e"]
 
-[ext_resource type="PackedScene" path="res://Obstacles/RigidObstacle.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://Astronaut/Astronaut.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="5"]
 [ext_resource type="Script" path="res://Levels/Level1.gd" id="6"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="7"]
@@ -18,6 +18,8 @@ offset_left = 723.0
 offset_top = 463.0
 offset_right = 723.0
 offset_bottom = 463.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.8, 1.8)
 
 [node name="RigidObstacle1" parent="." instance=ExtResource("1")]
