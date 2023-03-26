@@ -1,19 +1,42 @@
 extends Node
 
+const MAX_CHAPTER_NUMBER = 2
+const MAX_LEVEL_NUMBER = 5
+
+var chapter_number
 var level_number
+var current_level
 var restartable = false
 
-const levels = {
-	1: preload("res://Levels/Level1.tscn"),
-	2: preload("res://Levels/Level2.tscn"),
-	3: preload("res://Levels/Level3.tscn")
+const Level_selection_scenes = {
+	1: preload("res://Game&UI/Chapter_selection_scenes/Chapter1.tscn"),
+	2: preload("res://Game&UI/Chapter_selection_scenes/Chapter2.tscn")
 }
-const Level_selection = preload("res://Game&UI/Level_selection.tscn")
+
+const levels = {
+	1: chapter1_levels,
+	2: chapter2_levels
+}
+
+const chapter1_levels = {
+	1: preload("res://Levels/Chapter1/Level1.tscn"),
+	2: preload("res://Levels/Chapter1/Level2.tscn"),
+	3: preload("res://Levels/Chapter1/Level3.tscn"),
+	4: preload("res://Levels/Chapter1/Level4.tscn")
+}
+
+const chapter2_levels = {
+	1: preload("res://Levels/Chapter2/Level1.tscn"),
+	2: preload("res://Levels/Chapter2/Level2.tscn"),
+	3: preload("res://Levels/Chapter2/Level3.tscn")
+}
+
+#const Level_selection = preload("res://Game&UI/Level_selection.tscn")
 const Level_transition = preload("res://Game&UI/Level_transition.tscn")
 const Level_failed = preload("res://Game&UI/Level_failed.tscn")
 
-var current_level   # type: instance of a level
-var level_selection = Level_selection.instantiate()
+#var level_selection = Level_selection.instantiate()
+var level_selection
 var level_transition = Level_transition.instantiate()
 var level_failed_scene = Level_failed.instantiate()
 
@@ -21,6 +44,8 @@ const HealthBar = preload("res://Game&UI/HealthBar.tscn")
 
 
 func _ready():
+	chapter_number = 1
+	level_selection = Level_selection_scenes[chapter_number].instantiate()
 	add_child(level_selection)
 
 func _process(delta):
@@ -29,7 +54,7 @@ func _process(delta):
 
 
 func new_level_object(level_number):
-	current_level = levels[level_number].instantiate()
+	current_level = levels[chapter_number][level_number].instantiate()
 	add_child(current_level)
 	current_level.get_node("Indicator").rotation_degrees = rad_to_deg(Vector2.RIGHT.angle_to(current_level.astronaut_direction))
 	for child in current_level.get_children():
@@ -76,6 +101,22 @@ func level_failed():
 	add_child(level_failed_scene)
 	restartable = false
 
+# called when previous chapter button is pressed
+func go_prev_chapter():
+	if chapter_number > 1:
+		remove_child(level_selection)
+		level_selection.queue_free()
+		chapter_number -= 1
+		level_selection = Level_selection_scenes[chapter_number].instantiate()
+		add_child(level_selection)
+
+func go_next_chapter():
+	if chapter_number < MAX_CHAPTER_NUMBER:
+		remove_child(level_selection)
+		level_selection.queue_free()
+		chapter_number += 1
+		level_selection = Level_selection_scenes[chapter_number].instantiate()
+		add_child(level_selection)
 
 
 # The 3 functions below are only called

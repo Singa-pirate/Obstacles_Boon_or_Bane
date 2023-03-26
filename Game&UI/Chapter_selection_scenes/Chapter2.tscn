@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://gqqons6i2l1n"]
+
+[ext_resource type="Script" path="res://Game&UI/Chapter_selection_scenes/Level_selection.gd" id="1_7ngi5"]
+[ext_resource type="PackedScene" uid="uid://cpimnqle8dn1v" path="res://Elements/Buttons/LevelButton.tscn" id="2_vw3tj"]
+[ext_resource type="PackedScene" uid="uid://57gpk2q3so6c" path="res://Elements/Buttons/PrevChapButton.tscn" id="3_hqy0a"]
+[ext_resource type="PackedScene" uid="uid://j6hxa3xq5v05" path="res://Elements/Buttons/NextChapButton.tscn" id="4_qi2pl"]
+[ext_resource type="FontFile" uid="uid://bpo6x2mq45bwy" path="res://Assets/m3x6.ttf" id="5_si5ce"]
+
+[node name="Level_selection" type="Node2D"]
+script = ExtResource("1_7ngi5")
+
+[node name="Level1Button" parent="." instance=ExtResource("2_vw3tj")]
+
+[node name="Level2Button" parent="." instance=ExtResource("2_vw3tj")]
+
+[node name="Level3Button" parent="." instance=ExtResource("2_vw3tj")]
+
+[node name="Level4Button" parent="." instance=ExtResource("2_vw3tj")]
+
+[node name="Level5Button" parent="." instance=ExtResource("2_vw3tj")]
+
+[node name="PrevChapButton" parent="." instance=ExtResource("3_hqy0a")]
+
+[node name="NextChapButton" parent="." instance=ExtResource("4_qi2pl")]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_si5ce")
+theme_override_font_sizes/font_size = 80
+text = "Chapter 2"
+
+[connection signal="pressed" from="Level1Button" to="." method="_on_Level1Button_pressed"]
+[connection signal="pressed" from="Level2Button" to="." method="_on_Level2Button_pressed"]
+[connection signal="pressed" from="Level3Button" to="." method="_on_Level3Button_pressed"]
+[connection signal="pressed" from="Level4Button" to="." method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="Level5Button" to="." method="_on_level_5_button_pressed"]

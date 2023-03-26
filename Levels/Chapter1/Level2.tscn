@@ -1,13 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource path="res://Elements/Buttons/StartButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Levels/Level2.gd" type="Script" id=2]
-[ext_resource path="res://Elements/Indicator.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Astronaut/Astronaut.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Obstacles/RigidObstacle.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/Constant2Directions.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Elements/Portal.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Elements/Buttons/HomeButton.tscn" type="PackedScene" id=8]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="1"]
+[ext_resource type="Script" path="res://Levels/Chapter1/Level2.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Enemies/Constant2Directions.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource( 2 )

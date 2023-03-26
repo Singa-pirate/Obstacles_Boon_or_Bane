@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0t2k8l4kqut"]
+
+[ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Enemies/Static.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="6"]
+[ext_resource type="Script" path="res://Levels/Chapter1/Level3.gd" id="7"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("7")
+
+[node name="StartButton" parent="." instance=ExtResource("1")]
+layout_mode = 3
+anchors_preset = 15
+offset_left = 737.0
+offset_top = 509.0
+offset_right = 737.0
+offset_bottom = 509.0
+scale = Vector2(1.82867, 1.82867)
+
+[node name="Astronaut" parent="." instance=ExtResource("5")]
+position = Vector2(56, 386)
+scale = Vector2(1.96937, 1.96937)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("2")]
+position = Vector2(189, 259)
+scale = Vector2(0.378223, 0.378223)
+
+[node name="RigidObstacle2" parent="." instance=ExtResource("2")]
+position = Vector2(529, 257)
+scale = Vector2(0.465699, 0.465699)
+
+[node name="RigidObstacle3" parent="." instance=ExtResource("2")]
+position = Vector2(857, 259)
+scale = Vector2(0.445648, 0.445648)
+
+[node name="Static" parent="." instance=ExtResource("3")]
+position = Vector2(320, 172)
+
+[node name="Static2" parent="." instance=ExtResource("3")]
+position = Vector2(711, 363)
+
+[node name="Portal" parent="." instance=ExtResource("4")]
+position = Vector2(956, 415)
+
+[node name="Indicator" parent="." instance=ExtResource("6")]
+position = Vector2(55, 385)
+scale = Vector2(0.749332, 0.749332)
+
+[node name="HomeButton" parent="." instance=ExtResource("8")]

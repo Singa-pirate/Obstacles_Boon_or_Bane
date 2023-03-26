@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://57gpk2q3so6c"]
+
+[ext_resource type="Script" path="res://Elements/Buttons/PrevChapButton.gd" id="1_d0jay"]
+
+[node name="PrevChapButton" type="Button"]
+offset_right = 12.0
+offset_bottom = 20.0
+text = "<"
+script = ExtResource("1_d0jay")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi21jyhbr6c5e"]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="5"]
-[ext_resource type="Script" path="res://Levels/Level1.gd" id="6"]
+[ext_resource type="Script" path="res://Levels/Chapter1/Level1.gd" id="6"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="7"]
 
 [node name="Level1" type="Node2D"]

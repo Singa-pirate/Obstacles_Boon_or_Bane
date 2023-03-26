@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://j6hxa3xq5v05"]
+
+[ext_resource type="Script" path="res://Elements/Buttons/NextChapButton.gd" id="1_qadgm"]
+
+[node name="NextChapButton" type="Button"]
+offset_right = 12.0
+offset_bottom = 20.0
+text = ">"
+script = ExtResource("1_qadgm")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
