@@ -14,6 +14,11 @@ const bullet_position_offset2 = Vector2.ZERO
 var Bullet = preload("res://Enemies/ConstantDirectionBullet.tscn") # to be reset
 var Bullet2 = preload("res://Enemies/ConstantDirectionBullet.tscn")
 
+
+func _ready():
+	$AnimationPlayer.play("animation")
+
+
 func _physics_process(delta):
 	if health <= 0:
 		die()

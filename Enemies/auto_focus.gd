@@ -19,6 +19,7 @@ const Bullet = preload("res://Enemies/SingleTarget.tscn")
 
 func _ready():
 	original_pos = position
+	$AnimationPlayer.play("animation")
 
 
 func _physics_process(delta):
