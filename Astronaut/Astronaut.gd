@@ -38,43 +38,40 @@ var portal
 var saber_cooldown = 1
 var saber_ready = true
 
-var started = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = MAX_HEALTH
 	charge = 0
 	direction = get_parent().astronaut_direction
+	velocity = Vector2(0,0)
 	label = get_node("ChargeLabel")
 	$AnimationPlayer.get_animation("EnterPortal").track_set_key_value(0, 0, scale)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if mouse_hovering or Input.is_action_pressed("ui_shift"):
+	if mouse_hovering:
 		if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_scroll_up")) and charge < MAX_CHARGE:
 			charge += 1
 			update_charge()
 		if (Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_scroll_down")) and charge > MIN_CHARGE:
 			charge -= 1
 			update_charge()
+	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.005)
+	change_velocity()
+	if check_near_portal():
+		var target_velocity = (portal.position - position).normalized() * INIT_SPEED \
+								* PORTAL_ACTIVE_SLOW_SPEED_COEFFICIENT
+		velocity = lerp(velocity, target_velocity, 0.01)		
+	elif check_near_edge():
+		actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
+	elif !nearby_enemies.is_empty():
+		actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
+	set_velocity(velocity)
+	move_and_slide()
 	
-	if started:
-		velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.005)
-		change_velocity()
-		if check_near_portal():
-			var target_velocity = (portal.position - position).normalized() * INIT_SPEED \
-									* PORTAL_ACTIVE_SLOW_SPEED_COEFFICIENT
-			velocity = lerp(velocity, target_velocity, 0.01)		
-		elif check_near_edge():
-			actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
-		elif !nearby_enemies.is_empty():
-			actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
-		set_velocity(velocity)
-		move_and_slide()
-
-		if true and saber_ready: #enemies nearby
-			saber_attack()
+	if true and saber_ready: #enemies nearby
+		saber_attack()
 
 func change_velocity():
 	# acceleration due to charge
@@ -140,7 +137,6 @@ func saber_attack():
 	$Timers/SaberTimer.start()
 	
 func start():
-	started = true
 	velocity = INIT_SPEED * direction
 	angular_speed = INIT_ANGULAR_SPEED
 	
