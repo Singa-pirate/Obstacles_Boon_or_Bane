@@ -1,15 +1,104 @@
-[gd_scene load_steps=20 format=3 uid="uid://cihvfsatpvpkr"]
+[gd_scene load_steps=24 format=3 uid="uid://bo0f3mx17skxt"]
 
 [ext_resource type="Texture2D" uid="uid://d33yamlr1sk0w" path="res://Assets/Astronaut/Untitled_Artwork 14.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cel8bb50iakh7" path="res://Assets/Saber/Untitled_Artwork 11.png" id="2_5xpsh"]
 [ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://bh0wesumhpbe7" path="res://Assets/Saber/Untitled_Artwork 12.png" id="3_6f7o8"]
 [ext_resource type="Texture2D" uid="uid://dbxffpsfmeg2a" path="res://Assets/Astronaut/Untitled_Artwork 18.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://o73e01ps7t4c" path="res://Assets/Saber/Untitled_Artwork 13.png" id="4_3yo2l"]
 [ext_resource type="Texture2D" uid="uid://dco0picdhg1ci" path="res://Assets/Astronaut/Untitled_Artwork 19.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bb7mq0470cejb" path="res://Assets/Saber/Untitled_Artwork 14.png" id="5_3j6yt"]
 [ext_resource type="Texture2D" uid="uid://cdamooaif55jp" path="res://Assets/Astronaut/Untitled_Artwork 16.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c8u26a6o2eup8" path="res://Assets/Saber/Untitled_Artwork 15.png" id="6_y5vvq"]
 [ext_resource type="Texture2D" uid="uid://ci18v0hitidlw" path="res://Assets/Astronaut/Untitled_Artwork 17.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://bhkc0yx6ag0ol" path="res://Assets/Astronaut/Untitled_Artwork 11.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://8e0mevuh6dh5" path="res://Assets/Astronaut/Untitled_Artwork 12.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://b8n4nhtttbenn" path="res://Assets/Astronaut/Untitled_Artwork 15.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://dtlwmqoqbhgej" path="res://Assets/Astronaut/Untitled_Artwork 13.png" id="11"]
+[ext_resource type="AnimationLibrary" uid="uid://df2d2yn78do82" path="res://Animations/Animations.res" id="16_4t31j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17fy7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5xpsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6f7o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3yo2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3j6yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y5vvq")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"attack",
+"speed": 24.0
+}]
 
 [sub_resource type="SpriteFrames" id="9"]
 animations = [{
@@ -86,40 +175,22 @@ radius = 13.6015
 
 [sub_resource type="CircleShape2D" id="5"]
 
-[sub_resource type="Animation" id="8"]
-resource_name = "EnterPortal"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="7"]
-resource_name = "TakeDamage"
-length = 0.8
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4cuid"]
-_data = {
-"EnterPortal": SubResource("8"),
-"TakeDamage": SubResource("7")
-}
-
 [node name="Astronaut" type="CharacterBody2D" groups=["Character"]]
 script = ExtResource("3")
+
+[node name="Saber" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, 6)
+rotation = -0.785398
+scale = Vector2(0.860893, 0.860893)
+sprite_frames = SubResource("SpriteFrames_17fy7")
+animation = &"attack"
+frame_progress = 0.357067
+offset = Vector2(14, -12)
 
 [node name="Appearance" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.610052, 0.610052)
 sprite_frames = SubResource("9")
-animation = &"Flying"
-frame = 1
+animation = &"TakingOff"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -155,7 +226,7 @@ shape = SubResource("6")
 [node name="NearbyObjectsDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NearbyObjectsDetector"]
-scale = Vector2(3.7829, 3.7829)
+scale = Vector2(3.89779, 3.89779)
 shape = SubResource("5")
 
 [node name="Timers" type="Node2D" parent="."]
@@ -171,9 +242,19 @@ one_shot = true
 wait_time = 1.5
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SaberAttack" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_4cuid")
+"Animations": ExtResource("16_4t31j")
+}
+
+[node name="EnterPortal" type="AnimationPlayer" parent="."]
+libraries = {
+"Animations": ExtResource("16_4t31j")
+}
+
+[node name="TakeDamage" type="AnimationPlayer" parent="."]
+libraries = {
+"Animations": ExtResource("16_4t31j")
 }
 
 [connection signal="area_entered" from="Charge_detector" to="." method="_on_Charge_detector_area_entered"]
@@ -188,4 +269,4 @@ libraries = {
 [connection signal="timeout" from="Timers/InvisibilityTimer" to="." method="_on_InvisibilityTimer_timeout"]
 [connection signal="timeout" from="Timers/SaberTimer" to="." method="_on_SaberTimer_timeout"]
 [connection signal="timeout" from="Timers/InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="TakeDamage" to="." method="_on_take_damage_animation_finished"]

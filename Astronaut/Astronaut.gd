@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const MAX_HEALTH = 100
 const INIT_SPEED = 100
-const ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT = 0.1
+const ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT = 0
 const EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT = 0.01
 const PORTAL_ACTIVE_SLOW_SPEED_COEFFICIENT = 0.5
 const INIT_ANGULAR_SPEED = 30
@@ -38,18 +38,30 @@ var portal
 var saber_cooldown = 1
 var saber_ready = true
 
-# Called when the node enters the scene tree for the first time.
+var action_lock
+
+"""Initialization"""
 func _ready():
+	action_lock = true
 	health = MAX_HEALTH
 	charge = 0
 	direction = get_parent().astronaut_direction
 	velocity = Vector2(0,0)
 	label = get_node("ChargeLabel")
-	$AnimationPlayer.get_animation("EnterPortal").track_set_key_value(0, 0, scale)
+	$EnterPortal.get_animation("Animations/EnterPortal").track_set_key_value(0, 0, scale)
 
-
+## called when start button is pressed
+func start():
+	velocity = INIT_SPEED * direction
+	angular_speed = INIT_ANGULAR_SPEED
+	action_lock = false
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (health <= 0):
+		die()
+		
+	# Update charge
 	if mouse_hovering:
 		if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_scroll_up")) and charge < MAX_CHARGE:
 			charge += 1
@@ -57,22 +69,32 @@ func _process(delta):
 		if (Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_scroll_down")) and charge > MIN_CHARGE:
 			charge -= 1
 			update_charge()
-	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.005)
-	change_velocity()
-	if check_near_portal():
-		var target_velocity = (portal.position - position).normalized() * INIT_SPEED \
-								* PORTAL_ACTIVE_SLOW_SPEED_COEFFICIENT
-		velocity = lerp(velocity, target_velocity, 0.01)		
-	elif check_near_edge():
-		actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
-	elif !nearby_enemies.is_empty():
-		actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
-	set_velocity(velocity)
-	move_and_slide()
 	
-	if true and saber_ready: #enemies nearby
-		saber_attack()
+	if (not action_lock):
+		
+		# Active movement
+		if check_near_portal():
+			var target_velocity = (portal.position - position).normalized() * INIT_SPEED \
+									* PORTAL_ACTIVE_SLOW_SPEED_COEFFICIENT
+			velocity = lerp(velocity, target_velocity, 0.01)		
+		elif check_near_edge():
+			actively_slow(EDGE_ACTIVE_SLOW_SPEED_COEFFICIENT)
+		elif !nearby_enemies.is_empty():
+			actively_slow(ENEMY_ACTIVE_SLOW_SPEED_COEFFICIENT)
+		else:
+			# Passive movement
+			velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.005)
+			change_velocity()
+		
+		# Move!
+		set_velocity(velocity)
+		move_and_slide()
+		
+		if !nearby_enemies.is_empty() and saber_ready: #enemies nearby
+			saber_attack()
 
+
+"""Passive movement due to environment"""
 func change_velocity():
 	# acceleration due to charge
 	var acceleration = Vector2.ZERO;
@@ -97,10 +119,28 @@ func change_velocity():
 	var ratio = float(velocity.length()) / MAX_SPEED
 	if ratio > 1:
 		velocity /= ratio
+
+func _on_Charge_detector_body_entered(body):
+	if body != self && body.is_in_group("ObstaclesWithDamage"):
+		nearby_charges.append(body)
+
+func _on_Charge_detector_body_exited(body):
+	if body != self && body.is_in_group("ObstaclesWithDamage"):
+		nearby_charges.erase(body)
 		
+func _on_Charge_detector_area_entered(area):
+	if area.is_in_group("BlackHole"):
+		nearby_blackholes.append(area)
+
+func _on_Charge_detector_area_exited(area):
+	if area.is_in_group("BlackHole"):
+		nearby_blackholes.erase(area)
+
+
+"""Active Movement"""
 func actively_slow(coefficient):
-	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED * coefficient, 0.05)
-	
+	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED * coefficient, 0.02)
+
 func check_near_edge():
 	if abs(position.x - MIN_X) < 50 || abs(position.x - MAX_X) < 50:
 		return true
@@ -113,7 +153,9 @@ func check_near_portal():
 	if (portal.position - position).length() < PORTAL_ATTRACT_RANGE:
 		return true
 	return false
-	
+
+"""Skills"""
+# invisibility
 func toggle_visibility():
 	if is_visible:
 		mutable_name = "Invisible"
@@ -126,29 +168,34 @@ func toggle_visibility():
 		$Sprite2D.modulate.a = 1
 	is_visible = !is_visible
 	
+#saber
 func saber_attack():
 	saber_ready = false
+	var attacking = false
 	for obj in nearby_enemies:
 		if obj.is_in_group("EnemiesWithHealth"):
-			print("Saber Attack!")
+			attacking = true
 			obj.take_damage(SABER_DAMAGE)
+	if attacking:
+		$Saber.visible = true
+		$Saber.frame = 0
+		$Saber.play("attack")
+		$SaberAttack.play("Animations/SaberAttack")
+		$Timers/SaberTimer.wait_time = saber_cooldown	
+		$Timers/SaberTimer.start()
 		
-	$Timers/SaberTimer.wait_time = saber_cooldown	
-	$Timers/SaberTimer.start()
-	
-func start():
-	velocity = INIT_SPEED * direction
-	angular_speed = INIT_ANGULAR_SPEED
-	
-func _on_Charge_detector_body_entered(body):
-	if body != self && body.is_in_group("ObstaclesWithDamage"):
-		nearby_charges.append(body)
+		
 
-func _on_Charge_detector_body_exited(body):
-	if body != self && body.is_in_group("ObstaclesWithDamage"):
-		nearby_charges.erase(body)
-		
-		
+func _on_NearbyObjectsDetector_body_entered(body):
+	if body.is_in_group("Enemies"):
+		nearby_enemies.append(body)
+
+func _on_NearbyObjectsDetector_body_exited(body):
+	if body.is_in_group("Enemies"):
+		nearby_enemies.erase(body)
+
+	
+"""Player control (updating charge)"""
 func _on_Hitbox_mouse_entered():
 	mouse_hovering = true
 
@@ -166,47 +213,43 @@ func update_charge():
 	else:
 		label.modulate = Color(1 ,1 ,1)
 		label.text = "+0"
-		
+
+"""Taking damage"""		
 func take_damage(damage):
-	#print(damage)
 	if not is_invincible:
-		$AnimationPlayer.play("TakeDamage")
+		$TakeDamage.play("Animations/TakeDamage")
 		health -= damage
 		is_invincible = true
 		$Timers/InvincibilityTimer.start()
 		
-func _on_Charge_detector_area_entered(area):
-	if area.is_in_group("BlackHole"):
-		nearby_blackholes.append(area)
-
-func _on_Charge_detector_area_exited(area):
-	if area.is_in_group("BlackHole"):
-		nearby_blackholes.erase(area)
-
-func _on_NearbyObjectsDetector_body_entered(body):
-	if body.is_in_group("Enemies"):
-		nearby_enemies.append(body)
-
-func _on_NearbyObjectsDetector_body_exited(body):
-	if body.is_in_group("Enemies"):
-		nearby_enemies.erase(body)
-		
-func _on_InvisibilityTimer_timeout():
-	if !is_visible:
-		toggle_visibility()
-
-func _on_SaberTimer_timeout():
-	saber_ready = true
-
 func _on_Hurtbox_body_entered(body):
 	if body.is_in_group("Enemies") or body.is_in_group("ObstaclesWithDamage"):
 		var target_velocity = (position - body.position).normalized() * INIT_SPEED / 10
 		velocity = lerp(velocity, target_velocity, 0.2)
 		take_damage(body.damage)
 
+func die():
+	# TODO: die animation & Game Over scene
+	action_lock = true
+	queue_free()
+
+
+"""Timers"""
+func _on_InvisibilityTimer_timeout():
+	if !is_visible:
+		toggle_visibility()
+
+func _on_SaberTimer_timeout():
+	$Saber.visible = false
+	saber_ready = true
+	
 func _on_InvincibilityTimer_timeout():
 	is_invincible = false
 
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "EnterPortal":
+"""Animations"""
+func enter_portal():
+	$EnterPortal.play("Animations/EnterPortal")
+
+func _on_take_damage_animation_finished(anim_name):
+	if anim_name == "Animations/EnterPortal":
 		visible = false
