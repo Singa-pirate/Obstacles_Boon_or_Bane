@@ -25,5 +25,5 @@ func open_portal():
 func _on_PortalBox_body_entered(body):
 	if body.name == "Astronaut" and portal_opened:
 		portal_opened = false
-		body.enter_portal()
+		body.get_node("AnimationPlayer").play("EnterPortal")
 		get_parent().get_parent().level_passed()
