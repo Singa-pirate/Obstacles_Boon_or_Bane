@@ -3,7 +3,7 @@ extends Area2D
 
 var DAMAGE = 15 # to be changed
 
-const SPEED = 20
+const SPEED = 5
 
 var target
 

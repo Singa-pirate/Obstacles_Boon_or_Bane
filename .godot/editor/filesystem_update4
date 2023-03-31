@@ -3,10 +3,12 @@ res://Game&UI/Game.tscn
 res://Obstacles/BlackHole.tscn
 res://Levels/TestLevel.tscn
 res://Obstacles/Meteor.tscn
+res://Enemies/ConstantDirectionBullet.tscn
 res://Astronaut/Astronaut.gd
+res://Enemies/constant_direction_bullet.gd
+res://Enemies/SplashEnemy.tscn
 res://Enemies/AutoFocus.tscn
-res://Enemies/ConstantDirection.tscn
-res://Enemies/Constant2Directions.tscn
-res://Enemies/constant_2_directions.gd
-res://Enemies/constant_direction.gd
-res://Enemies/auto_focus.gd
+res://Enemies/single_target.gd
+res://Enemies/splash_enemy.gd
+res://Enemies/SplashBullet.tscn
+res://Enemies/splash_bullet.gd

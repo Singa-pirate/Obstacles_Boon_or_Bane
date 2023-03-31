@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyoonswewatb0"]
+[gd_scene load_steps=11 format=3 uid="uid://7vgslcdathtj"]
 
 [ext_resource type="Script" path="res://Enemies/auto_focus.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cnicoph73q5y8" path="res://Assets/Monster 3/Untitled_Artwork 16.png" id="2_i6ijr"]
@@ -61,6 +61,7 @@ script = ExtResource("1")
 shape = SubResource("1")
 
 [node name="TargetArea" type="Area2D" parent="."]
+scale = Vector2(3.09957, 3.09957)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
 shape = SubResource("2")

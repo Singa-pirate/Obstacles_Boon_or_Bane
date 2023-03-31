@@ -1,10 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://yvpfu48wc0yt"]
+[gd_scene load_steps=9 format=3 uid="uid://yvpfu48wc0yt"]
 
 [ext_resource type="Script" path="res://Enemies/constant_direction_bullet.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dwlpgawa28a03" path="res://Assets/Bullets/All_Fire_Bullet_Pixel_16x16.png" id="2_286a0"]
 
 [sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(20, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inns4"]
+atlas = ExtResource("2_286a0")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48cag"]
+atlas = ExtResource("2_286a0")
+region = Rect2(112, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wau2b"]
+atlas = ExtResource("2_286a0")
+region = Rect2(128, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_565mp"]
+atlas = ExtResource("2_286a0")
+region = Rect2(144, 160, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aioxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inns4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48cag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wau2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_565mp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="ConstantDirectionBullet" type="Area2D"]
 script = ExtResource("1")
@@ -13,6 +49,8 @@ script = ExtResource("1")
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(1.42123, 1.42123)
 sprite_frames = SubResource("SpriteFrames_aioxg")
 
 [connection signal="body_entered" from="." to="." method="_on_ConstantDirectionBullet_body_entered"]

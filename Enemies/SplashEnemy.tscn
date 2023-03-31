@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://h3nth1p6qwyo"]
+
+[ext_resource type="Script" path="res://Enemies/splash_enemy.gd" id="1_4efxy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wwcc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fuyc"]
+
+[node name="SplashEnemy" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_4efxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3wwcc")
+
+[node name="TargetArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
+scale = Vector2(11.128, 11.128)
+shape = SubResource("CircleShape2D_6fuyc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
