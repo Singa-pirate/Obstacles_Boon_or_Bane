@@ -42,4 +42,5 @@ shape = SubResource("1")
 position = Vector2(0, -1)
 scale = Vector2(0.533333, 0.533333)
 sprite_frames = SubResource("2")
+autoplay = "default"
 frame = 3

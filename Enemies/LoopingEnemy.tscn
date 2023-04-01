@@ -1,38 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://da7g3sjo3xyuw"]
+[gd_scene load_steps=3 format=3 uid="uid://da7g3sjo3xyuw"]
 
 [ext_resource type="Script" path="res://Enemies/LoopingEnemy.gd" id="1_kkg3e"]
-[ext_resource type="Texture2D" uid="uid://kd3nbxrj1hvk" path="res://Assets/PurpleEnemy/Gllob1 2.png" id="1_q5pww"]
-[ext_resource type="Texture2D" uid="uid://df0jqrcj5ib0m" path="res://Assets/PurpleEnemy/Gllob1 3.png" id="2_ma5a8"]
-[ext_resource type="Texture2D" uid="uid://b5hxkfe1samtj" path="res://Assets/PurpleEnemy/Gllob1 4.png" id="3_c41cb"]
-[ext_resource type="Texture2D" uid="uid://cyjm2seulhrjx" path="res://Assets/PurpleEnemy/Gllob1 5.png" id="4_khwyx"]
-[ext_resource type="Texture2D" uid="uid://dwo06adfctuqn" path="res://Assets/PurpleEnemy/Gllob1.png" id="5_fupey"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vts7p"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_q5pww")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_ma5a8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_c41cb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_khwyx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_fupey")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="2_qw76n"]
 
 [node name="LoopingEnemy" type="PathFollow2D" groups=["Enemies", "EnemiesWithHealth"]]
 script = ExtResource("1_kkg3e")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_vts7p")
-autoplay = "default"
+[node name="Static" parent="." instance=ExtResource("2_qw76n")]
