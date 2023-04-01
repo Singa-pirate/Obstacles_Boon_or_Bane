@@ -1,4 +1,9 @@
 AnimatedSprite2D
+Sprite2D
+PathFollow2D
+Path2D
+NavigationRegion2D
+Camera2D
 CollisionShape2D
 Area2D
 Timer

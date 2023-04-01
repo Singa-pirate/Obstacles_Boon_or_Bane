@@ -1,43 +1,52 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://cy0ravavpssrt"]
 
 [ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="1"]
-[ext_resource type="Script" path="res://Levels/Chapter1/Level2.gd" id="2"]
+[ext_resource type="Script" path="res://Levels/Chapter2/Level2.gd" id="1_y3j2y"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://Enemies/Constant2Directions.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://cnny1ykrb8rm5" path="res://Obstacles/BlackHole.tscn" id="6_ldgal"]
 [ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8"]
 
 [node name="Level2" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("1_y3j2y")
 
-[node name="StartButton" parent="." instance=ExtResource( 1 )]
-offset_left = 715.0
-offset_top = 478.0
-offset_right = 715.0
-offset_bottom = 478.0
-scale = Vector2( 1.77448, 1.77448 )
+[node name="StartButton" parent="." instance=ExtResource("1")]
+layout_mode = 3
+anchors_preset = 15
+offset_left = 1014.0
+offset_top = 462.0
+offset_right = 1014.0
+offset_bottom = 462.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.77448, 1.77448)
 
-[node name="Astronaut" parent="." instance=ExtResource( 4 )]
-position = Vector2( 210, 94 )
-scale = Vector2( 2.5276, 2.5276 )
+[node name="Astronaut" parent="." instance=ExtResource("4")]
+position = Vector2(1000, 326)
+scale = Vector2(2.5276, 2.5276)
 
-[node name="Indicator" parent="." instance=ExtResource( 3 )]
-position = Vector2( 210, 93 )
+[node name="Indicator" parent="." instance=ExtResource("3")]
+position = Vector2(1000, 327)
+scale = Vector2(-0.92, 1)
 
-[node name="RigidObstacle" parent="." instance=ExtResource( 5 )]
-position = Vector2( 154, 513 )
-scale = Vector2( 0.784158, 0.784158 )
+[node name="RigidObstacle" parent="." instance=ExtResource("5")]
+position = Vector2(724, 610)
+scale = Vector2(0.944158, 0.944158)
 
-[node name="RigidObstacle2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 557, 78 )
-scale = Vector2( 0.690322, 0.690322 )
+[node name="RigidObstacle2" parent="." instance=ExtResource("5")]
+position = Vector2(976, 35)
+scale = Vector2(0.690322, 0.690322)
 
-[node name="Constant2Directions" parent="." instance=ExtResource( 6 )]
-position = Vector2( 520, 297 )
+[node name="RigidObstacle3" parent="." instance=ExtResource("5")]
+position = Vector2(121, 111)
+scale = Vector2(0.719999, 0.719999)
 
-[node name="Portal" parent="." instance=ExtResource( 7 )]
-position = Vector2( 860, 213 )
+[node name="BlackHole" parent="." instance=ExtResource("6_ldgal")]
+position = Vector2(476, 170)
 
-[node name="HomeButton" parent="." instance=ExtResource( 8 )]
+[node name="Portal" parent="." instance=ExtResource("7")]
+position = Vector2(306, 87)
+
+[node name="HomeButton" parent="." instance=ExtResource("8")]

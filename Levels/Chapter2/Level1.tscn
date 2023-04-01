@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=14 format=3 uid="uid://cj8dmqk2iussy"]
 
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="2"]
@@ -7,6 +7,22 @@
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="5"]
 [ext_resource type="Script" path="res://Levels/Chapter1/Level1.gd" id="6"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="7"]
+[ext_resource type="Script" path="res://Levels/Chapter2/L1PathFollow1.gd" id="8_0m60c"]
+[ext_resource type="PackedScene" uid="uid://dwdj11vyiqgme" path="res://Obstacles/Meteor.tscn" id="8_re5gv"]
+[ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="10_c0rdd"]
+[ext_resource type="Script" path="res://Levels/Chapter2/L2PathFollow2.gd" id="10_carw2"]
+
+[sub_resource type="Curve2D" id="Curve2D_p1b72"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 181, -59, 0, 0, 0, 0, 650, 718, 0, 0, 0, 0, -749, 741, 0, 0, 0, 0, -717, -99, 0, 0, 0, 0, 181, -59)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_5yh24"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 747, 275, 0, 0, 0, 0, 722, 271, 0, 0, 0, 0, 695, 260, 0, 0, 0, 0, 668, 240, 0, 0, 0, 0, 651, 210, 0, 0, 0, 0, 638, 175, 0, 0, 0, 0, 635, 142, 0, 0, 0, 0, 639, 108, 0, 0, 0, 0, 648, 78, 0, 0, 0, 0, 665, 50, 0, 0, 0, 0, 685, 33, 0, 0, 0, 0, 712, 18, 0, 0, 0, 0, 741, 11, 0, 0, 0, 0, 771, 12, 0, 0, 0, 0, 798, 20, 0, 0, 0, 0, 824, 35, 0, 0, 0, 0, 843, 61, 0, 0, 0, 0, 856, 88, 0, 0, 0, 0, 864, 116, 0, 0, 0, 0, 867, 150, 0, 0, 0, 0, 864, 180, 0, 0, 0, 0, 854, 210, 0, 0, 0, 0, 840, 233, 0, 0, 0, 0, 823, 254, 0, 0, 0, 0, 796, 272, 0, 0, 0, 0, 773, 276, 0, 0, 0, 0, 748, 274, 0, 0, 0, 0, 747, 275)
+}
+point_count = 28
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("6")
@@ -23,19 +39,23 @@ grow_vertical = 2
 scale = Vector2(1.8, 1.8)
 
 [node name="RigidObstacle1" parent="." instance=ExtResource("1")]
-position = Vector2(446, 138)
+position = Vector2(446, 136)
 scale = Vector2(0.685959, 0.685959)
 
 [node name="RigidObstacle2" parent="." instance=ExtResource("1")]
-position = Vector2(448, 428)
+position = Vector2(345, 456)
 scale = Vector2(0.713906, 0.713906)
+
+[node name="RigidObstacle3" parent="." instance=ExtResource("1")]
+position = Vector2(743, 152)
+scale = Vector2(0.685959, 0.685959)
 
 [node name="Astronaut" parent="." instance=ExtResource("4")]
 position = Vector2(52, 287)
 scale = Vector2(2.15484, 2.15611)
 
 [node name="Portal" parent="." instance=ExtResource("3")]
-position = Vector2(923, 127)
+position = Vector2(981, 278)
 scale = Vector2(2.09253, 2.09253)
 
 [node name="Indicator" parent="." instance=ExtResource("5")]
@@ -43,3 +63,23 @@ position = Vector2(53, 289)
 scale = Vector2(0.808743, 0.808743)
 
 [node name="HomeButton" parent="." instance=ExtResource("7")]
+
+[node name="Path1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_p1b72")
+
+[node name="PathFollow1" type="PathFollow2D" parent="Path1"]
+position = Vector2(181, -59)
+rotation = 1.02773
+script = ExtResource("8_0m60c")
+
+[node name="Meteor" parent="Path1/PathFollow1" instance=ExtResource("8_re5gv")]
+
+[node name="Path2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_5yh24")
+
+[node name="PathFollow2" type="PathFollow2D" parent="Path2"]
+position = Vector2(747, 275)
+rotation = -2.98294
+script = ExtResource("10_carw2")
+
+[node name="Static" parent="Path2/PathFollow2" groups=["EnemiesWithHealth"] instance=ExtResource("10_c0rdd")]
