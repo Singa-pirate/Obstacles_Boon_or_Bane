@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://2byv21c11i7d"]
+
+[ext_resource type="Script" path="res://Obstacles/LoopingMeteor.gd" id="1_5vkok"]
+[ext_resource type="Texture2D" uid="uid://bnrdxcff3snnd" path="res://Assets/Meteor/Untitled_Artwork 11.png" id="2_e8whl"]
+[ext_resource type="Texture2D" uid="uid://bl54qyvtre8is" path="res://Assets/Meteor/Untitled_Artwork 12.png" id="3_gobwc"]
+[ext_resource type="Texture2D" uid="uid://c6xoywqspk673" path="res://Assets/Meteor/Untitled_Artwork 13.png" id="4_c007s"]
+[ext_resource type="Texture2D" uid="uid://ba25dnj1sbmmi" path="res://Assets/Meteor/Untitled_Artwork 14.png" id="5_badby"]
+[ext_resource type="Texture2D" uid="uid://bhxvi3d5aw5gd" path="res://Assets/Meteor/Untitled_Artwork 15.png" id="6_px8fn"]
+[ext_resource type="Texture2D" uid="uid://bhvnlhtt1cl0q" path="res://Assets/Meteor/Untitled_Artwork 16.png" id="7_eawit"]
+[ext_resource type="Texture2D" uid="uid://bgxb64dh22q80" path="res://Assets/Meteor/Untitled_Artwork 17.png" id="8_2yjlk"]
+[ext_resource type="Texture2D" uid="uid://dfvtiaduc606w" path="res://Assets/Meteor/Untitled_Artwork 18.png" id="9_ys8tn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pil1b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e8whl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gobwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c007s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_badby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_px8fn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eawit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2yjlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ys8tn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LoopingMeteor" type="PathFollow2D"]
+script = ExtResource("1_5vkok")
+
+[node name="Meteor" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pil1b")
+autoplay = "default"
+frame_progress = 0.0459553

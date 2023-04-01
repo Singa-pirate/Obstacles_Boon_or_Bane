@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Levels/Chapter2/Level4.gd" id="1_8g1y0"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="2_vmbdf"]
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="3_ufjy2"]
-[ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="4_3t8gt"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="4_3t8gt"]
 [ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="5_yf8d2"]
 [ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="6_5rl6s"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="6_avpw5"]
@@ -13,8 +13,6 @@
 script = ExtResource("1_8g1y0")
 
 [node name="StartButton" parent="." instance=ExtResource("2_vmbdf")]
-layout_mode = 3
-anchors_preset = 15
 offset_left = 723.0
 offset_top = 463.0
 offset_right = 723.0

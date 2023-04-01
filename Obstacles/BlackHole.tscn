@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnny1ykrb8rm5"]
+[gd_scene load_steps=10 format=3 uid="uid://cnny1ykrb8rm5"]
 
 [ext_resource type="Script" path="res://Obstacles/black_hole.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://mj8drcoknxy2" path="res://Assets/Black Hole/Untitled_Artwork 16.png" id="2_8ti7q"]
@@ -32,6 +32,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2g37"]
+radius = 53.0094
+
 [node name="BlackHole" type="Area2D" groups=["BlackHole", "ObstaclesWithDamage"]]
 script = ExtResource("1")
 
@@ -42,3 +45,10 @@ shape = SubResource("1")
 sprite_frames = SubResource("SpriteFrames_qnrro")
 autoplay = "default"
 frame_progress = 0.030498
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_r2g37")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

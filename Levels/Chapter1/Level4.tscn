@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://da7g3sjo3xyuw" path="res://Enemies/LoopingEnemy.tscn" id="9_8l45g"]
@@ -20,8 +20,6 @@ point_count = 4
 script = ExtResource("1_srfbv")
 
 [node name="StartButton" parent="." instance=ExtResource("1")]
-layout_mode = 3
-anchors_preset = 15
 offset_left = 1042.0
 offset_top = 558.0
 offset_right = 1042.0

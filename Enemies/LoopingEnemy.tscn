@@ -30,7 +30,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="LoopingEnemy" type="PathFollow2D"]
+[node name="LoopingEnemy" type="PathFollow2D" groups=["Enemies", "EnemiesWithHealth"]]
 script = ExtResource("1_kkg3e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

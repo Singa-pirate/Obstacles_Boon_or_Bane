@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bcer3ybdr4q28" path="res://Assets/Level Selection/Untitled_Artwork 20.png" id="8_0auxb"]
 [ext_resource type="Texture2D" uid="uid://c6nujhrufcoqp" path="res://Assets/Level Selection/Untitled_Artwork 19.png" id="9_88otb"]
 
-[node name="Level_selection" type="Node2D"]
+[node name="Level_selection2" type="Node2D"]
 script = ExtResource("1_bdysr")
 
 [node name="Background" type="Sprite2D" parent="."]

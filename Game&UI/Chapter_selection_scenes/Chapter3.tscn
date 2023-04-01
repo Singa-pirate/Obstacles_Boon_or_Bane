@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=3 uid="uid://titki5v1ea4g"]
+
+[ext_resource type="Script" path="res://Game&UI/Chapter_selection_scenes/Level_selection.gd" id="1_8bu4n"]
+[ext_resource type="Texture2D" uid="uid://cufvvbnnnp2x6" path="res://Assets/Level Selection/Untitled_Artwork 16.png" id="2_5b3ej"]
+[ext_resource type="Texture2D" uid="uid://bn2bjnqxelu8b" path="res://Assets/Level Selection/Untitled_Artwork 28.png" id="3_rdrdc"]
+[ext_resource type="Texture2D" uid="uid://1gejl0t6lo6n" path="res://Assets/Level Selection/Untitled_Artwork 25.png" id="4_1i1t6"]
+[ext_resource type="PackedScene" uid="uid://cpimnqle8dn1v" path="res://Elements/Buttons/LevelButton.tscn" id="5_rhoam"]
+[ext_resource type="Texture2D" uid="uid://ca66n514eci8n" path="res://Assets/Level Selection/Untitled_Artwork 22.png" id="6_1a20c"]
+[ext_resource type="Texture2D" uid="uid://bmt2geketgiw6" path="res://Assets/Level Selection/Untitled_Artwork 21.png" id="7_4kqgv"]
+[ext_resource type="Texture2D" uid="uid://bcer3ybdr4q28" path="res://Assets/Level Selection/Untitled_Artwork 20.png" id="8_rlyqi"]
+[ext_resource type="Texture2D" uid="uid://c6nujhrufcoqp" path="res://Assets/Level Selection/Untitled_Artwork 19.png" id="9_d4oos"]
+[ext_resource type="PackedScene" uid="uid://57gpk2q3so6c" path="res://Elements/Buttons/PrevChapButton.tscn" id="10_acaac"]
+[ext_resource type="PackedScene" uid="uid://j6hxa3xq5v05" path="res://Elements/Buttons/NextChapButton.tscn" id="11_oxwsn"]
+[ext_resource type="FontFile" uid="uid://bpo6x2mq45bwy" path="res://Assets/m3x6.ttf" id="12_jbqri"]
+
+[node name="Level_selection3" type="Node2D"]
+script = ExtResource("1_8bu4n")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(590, 321)
+scale = Vector2(1.16, 1.08)
+texture = ExtResource("2_5b3ej")
+
+[node name="Level1ButtonSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_rdrdc")
+
+[node name="text" type="Sprite2D" parent="Level1ButtonSprite"]
+texture = ExtResource("4_1i1t6")
+
+[node name="BoxContainer" type="BoxContainer" parent="Level1ButtonSprite"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 18.0
+offset_bottom = 18.0
+scale = Vector2(1.17432, 0.755927)
+
+[node name="Level1Button" parent="Level1ButtonSprite/BoxContainer" instance=ExtResource("5_rhoam")]
+layout_mode = 2
+
+[node name="Level2ButtonSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_rdrdc")
+
+[node name="text" type="Sprite2D" parent="Level2ButtonSprite"]
+texture = ExtResource("6_1a20c")
+
+[node name="BoxContainer" type="BoxContainer" parent="Level2ButtonSprite"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 18.0
+offset_bottom = 18.0
+scale = Vector2(1.17432, 0.755927)
+
+[node name="Level2Button" parent="Level2ButtonSprite/BoxContainer" instance=ExtResource("5_rhoam")]
+layout_mode = 2
+
+[node name="Level3ButtonSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_rdrdc")
+
+[node name="text" type="Sprite2D" parent="Level3ButtonSprite"]
+texture = ExtResource("7_4kqgv")
+
+[node name="BoxContainer" type="BoxContainer" parent="Level3ButtonSprite"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 18.0
+offset_bottom = 18.0
+scale = Vector2(1.17432, 0.755927)
+
+[node name="Level3Button" parent="Level3ButtonSprite/BoxContainer" instance=ExtResource("5_rhoam")]
+layout_mode = 2
+
+[node name="Level4ButtonSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_rdrdc")
+
+[node name="text" type="Sprite2D" parent="Level4ButtonSprite"]
+texture = ExtResource("8_rlyqi")
+
+[node name="BoxContainer" type="BoxContainer" parent="Level4ButtonSprite"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 18.0
+offset_bottom = 18.0
+scale = Vector2(1.17432, 0.755927)
+
+[node name="Level4Button" parent="Level4ButtonSprite/BoxContainer" instance=ExtResource("5_rhoam")]
+layout_mode = 2
+
+[node name="Level5ButtonSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_rdrdc")
+
+[node name="text" type="Sprite2D" parent="Level5ButtonSprite"]
+texture = ExtResource("9_d4oos")
+
+[node name="BoxContainer" type="BoxContainer" parent="Level5ButtonSprite"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 18.0
+offset_bottom = 18.0
+scale = Vector2(1.17432, 0.755927)
+
+[node name="Level5Button" parent="Level5ButtonSprite/BoxContainer" instance=ExtResource("5_rhoam")]
+layout_mode = 2
+
+[node name="PrevChapButton" parent="." instance=ExtResource("10_acaac")]
+
+[node name="NextChapButton" parent="." instance=ExtResource("11_oxwsn")]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("12_jbqri")
+theme_override_font_sizes/font_size = 80
+text = "Chapter 3"
+
+[connection signal="pressed" from="Level1ButtonSprite/BoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="Level2ButtonSprite/BoxContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="Level3ButtonSprite/BoxContainer/Level3Button" to="." method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="Level4ButtonSprite/BoxContainer/Level4Button" to="." method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="Level5ButtonSprite/BoxContainer/Level5Button" to="." method="_on_level_5_button_pressed"]
