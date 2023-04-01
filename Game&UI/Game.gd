@@ -47,6 +47,7 @@ var level_transition = Level_transition.instantiate()
 var level_failed_scene = Level_failed.instantiate()
 
 const HealthBar = preload("res://Game&UI/HealthBar.tscn")
+var alive_enemy_count
 
 
 func _ready():
@@ -63,6 +64,7 @@ func new_level_object(level_number):
 	current_level = levels[chapter_number][level_number].instantiate()
 	add_child(current_level)
 	current_level.get_node("Indicator").rotation_degrees = rad_to_deg(Vector2.RIGHT.angle_to(current_level.astronaut_direction))
+	alive_enemy_count = 0
 	for child in current_level.get_children():
 		if (child.is_in_group("Character") and child.name != "Astronaut") or child.is_in_group("Enemies"):
 			var health_bar = HealthBar.instantiate()
@@ -70,6 +72,7 @@ func new_level_object(level_number):
 			health_bar.set_position(Vector2(-50, 20))
 			health_bar.set_scale(Vector2(0.1, 0.1))
 			child.add_child(health_bar)
+			alive_enemy_count += 1
 		if child.is_in_group("EnemyPath"):
 			var enemy = child.get_child(0).get_child(0)
 			var health_bar = HealthBar.instantiate()
@@ -77,6 +80,7 @@ func new_level_object(level_number):
 			health_bar.set_position(Vector2(-50, 20))
 			health_bar.set_scale(Vector2(0.1, 0.1))
 			enemy.add_child(health_bar)
+			alive_enemy_count += 1
 		elif child.name == "Astronaut":
 			var health_bar = HealthBar.instantiate()
 			health_bar.get_node("HealthBar").object = child
@@ -84,6 +88,8 @@ func new_level_object(level_number):
 			health_bar.set_scale(Vector2(0.3, 0.3))
 			current_level.add_child(health_bar)
 
+func no_alive_enemy():
+	return alive_enemy_count == 0
 
 # show popup after level passed
 func level_passed():

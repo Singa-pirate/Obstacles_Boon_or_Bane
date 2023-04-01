@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="3_o04up"]
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="4_mevyw"]
 [ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="5_t4ox0"]
-[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="6_l7rpv"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="6_l7rpv"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="7_o25tf"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8_gcntu"]
 [ext_resource type="PackedScene" uid="uid://da7g3sjo3xyuw" path="res://Enemies/LoopingEnemy.tscn" id="9_m2rii"]
@@ -24,8 +24,6 @@ offset_left = 1042.0
 offset_top = 558.0
 offset_right = 1042.0
 offset_bottom = 558.0
-grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(1.82867, 1.82867)
 
 [node name="Astronaut" parent="." instance=ExtResource("3_o04up")]
@@ -73,4 +71,3 @@ curve = SubResource("Curve2D_gjcsu")
 
 [node name="LoopingEnemy" parent="Path1" instance=ExtResource("9_m2rii")]
 position = Vector2(211, 185)
-rotation = 1.55255

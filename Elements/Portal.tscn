@@ -1,30 +1,66 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://cnl15k8ah6pfk"]
 
-[ext_resource path="res://Elements/Portal.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://Elements/Portal.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ogb4lilq2ck7" path="res://Assets/Portal/Untitled_Artwork 15.png" id="2_o14qg"]
+[ext_resource type="Texture2D" uid="uid://dcbvomcfs80n8" path="res://Assets/Portal/Untitled_Artwork 11.png" id="3_cngal"]
+[ext_resource type="Texture2D" uid="uid://bwtehxfujgvr5" path="res://Assets/Portal/Untitled_Artwork 12.png" id="4_srlw8"]
+[ext_resource type="Texture2D" uid="uid://dc2y5e7vecjl8" path="res://Assets/Portal/Untitled_Artwork 13.png" id="5_euxp1"]
+[ext_resource type="Texture2D" uid="uid://dky8msw8y5t3v" path="res://Assets/Portal/Untitled_Artwork 14.png" id="6_opehi"]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(14.6566, 28.3676)
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(15.3869, 28.9087)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5y2a0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o14qg")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cngal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_srlw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_euxp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_opehi")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
 
 [node name="Portal" type="StaticBody2D" groups=["Portal"]]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color( 0.529412, 1, 0.0980392, 1 )
-scale = Vector2( 0.611299, 0.611299 )
-texture = ExtResource( 2 )
+script = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 2.11509, 2.11509 )
-shape = SubResource( 1 )
+position = Vector2(-0.499999, -1)
+scale = Vector2(2.11509, 2.11509)
+shape = SubResource("1")
 
 [node name="PortalBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalBox"]
-scale = Vector2( 2.14468, 2.14468 )
-shape = SubResource( 2 )
+position = Vector2(-0.5, -1)
+scale = Vector2(2.14468, 2.14468)
+shape = SubResource("2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5y2a0")
+animation = &"open"
+autoplay = "closed"
 
 [connection signal="body_entered" from="PortalBox" to="." method="_on_PortalBox_body_entered"]
