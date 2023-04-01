@@ -1,6 +1,0 @@
-res://default_env.tres
-res://Game&UI/Game.tscn
-res://Levels/TestLevel.tscn
-res://Enemies/AutoFocus.tscn
-res://Enemies/SingleTarget.tscn
-res://Enemies/LoopingEnemy.tscn
