@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwvke30b3hrip"]
+
+[ext_resource type="Script" path="res://Levels/Chapter1/C1Level3.gd" id="1_xs25w"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="2_b5ai3"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="3_8hgoh"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="4_vev1n"]
+[ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="5_i7ioy"]
+[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="6_kvgnr"]
+[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="7_t7o68"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8_52knl"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_xs25w")
+
+[node name="StartButton" parent="." instance=ExtResource("2_b5ai3")]
+offset_left = 737.0
+offset_top = 509.0
+offset_right = 737.0
+offset_bottom = 509.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.82867, 1.82867)
+
+[node name="Astronaut" parent="." instance=ExtResource("3_8hgoh")]
+position = Vector2(56, 386)
+scale = Vector2(1.96937, 1.96937)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("4_vev1n")]
+position = Vector2(189, 259)
+scale = Vector2(0.378223, 0.378223)
+
+[node name="RigidObstacle2" parent="." instance=ExtResource("4_vev1n")]
+position = Vector2(529, 257)
+scale = Vector2(0.465699, 0.465699)
+
+[node name="RigidObstacle3" parent="." instance=ExtResource("4_vev1n")]
+position = Vector2(857, 259)
+scale = Vector2(0.445648, 0.445648)
+
+[node name="Static" parent="." groups=["EnemiesWithHealth"] instance=ExtResource("5_i7ioy")]
+position = Vector2(320, 172)
+
+[node name="Static2" parent="." groups=["EnemiesWithHealth"] instance=ExtResource("5_i7ioy")]
+position = Vector2(711, 363)
+
+[node name="Portal" parent="." instance=ExtResource("6_kvgnr")]
+position = Vector2(956, 415)
+
+[node name="Indicator" parent="." instance=ExtResource("7_t7o68")]
+position = Vector2(55, 385)
+scale = Vector2(0.749332, 0.749332)
+
+[node name="HomeButton" parent="." instance=ExtResource("8_52knl")]

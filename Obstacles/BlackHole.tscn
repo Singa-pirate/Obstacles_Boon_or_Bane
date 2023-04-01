@@ -35,7 +35,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_r2g37"]
 radius = 53.0094
 
-[node name="BlackHole" type="Area2D" groups=["BlackHole", "ObstaclesWithDamage"]]
+[node name="BlackHole" type="Area2D" groups=["BlackHole"]]
 script = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

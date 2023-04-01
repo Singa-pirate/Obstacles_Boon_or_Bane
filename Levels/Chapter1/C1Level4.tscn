@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://b61on1vvmm6tq"]
+
+[ext_resource type="Script" path="res://Levels/Chapter1/C1Level4.gd" id="1_hfyff"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="2_fdqx4"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="3_o04up"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="4_mevyw"]
+[ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="5_t4ox0"]
+[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="6_l7rpv"]
+[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="7_o25tf"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8_gcntu"]
+[ext_resource type="PackedScene" uid="uid://da7g3sjo3xyuw" path="res://Enemies/LoopingEnemy.tscn" id="9_m2rii"]
+
+[sub_resource type="Curve2D" id="Curve2D_gjcsu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 211, 185, 0, 0, 0, 0, 216, 459, 0, 0, 0, 0, 210, 185, 0, 0, 0, 0, 211, 185)
+}
+point_count = 4
+
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_hfyff")
+
+[node name="StartButton" parent="." instance=ExtResource("2_fdqx4")]
+offset_left = 1042.0
+offset_top = 558.0
+offset_right = 1042.0
+offset_bottom = 558.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.82867, 1.82867)
+
+[node name="Astronaut" parent="." instance=ExtResource("3_o04up")]
+position = Vector2(56, 340)
+scale = Vector2(1.96937, 1.96937)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("4_mevyw")]
+position = Vector2(210, 141)
+scale = Vector2(0.378223, 0.378223)
+
+[node name="RigidObstacle2" parent="." instance=ExtResource("4_mevyw")]
+position = Vector2(529, 192)
+scale = Vector2(0.465699, 0.465699)
+
+[node name="RigidObstacle5" parent="." instance=ExtResource("4_mevyw")]
+position = Vector2(531, 457)
+scale = Vector2(0.465699, 0.465699)
+
+[node name="RigidObstacle3" parent="." instance=ExtResource("4_mevyw")]
+position = Vector2(862, 122)
+scale = Vector2(0.445648, 0.445648)
+
+[node name="RigidObstacle6" parent="." instance=ExtResource("4_mevyw")]
+position = Vector2(875, 548)
+scale = Vector2(0.445648, 0.445648)
+
+[node name="RigidObstacle4" parent="." instance=ExtResource("4_mevyw")]
+position = Vector2(218, 503)
+scale = Vector2(0.378223, 0.378223)
+
+[node name="Static2" parent="." groups=["EnemiesWithHealth"] instance=ExtResource("5_t4ox0")]
+position = Vector2(532, 75)
+
+[node name="Portal" parent="." instance=ExtResource("6_l7rpv")]
+position = Vector2(1065, 331)
+
+[node name="Indicator" parent="." instance=ExtResource("7_o25tf")]
+position = Vector2(55, 336)
+scale = Vector2(0.749332, 0.749332)
+
+[node name="HomeButton" parent="." instance=ExtResource("8_gcntu")]
+
+[node name="Path1" type="Path2D" parent="." groups=["EnemyPath"]]
+curve = SubResource("Curve2D_gjcsu")
+
+[node name="LoopingEnemy" parent="Path1" instance=ExtResource("9_m2rii")]
+position = Vector2(211, 185)
+rotation = 1.55255

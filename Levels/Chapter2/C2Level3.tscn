@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://byyc0512f17h7"]
+
+[ext_resource type="Script" path="res://Levels/Chapter2/C2Level3.gd" id="1_rmvsx"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="2_te4ao"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="3_xge75"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="4_q6hq7"]
+[ext_resource type="PackedScene" uid="uid://cnny1ykrb8rm5" path="res://Obstacles/BlackHole.tscn" id="5_mqpj4"]
+[ext_resource type="PackedScene" uid="uid://b8hjr3w6sm1x8" path="res://Enemies/ConstantDirection.tscn" id="6_h70pr"]
+[ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="7_sbsrb"]
+[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="8_p84f5"]
+[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="9_7yjlc"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="10_p4r5s"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_rmvsx")
+
+[node name="StartButton" parent="." instance=ExtResource("2_te4ao")]
+offset_left = 1040.0
+offset_top = 563.0
+offset_right = 1040.0
+offset_bottom = 563.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.82867, 1.82867)
+
+[node name="Astronaut" parent="." instance=ExtResource("3_xge75")]
+position = Vector2(573, 72)
+scale = Vector2(1.96937, 1.96937)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("4_q6hq7")]
+position = Vector2(218, 313)
+scale = Vector2(0.378223, 0.378223)
+
+[node name="RigidObstacle2" parent="." instance=ExtResource("4_q6hq7")]
+position = Vector2(470, 206)
+scale = Vector2(0.425699, 0.425699)
+
+[node name="RigidObstacle3" parent="." instance=ExtResource("4_q6hq7")]
+position = Vector2(846, 237)
+scale = Vector2(0.445648, 0.445648)
+
+[node name="RigidObstacle4" parent="." instance=ExtResource("4_q6hq7")]
+position = Vector2(108, 121)
+scale = Vector2(0.378223, 0.378223)
+
+[node name="RigidObstacle5" parent="." instance=ExtResource("4_q6hq7")]
+position = Vector2(1032, 417)
+rotation = 0.0272554
+scale = Vector2(0.445648, 0.445648)
+
+[node name="BlackHole" parent="." instance=ExtResource("5_mqpj4")]
+position = Vector2(582, 331)
+
+[node name="ConstantDirection" parent="." instance=ExtResource("6_h70pr")]
+position = Vector2(290, 106)
+
+[node name="Static" parent="." groups=["EnemiesWithHealth"] instance=ExtResource("7_sbsrb")]
+position = Vector2(1026, 164)
+
+[node name="Portal" parent="." instance=ExtResource("8_p84f5")]
+position = Vector2(605, 597)
+
+[node name="Indicator" parent="." instance=ExtResource("9_7yjlc")]
+position = Vector2(577, 56)
+rotation = 1.21906
+scale = Vector2(0.59532, 0.658031)
+
+[node name="HomeButton" parent="." instance=ExtResource("10_p4r5s")]

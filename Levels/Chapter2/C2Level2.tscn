@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://cs71o0a4g68b5"]
+
+[ext_resource type="Script" path="res://Levels/Chapter2/C2Level2.gd" id="1_hd2b0"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="2_eauip"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="3_4kej4"]
+[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="4_pml8n"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="5_0pg43"]
+[ext_resource type="PackedScene" uid="uid://cnny1ykrb8rm5" path="res://Obstacles/BlackHole.tscn" id="6_hp580"]
+[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="7_nqdpn"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8_dtdmx"]
+[ext_resource type="PackedScene" uid="uid://2byv21c11i7d" path="res://Obstacles/LoopingMeteor.tscn" id="9_mo48t"]
+
+[sub_resource type="Curve2D" id="Curve2D_bkmnr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 590, -76, 0, -3.09122, 0, 3.09122, 1582, 513, 0, 0, 0, 0, 1434, 768, 0, 0, 0, 0, 731, 1125, 0, 0, 0, 0, -132, 767, 0, 0, 0, 0, -311, -39, 0, 0, 0, 0, 36, -396, 0, 0, 0, 0, 588, -75)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_8w7bn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 261, -141, 0, 0, 0, 0, 1423, 536, 0, 0, 0, 0, 1310, 858, 0, 0, 0, 0, 608, 1212, 0, 0, 0, 0, -258, 858, 0, 0, 0, 0, -390, 175, 0, 0, 0, 0, -163, -204, 0, 0, 0, 0, 261, -141)
+}
+point_count = 8
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_hd2b0")
+
+[node name="StartButton" parent="." instance=ExtResource("2_eauip")]
+offset_left = 1014.0
+offset_top = 462.0
+offset_right = 1014.0
+offset_bottom = 462.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.77448, 1.77448)
+
+[node name="Astronaut" parent="." instance=ExtResource("3_4kej4")]
+position = Vector2(1000, 326)
+scale = Vector2(2.5276, 2.5276)
+
+[node name="Indicator" parent="." instance=ExtResource("4_pml8n")]
+position = Vector2(1000, 327)
+rotation = -3.12989
+scale = Vector2(-0.92, 1)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("5_0pg43")]
+position = Vector2(724, 610)
+scale = Vector2(0.944158, 0.944158)
+
+[node name="RigidObstacle2" parent="." instance=ExtResource("5_0pg43")]
+position = Vector2(976, 35)
+scale = Vector2(0.690322, 0.690322)
+
+[node name="RigidObstacle3" parent="." instance=ExtResource("5_0pg43")]
+position = Vector2(121, 111)
+scale = Vector2(0.719999, 0.719999)
+
+[node name="BlackHole" parent="." instance=ExtResource("6_hp580")]
+position = Vector2(476, 170)
+
+[node name="Portal" parent="." instance=ExtResource("7_nqdpn")]
+position = Vector2(306, 87)
+
+[node name="HomeButton" parent="." instance=ExtResource("8_dtdmx")]
+
+[node name="PathMeteor1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_bkmnr")
+
+[node name="LoopingMeteor" parent="PathMeteor1" instance=ExtResource("9_mo48t")]
+position = Vector2(590, -76)
+rotation = 0.535811
+
+[node name="PathMeteor2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8w7bn")
+
+[node name="LoopingMeteor" parent="PathMeteor2" instance=ExtResource("9_mo48t")]
+position = Vector2(261, -141)
+rotation = 0.527539
