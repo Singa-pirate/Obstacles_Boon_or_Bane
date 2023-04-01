@@ -1,11 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnny1ykrb8rm5"]
+[gd_scene load_steps=9 format=3 uid="uid://cnny1ykrb8rm5"]
 
 [ext_resource type="Script" path="res://Obstacles/black_hole.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://mj8drcoknxy2" path="res://Assets/Black Hole/Untitled_Artwork 16.png" id="2_8ti7q"]
+[ext_resource type="Texture2D" uid="uid://dswyoqi5il3ah" path="res://Assets/Black Hole/Untitled_Artwork 17.png" id="3_k1xy3"]
+[ext_resource type="Texture2D" uid="uid://b0fwtrkhmkdp1" path="res://Assets/Black Hole/Untitled_Artwork 18.png" id="4_jnpx8"]
+[ext_resource type="Texture2D" uid="uid://dfhbwcuw47ann" path="res://Assets/Black Hole/Untitled_Artwork 19.png" id="5_y4qti"]
+[ext_resource type="Texture2D" uid="uid://nwp0jdaiuywm" path="res://Assets/Black Hole/Untitled_Artwork 20.png" id="6_15gxb"]
 
 [sub_resource type="CircleShape2D" id="1"]
 
-[node name="BlackHole" type="Area2D" groups=["BlackHole"]]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnrro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8ti7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k1xy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jnpx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y4qti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_15gxb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BlackHole" type="Area2D" groups=["BlackHole", "ObstaclesWithDamage"]]
 script = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qnrro")
+autoplay = "default"
+frame_progress = 0.030498

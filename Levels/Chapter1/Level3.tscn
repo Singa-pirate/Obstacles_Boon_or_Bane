@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="2_7g4it"]
 [ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="3_n00ug"]
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="4_a2k66"]
-[ext_resource type="PackedScene" path="res://Enemies/Static.tscn" id="5_ullcd"]
+[ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="5_ullcd"]
 [ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="6_ipyoo"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="7_p3knx"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8_pifxk"]
@@ -19,6 +19,8 @@ offset_left = 737.0
 offset_top = 509.0
 offset_right = 737.0
 offset_bottom = 509.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.82867, 1.82867)
 
 [node name="Astronaut" parent="." instance=ExtResource("3_n00ug")]
@@ -37,10 +39,10 @@ scale = Vector2(0.465699, 0.465699)
 position = Vector2(857, 259)
 scale = Vector2(0.445648, 0.445648)
 
-[node name="Static" parent="." instance=ExtResource("5_ullcd")]
+[node name="Static" parent="." groups=["EnemiesWithHealth"] instance=ExtResource("5_ullcd")]
 position = Vector2(320, 172)
 
-[node name="Static2" parent="." instance=ExtResource("5_ullcd")]
+[node name="Static2" parent="." groups=["EnemiesWithHealth"] instance=ExtResource("5_ullcd")]
 position = Vector2(711, 363)
 
 [node name="Portal" parent="." instance=ExtResource("6_ipyoo")]

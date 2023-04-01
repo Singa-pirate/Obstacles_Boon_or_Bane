@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ca1e13emo76f7"]
 
-[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cihvfsatpvpkr" path="res://Astronaut/Astronaut.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/StartButton.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="4"]
 [ext_resource type="Script" path="res://Levels/test_level.gd" id="5"]
