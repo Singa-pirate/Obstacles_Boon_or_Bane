@@ -2,6 +2,7 @@ extends Node
 
 
 var astronaut_direction = Vector2.RIGHT
+var small_tank_count = 5
 
 
 func _ready():

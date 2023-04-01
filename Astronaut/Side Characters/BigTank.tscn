@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciu5oskehri6g"]
+
+[ext_resource type="Script" path="res://Astronaut/Side Characters/big_tank.gd" id="1_t7a4x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vw10w"]
+
+[node name="BigTank" type="CharacterBody2D" groups=["Character"]]
+script = ExtResource("1_t7a4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vw10w")

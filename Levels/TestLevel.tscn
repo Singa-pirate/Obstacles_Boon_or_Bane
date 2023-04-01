@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca1e13emo76f7"]
+[gd_scene load_steps=9 format=3 uid="uid://ca1e13emo76f7"]
 
 [ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="6_q8wcn"]
 [ext_resource type="PackedScene" uid="uid://7vgslcdathtj" path="res://Enemies/AutoFocus.tscn" id="6_rbkgv"]
+[ext_resource type="PackedScene" uid="uid://djdksfg46bs1d" path="res://Elements/TankSelection.tscn" id="8_trpp8"]
 
 [node name="TestLevel" type="Node"]
 script = ExtResource("5")
@@ -34,3 +35,9 @@ scale = Vector2(0.543407, 0.543407)
 
 [node name="AutoFocus" parent="." instance=ExtResource("6_rbkgv")]
 position = Vector2(353, 375)
+
+[node name="TankSelection" parent="." instance=ExtResource("8_trpp8")]
+offset_left = 794.0
+offset_top = 404.0
+offset_right = 794.0
+offset_bottom = 404.0

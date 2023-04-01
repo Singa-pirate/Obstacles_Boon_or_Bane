@@ -6,4 +6,5 @@ func _on_Button_pressed():
 		if child.is_in_group("Meteor"):
 			child.start()
 	get_parent().get_node("Indicator").queue_free()
+	get_parent().get_node("TankSelection").queue_free()
 	queue_free()

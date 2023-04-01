@@ -32,7 +32,6 @@ var is_visible = true
 var mutable_name = "Player"
 var is_invincible = false
 
-
 var portal
 
 var saber_cooldown = 1
@@ -43,6 +42,35 @@ var action_lock
 var wormhole_available = false # initially true if the skill is available in the level
 var wormhole_threshold = 60
 const WormHole = preload("res://Astronaut/Skills/WormHole.tscn")
+
+var tanks = []
+const BigTank = preload("res://Astronaut/Side Characters/BigTank.tscn")
+const SmallTank = preload("res://Astronaut/Side Characters/SmallTank.tscn")
+const tank_offset = 50
+
+
+func add_big_tank():
+	for tank in tanks:
+		tank.queue_free()
+	tanks.clear()
+	var big_tank = BigTank.instantiate()
+	big_tank.position = tank_offset * direction
+	add_child(big_tank)
+	tanks.append(big_tank)
+
+
+func add_small_tanks(number):
+	for tank in tanks:
+		tank.queue_free()
+	tanks.clear()
+	var angle_increment = 2 * PI / number
+	for i in range(number):
+		var small_tank = SmallTank.instantiate()
+		var angle = Vector2.RIGHT.angle_to(direction) + angle_increment * i
+		small_tank.position = tank_offset * Vector2(cos(angle), sin(angle))
+		add_child(small_tank)
+		tanks.append(small_tank)
+
 
 """Initialization"""
 # Called when the node enters the scene tree for the first time.

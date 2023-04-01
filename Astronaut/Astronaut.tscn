@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bo0f3mx17skxt"]
+[gd_scene load_steps=24 format=3 uid="uid://bo0f3mx17skxt"]
 
 [ext_resource type="Texture2D" uid="uid://d33yamlr1sk0w" path="res://Assets/Astronaut/Untitled_Artwork 14.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cel8bb50iakh7" path="res://Assets/Saber/Untitled_Artwork 11.png" id="2_5xpsh"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://djdksfg46bs1d"]
+
+[ext_resource type="Script" path="res://Elements/tank_selection.gd" id="1_6y60u"]
+
+[node name="TankSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6y60u")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BigTankButton" type="Button" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Big Tank"
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 114.0
+offset_right = 154.0
+offset_bottom = 40.0
+
+[node name="SmallTankButton" type="Button" parent="BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Small Tank"
+
+[connection signal="pressed" from="BoxContainer/BigTankButton" to="." method="_on_big_tank_button_pressed"]
+[connection signal="pressed" from="BoxContainer2/SmallTankButton" to="." method="_on_small_tank_button_pressed"]

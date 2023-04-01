@@ -1,4 +1,8 @@
+Button
+BoxContainer
+Control
 CollisionShape2D
+CharacterBody2D
 Area2D
 Path2D
 AnimatedSprite2D
@@ -6,7 +10,6 @@ Sprite2D
 PathFollow2D
 Node2D
 Node
-CharacterBody2D
 Timer
 AnimationPlayer
 Label
