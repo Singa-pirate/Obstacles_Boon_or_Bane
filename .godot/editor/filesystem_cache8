@@ -1,6 +1,6 @@
 2a60927148abd1d33b818b535e306557
-::res://::1680311374
-default_env.tres::Environment::8588117271604781054::1680272371::0::1::::<><>::
+::res://::1680317167
+default_env.tres::Environment::8588117271604781054::1680313319::0::1::::<><>::
 icon.png::CompressedTexture2D::5025782442793217910::1674985482::1679383173::1::::<><>::
 ::res://Assets/::1680272335
 arrow.png::CompressedTexture2D::2632968964145681777::1676013321::1679383173::1::::<><>::
@@ -121,21 +121,23 @@ StartButton.tscn::PackedScene::-1::1679383173::0::1::::<><>::res://Elements/Butt
 Home_button.tscn::PackedScene::-1::1679383173::0::1::::<><>::
 Next_level_button.tscn::PackedScene::-1::1679383173::0::1::::<><>::
 Replay_level_button.tscn::PackedScene::-1::1679383173::0::1::::<><>::
-::res://Enemies/::1680272371
+::res://Enemies/::1680313463
 AutoFocus.tscn::PackedScene::2289791956482700707::1680272371::0::1::::<><>::res://Enemies/auto_focus.gd<>uid://cnicoph73q5y8<>uid://cqc1uvancf30x<>uid://dnih257ljxkbg<>uid://dgw2bdk638ihm
-auto_focus.gd::GDScript::-1::1680269469::0::1::::<>CharacterBody2D<>::
+auto_focus.gd::GDScript::-1::1680313463::0::1::::<>CharacterBody2D<>::
 Constant2Directions.tscn::PackedScene::-1::1680269469::0::1::::<><>::res://Enemies/constant_2_directions.gd
 ConstantDirection.tscn::PackedScene::4717681485530425463::1680269469::0::1::::<><>::res://Enemies/constant_direction.gd<>uid://d0pmw2o4i838r<>uid://bvfwlj7s64taq<>uid://b6dgqp5mk7lk4<>uid://cv3jrbayu24xy<>uid://ctmfxrxfbj205
 ConstantDirectionBullet.tscn::PackedScene::1728804960804261623::1680272335::0::1::::<><>::res://Enemies/constant_direction_bullet.gd<>uid://dwlpgawa28a03
 constant_2_directions.gd::GDScript::-1::1680269469::0::1::::<>CharacterBody2D<>::
 constant_direction.gd::GDScript::-1::1680269469::0::1::::<>CharacterBody2D<>::
 constant_direction_bullet.gd::GDScript::-1::1680272335::0::1::::<>Area2D<>::
+toward_character.gd::GDScript::-1::1680313463::0::1::::<>CharacterBody2D<>::
+TowardCharacter.tscn::PackedScene::8410988282573867686::1680313319::0::1::::<><>::res://Enemies/toward_character.gd
 SingleTarget.tscn::PackedScene::-1::1679188178::0::1::::<><>::res://Enemies/single_target.gd
 single_target.gd::GDScript::-1::1680272335::0::1::::<>Area2D<>::
 SplashBullet.tscn::PackedScene::7672934263754889012::1680272371::0::1::::<><>::res://Enemies/splash_bullet.gd<>uid://dwlpgawa28a03
 SplashEnemy.tscn::PackedScene::549948142122036198::1680272371::0::1::::<><>::res://Enemies/splash_enemy.gd
 splash_bullet.gd::GDScript::-1::1680272335::0::1::::<>Area2D<>::
-splash_enemy.gd::GDScript::-1::1680272335::0::1::::<>CharacterBody2D<>::
+splash_enemy.gd::GDScript::-1::1680313463::0::1::::<>CharacterBody2D<>::
 Static.tscn::PackedScene::-1::1679383173::0::1::::<><>::res://Enemies/static_enemy.gd<>res://Assets/PurpleEnemy/Gllob1 4.png<>res://Assets/PurpleEnemy/Gllob1.png<>res://Assets/PurpleEnemy/Gllob1 2.png<>res://Assets/PurpleEnemy/Gllob1 5.png<>res://Assets/PurpleEnemy/Gllob1 3.png
 static_enemy.gd::GDScript::-1::1679383173::0::1::::<>CharacterBody2D<>::
 ::res://Game&UI/::1680272371

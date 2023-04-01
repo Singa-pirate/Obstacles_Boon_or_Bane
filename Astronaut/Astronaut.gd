@@ -39,6 +39,11 @@ var saber_ready = true
 
 var started = false
 
+var wormhole_available = false # initially true if the skill is available in the level
+var wormhole_threshold = 60
+const WormHole = preload("res://Astronaut/Skills/WormHole.tscn")
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = MAX_HEALTH
@@ -75,6 +80,17 @@ func _process(delta):
 		
 		if true and saber_ready: #enemies nearby
 			saber_attack()
+		
+		if wormhole_available:
+			var activate_wormhole = false
+			for ch in nearby_charges:
+				var product = abs(ch.charge * charge)
+				if product >= wormhole_threshold:
+					activate_wormhole = true
+					break
+			if activate_wormhole:
+				wormhole_disappear()
+
 
 func change_velocity():
 	# acceleration due to charge
@@ -100,35 +116,40 @@ func change_velocity():
 	var ratio = float(velocity.length()) / MAX_SPEED
 	if ratio > 1:
 		velocity /= ratio
-		
+
+
 func actively_slow(coefficient):
 	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED * coefficient, 0.05)
-	
+
+
 func check_near_edge():
 	if abs(position.x - MIN_X) < 50 || abs(position.x - MAX_X) < 50:
 		return true
 	if abs(position.y - MIN_Y) < 50 || abs(position.y - MAX_Y) < 50:
 		return true
 	return false
-	
+
+
 func check_near_portal():
 	portal = get_tree().get_nodes_in_group("Portal")[0]
 	if (portal.position - position).length() < PORTAL_ATTRACT_RANGE:
 		return true
 	return false
-	
+
+
 func toggle_visibility():
 	if is_visible:
 		mutable_name = "Invisible"
 		name = mutable_name
-		$Sprite2D.modulate.a = 0.5
+		$Appearance.modulate.a = 0.5
 		$Timers/InvisibilityTimer.start()
 	else:
 		mutable_name = "Player"
 		name = mutable_name
-		$Sprite2D.modulate.a = 1
+		$Appearance.modulate.a = 1
 	is_visible = !is_visible
-	
+
+
 func saber_attack():
 	saber_ready = false
 	for obj in nearby_enemies:
@@ -136,28 +157,56 @@ func saber_attack():
 			print("Saber Attack!")
 			obj.take_damage(SABER_DAMAGE)
 		
-	$Timers/SaberTimer.wait_time = saber_cooldown	
+	$Timers/SaberTimer.wait_time = saber_cooldown
 	$Timers/SaberTimer.start()
-	
+
+
+func wormhole_disappear():
+	wormhole_available = false
+	$Appearance.modulate.a = 0
+	$ChargeLabel.modulate.a = 0
+	var wormhole = WormHole.instantiate()
+	wormhole.player = self
+	wormhole.speed = INIT_SPEED
+	get_parent().add_child(wormhole)
+	set_process_mode(4)
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+
+
+func wormhole_reappear(p, v):
+	position = p
+	velocity = v
+	$Appearance.modulate.a = 1
+	$ChargeLabel.modulate.a = 1
+	set_process_mode(0)
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)
+
+
 func start():
 	started = true
 	velocity = INIT_SPEED * direction
 	angular_speed = INIT_ANGULAR_SPEED
-	
+
+
 func _on_Charge_detector_body_entered(body):
 	if body != self && body.is_in_group("ObstaclesWithDamage"):
 		nearby_charges.append(body)
 
+
 func _on_Charge_detector_body_exited(body):
 	if body != self && body.is_in_group("ObstaclesWithDamage"):
 		nearby_charges.erase(body)
-		
-		
+
+
 func _on_Hitbox_mouse_entered():
 	mouse_hovering = true
 
+
 func _on_Hitbox_mouse_exited():
 	mouse_hovering = false
+
 
 func update_charge():
 	var c = float(charge) / 10
@@ -170,7 +219,8 @@ func update_charge():
 	else:
 		label.modulate = Color(1 ,1 ,1)
 		label.text = "+0"
-		
+
+
 func take_damage(damage):
 	#print(damage)
 	if not is_invincible:
@@ -178,29 +228,36 @@ func take_damage(damage):
 		health -= damage
 		is_invincible = true
 		$Timers/InvincibilityTimer.start()
-		
+
+
 func _on_Charge_detector_area_entered(area):
 	if area.is_in_group("BlackHole"):
 		nearby_blackholes.append(area)
+
 
 func _on_Charge_detector_area_exited(area):
 	if area.is_in_group("BlackHole"):
 		nearby_blackholes.erase(area)
 
+
 func _on_NearbyObjectsDetector_body_entered(body):
 	if body.is_in_group("Enemies"):
 		nearby_enemies.append(body)
 
+
 func _on_NearbyObjectsDetector_body_exited(body):
 	if body.is_in_group("Enemies"):
 		nearby_enemies.erase(body)
-		
+
+
 func _on_InvisibilityTimer_timeout():
 	if !is_visible:
 		toggle_visibility()
 
+
 func _on_SaberTimer_timeout():
 	saber_ready = true
+
 
 func _on_Hurtbox_body_entered(body):
 	if body.is_in_group("Enemies") or body.is_in_group("ObstaclesWithDamage"):
@@ -208,8 +265,10 @@ func _on_Hurtbox_body_entered(body):
 		velocity = lerp(velocity, target_velocity, 0.2)
 		take_damage(body.damage)
 
+
 func _on_InvincibilityTimer_timeout():
 	is_invincible = false
+
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "EnterPortal":
