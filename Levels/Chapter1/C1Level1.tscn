@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="3_avd5q"]
 [ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="4_euov7"]
 [ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="5_83okq"]
-[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="6_rhf5n"]
+[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="6_rhf5n"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="7_ovbd3"]
 
 [node name="Level1" type="Node2D"]

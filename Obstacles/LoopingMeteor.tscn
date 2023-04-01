@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://2byv21c11i7d"]
+[gd_scene load_steps=14 format=3 uid="uid://2byv21c11i7d"]
 
 [ext_resource type="Script" path="res://Obstacles/LoopingMeteor.gd" id="1_5vkok"]
+[ext_resource type="Script" path="res://Obstacles/LoopingMeteorBody.gd" id="2_3fhmv"]
 [ext_resource type="Texture2D" uid="uid://bnrdxcff3snnd" path="res://Assets/Meteor/Untitled_Artwork 11.png" id="2_e8whl"]
 [ext_resource type="Texture2D" uid="uid://bl54qyvtre8is" path="res://Assets/Meteor/Untitled_Artwork 12.png" id="3_gobwc"]
 [ext_resource type="Texture2D" uid="uid://c6xoywqspk673" path="res://Assets/Meteor/Untitled_Artwork 13.png" id="4_c007s"]
@@ -9,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bhvnlhtt1cl0q" path="res://Assets/Meteor/Untitled_Artwork 16.png" id="7_eawit"]
 [ext_resource type="Texture2D" uid="uid://bgxb64dh22q80" path="res://Assets/Meteor/Untitled_Artwork 17.png" id="8_2yjlk"]
 [ext_resource type="Texture2D" uid="uid://dfvtiaduc606w" path="res://Assets/Meteor/Untitled_Artwork 18.png" id="9_ys8tn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kdba"]
+radius = 14.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pil1b"]
 animations = [{
@@ -42,11 +46,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jnkya"]
+radius = 13.3417
+
 [node name="LoopingMeteor" type="PathFollow2D"]
 rotates = false
 script = ExtResource("1_5vkok")
 
-[node name="Meteor" type="AnimatedSprite2D" parent="."]
+[node name="LoopingMeteorBody" type="CharacterBody2D" parent="." groups=["Meteor"]]
+script = ExtResource("2_3fhmv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoopingMeteorBody"]
+position = Vector2(-5, 5)
+shape = SubResource("CircleShape2D_6kdba")
+
+[node name="Meteor" type="AnimatedSprite2D" parent="LoopingMeteorBody"]
 sprite_frames = SubResource("SpriteFrames_pil1b")
 autoplay = "default"
 frame_progress = 0.0459553
+
+[node name="HitBox" type="Area2D" parent="LoopingMeteorBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoopingMeteorBody/HitBox"]
+position = Vector2(-5, 5)
+shape = SubResource("CircleShape2D_jnkya")
+
+[connection signal="body_entered" from="LoopingMeteorBody/HitBox" to="LoopingMeteorBody" method="_on_hit_box_body_entered"]

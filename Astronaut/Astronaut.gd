@@ -70,11 +70,11 @@ const BigTank = preload("res://Astronaut/Side Characters/BigTank.tscn")
 const SmallTank = preload("res://Astronaut/Side Characters/SmallTank.tscn")
 const tank_offset = 50
 
-# movement behaviours
-var action_lock
-var movement_animation_lock = false
 
-var was_idle = true
+#var action_lock
+#var movement_animation_lock = false
+#
+#var was_idle = true
 
 
 func add_big_tank():

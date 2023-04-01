@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="3_jyb0m"]
 [ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="4_rl2xm"]
 [ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="5_l7obf"]
-[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="6_n22x6"]
+[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="6_n22x6"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="7_y64ms"]
 [ext_resource type="PackedScene" uid="uid://da7g3sjo3xyuw" path="res://Enemies/LoopingEnemy.tscn" id="8_c7o4a"]
 [ext_resource type="PackedScene" uid="uid://2byv21c11i7d" path="res://Obstacles/LoopingMeteor.tscn" id="9_p8nji"]
@@ -70,4 +70,3 @@ curve = SubResource("Curve2D_1jhww")
 
 [node name="LoopingMeteor" parent="PathMeteor" instance=ExtResource("9_p8nji")]
 position = Vector2(-232, 269)
-rotates = false
