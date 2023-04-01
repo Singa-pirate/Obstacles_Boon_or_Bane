@@ -43,6 +43,7 @@ animations = [{
 }]
 
 [node name="LoopingMeteor" type="PathFollow2D"]
+rotates = false
 script = ExtResource("1_5vkok")
 
 [node name="Meteor" type="AnimatedSprite2D" parent="."]

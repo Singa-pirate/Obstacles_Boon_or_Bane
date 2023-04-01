@@ -3,23 +3,15 @@ extends StaticBody2D
 
 var portal_opened = false
 
-
-func _physics_process(delta):
-	if not portal_opened:
-		var enemies_killed = true
-		for child in get_parent().get_children():
-			if child.is_in_group("Enemies"):
-				enemies_killed = false
-				break
-		
-		if enemies_killed:
-			portal_opened = true
-			open_portal()
+func _process(delta):
+	if not portal_opened and get_parent().get_parent().no_alive_enemy():
+		open_portal()
 
 
 func open_portal():
-	# TODO
-	print("opening portal")
+	portal_opened = true
+	#$AnimatedSprite2D.animation = "open"
+	$AnimatedSprite2D.play("open")
 
 
 func _on_PortalBox_body_entered(body):

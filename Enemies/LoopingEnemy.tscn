@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="2_qw76n"]
 
 [node name="LoopingEnemy" type="PathFollow2D"]
+rotates = false
 script = ExtResource("1_kkg3e")
 
 [node name="Static" parent="." groups=["EnemiesWithHealth"] instance=ExtResource("2_qw76n")]
