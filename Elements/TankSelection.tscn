@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://djdksfg46bs1d"]
+[gd_scene load_steps=6 format=3 uid="uid://djdksfg46bs1d"]
 
 [ext_resource type="Script" path="res://Elements/tank_selection.gd" id="1_6y60u"]
+[ext_resource type="FontFile" uid="uid://bpo6x2mq45bwy" path="res://Assets/m3x6.ttf" id="2_n3dkg"]
+[ext_resource type="StyleBox" uid="uid://rq6ni6ph4eob" path="res://Assets/Button Styles/choose_tank_normal.tres" id="3_py6p8"]
+[ext_resource type="StyleBox" uid="uid://ssfm4hjd22fn" path="res://Assets/Button Styles/choose_tank_hover.tres" id="4_7kpvr"]
+[ext_resource type="StyleBox" uid="uid://dut350ryp8qrw" path="res://Assets/Button Styles/choose_tank_disabled.tres" id="5_038hx"]
 
 [node name="TankSelection" type="Control"]
 layout_mode = 3
@@ -9,23 +13,35 @@ script = ExtResource("1_6y60u")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 100.0
+offset_bottom = 30.0
 
 [node name="BigTankButton" type="Button" parent="BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_n3dkg")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_py6p8")
+theme_override_styles/hover = ExtResource("4_7kpvr")
+theme_override_styles/pressed = ExtResource("4_7kpvr")
+theme_override_styles/disabled = ExtResource("5_038hx")
 text = "Big Tank"
 
 [node name="BoxContainer2" type="BoxContainer" parent="."]
 layout_mode = 0
-offset_left = 114.0
-offset_right = 154.0
-offset_bottom = 40.0
+offset_left = 126.0
+offset_right = 236.0
+offset_bottom = 30.0
 
 [node name="SmallTankButton" type="Button" parent="BoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_n3dkg")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_py6p8")
+theme_override_styles/hover = ExtResource("4_7kpvr")
+theme_override_styles/pressed = ExtResource("4_7kpvr")
+theme_override_styles/disabled = ExtResource("5_038hx")
 text = "Small Tank"
 
 [connection signal="pressed" from="BoxContainer/BigTankButton" to="." method="_on_big_tank_button_pressed"]

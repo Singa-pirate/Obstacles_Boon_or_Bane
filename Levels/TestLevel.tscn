@@ -30,7 +30,7 @@ position = Vector2(910, 100)
 position = Vector2(71, 303)
 
 [node name="RigidObstacle" parent="." instance=ExtResource("6_q8wcn")]
-position = Vector2(477, 286)
+position = Vector2(488, 231)
 scale = Vector2(0.543407, 0.543407)
 
 [node name="AutoFocus" parent="." instance=ExtResource("6_rbkgv")]

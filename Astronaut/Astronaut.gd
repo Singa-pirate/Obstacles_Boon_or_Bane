@@ -76,6 +76,14 @@ func add_small_tanks(number):
 		tanks.append(small_tank)
 
 
+func orient_tanks(angle):
+	var angle_increment = 2 * PI / tanks.size()
+	for i in range(tanks.size()):
+		var this_angle = angle + angle_increment * i
+		tanks[i].rotation_degrees = rad_to_deg(this_angle)
+		tanks[i].position = tank_offset * Vector2(cos(this_angle), sin(this_angle))
+
+
 """Initialization"""
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -137,6 +145,9 @@ func _process(delta):
 			play_movement_animation("Idle")
 			
 		move_and_slide()
+		
+		orient_tanks(Vector2.RIGHT.angle_to(direction))
+		print(rad_to_deg(Vector2.RIGHT.angle_to(direction)))
 
 		if !nearby_enemies.is_empty() and saber_ready: #enemies nearby
 			saber_attack()
@@ -173,6 +184,7 @@ func change_velocity():
 
 	# change velocity
 	velocity += acceleration
+	direction = velocity.normalized()
 
 	# cap at max speed
 	var ratio = float(velocity.length()) / MAX_SPEED
