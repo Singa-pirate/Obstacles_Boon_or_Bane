@@ -11,6 +11,7 @@ const MIN_CHARGE = -10
 const MAX_SPEED = 200
 const FORCE_COEFFICIENT = 10
 const PLANET_COLLISION_DAMAGE_COEFFICIENT = 0.3
+const FLYING_ANIMATION_SPEED_THRESHOLD = 20
 
 const MIN_X = -1000
 const MAX_X = 10000
@@ -20,37 +21,50 @@ const PORTAL_ATTRACT_RANGE = 100
 
 const SABER_DAMAGE = 10
 
+# properties
 var direction
-var angular_speed = 0
 var health
 var charge
+var is_visible = true
+var is_invincible = false
+var mutable_name = "Player"
+
+# charge
 var label
 var mouse_hovering = false
+
+# environment
 var nearby_charges = []
 var nearby_blackholes = []
 var nearby_enemies = []
-var is_visible = true
-var mutable_name = "Player"
-var is_invincible = false
 
 var portal
 
+# skills
 var saber_cooldown = 1
 var saber_ready = true
-
-var action_lock
-var movement_animation_lock = false
-var flying_animation_speed_threshold = 20
-var was_idle = true
 
 var wormhole_available = false # initially true if the skill is available in the level
 var wormhole_threshold = 60
 const WormHole = preload("res://Astronaut/Skills/WormHole.tscn")
 
+var self_heal_available = false # initially true if the skill is available in the level
+var self_healing = false
+const SELF_HEAL_TOTAL_AMOUNT = 50
+const SELF_HEAL_TIME = 3
+const SELF_HEAL_DAMAGE_COEFFICIENT = 0.7
+
+
 var tanks = []
 const BigTank = preload("res://Astronaut/Side Characters/BigTank.tscn")
 const SmallTank = preload("res://Astronaut/Side Characters/SmallTank.tscn")
 const tank_offset = 50
+
+# movement behaviours
+var action_lock
+var movement_animation_lock = false
+
+var was_idle = true
 
 
 func add_big_tank():
@@ -99,7 +113,6 @@ func _ready():
 ## called when start button is pressed
 func start():
 	velocity = INIT_SPEED * direction
-	angular_speed = INIT_ANGULAR_SPEED
 	action_lock = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -117,7 +130,22 @@ func _process(delta):
 			update_charge()
 
 	if (not action_lock):
-
+		# Self Healinkg
+		if self_healing:
+			health += SELF_HEAL_TOTAL_AMOUNT * delta / SELF_HEAL_TIME
+			if health > MAX_HEALTH:
+				health = MAX_HEALTH
+		
+		if velocity.x > 10:
+			if $Appearance.flip_h == true:
+				$Appearance.flip_h = false
+				if not $SaberAttack.is_playing() && $Saber.frame < 22:
+					$Saber.flip_h = false
+		elif velocity.x < -10:
+			if $Appearance.flip_h == false:
+				$Appearance.flip_h = true
+				if not $SaberAttack.is_playing() && $Saber.frame < 22:
+					$Saber.flip_h = true
 		# Active movement
 		if check_near_portal():
 			var target_velocity = (portal.position - position).normalized() * INIT_SPEED \
@@ -130,24 +158,28 @@ func _process(delta):
 		else:
 			# Passive movement
 			velocity = lerp(velocity, velocity.normalized() * INIT_SPEED, 0.005)
+			if get_last_slide_collision():
+				velocity = Vector2.ZERO
+			if get_floor_normal():
+				velocity = Vector2.ZERO;
 			change_velocity()
 
 		# Move!
 		set_velocity(velocity)
-		if velocity.length() > flying_animation_speed_threshold and not movement_animation_lock:
+		if velocity.length() > FLYING_ANIMATION_SPEED_THRESHOLD and not movement_animation_lock:
 			if was_idle:
 				was_idle = false
 				play_movement_animation("TakingOff")
 			else:
 				$Appearance.play("Flying")
-		elif velocity.length() < flying_animation_speed_threshold:
+		elif velocity.length() < FLYING_ANIMATION_SPEED_THRESHOLD:
 			was_idle = true
 			play_movement_animation("Idle")
 			
 		move_and_slide()
 		
 		orient_tanks(Vector2.RIGHT.angle_to(direction))
-		print(rad_to_deg(Vector2.RIGHT.angle_to(direction)))
+		#print(rad_to_deg(Vector2.RIGHT.angle_to(direction)))
 
 		if !nearby_enemies.is_empty() and saber_ready: #enemies nearby
 			saber_attack()
@@ -161,8 +193,6 @@ func _process(delta):
 					break
 			if activate_wormhole:
 				wormhole_disappear()
-
-
 
 """Passive movement due to environment"""
 func change_velocity():
@@ -261,6 +291,13 @@ func saber_attack():
 		$Timers/SaberTimer.wait_time = saber_cooldown
 		$Timers/SaberTimer.start()
 
+func self_heal():
+	if self_heal_available:
+		self_heal_available = false
+		self_healing = true
+		$Timers/SelfHealTimer.start()
+
+
 func wormhole_disappear():
 	wormhole_available = false
 	$Appearance.modulate.a = 0
@@ -282,7 +319,6 @@ func wormhole_reappear(p, v):
 	set_process_mode(0)
 	set_collision_layer_value(1, true)
 	set_collision_mask_value(1, true)
-
 
 
 func _on_NearbyObjectsDetector_body_entered(body):
@@ -318,7 +354,8 @@ func update_charge():
 """Taking damage"""
 func take_damage(damage):
 	if not is_invincible:
-		print(damage)
+		if self_healing:
+			damage *= SELF_HEAL_DAMAGE_COEFFICIENT
 		$TakeDamage.play("Animations/TakeDamage")
 		health -= damage
 		is_invincible = true
@@ -326,10 +363,9 @@ func take_damage(damage):
 
 func collide_with_planet():
 	take_damage(velocity.length() * PLANET_COLLISION_DAMAGE_COEFFICIENT)
-	velocity = Vector2.ZERO
+	#v_fixed_at_zero = true
 
 func _on_Hurtbox_body_entered(body):
-	print(velocity)
 	if body.is_in_group("Planets"):
 		collide_with_planet()
 	elif body.is_in_group("Enemies") or body.is_in_group("ObstaclesWithDamage"):
@@ -354,6 +390,9 @@ func _on_SaberTimer_timeout():
 
 func _on_InvincibilityTimer_timeout():
 	is_invincible = false
+	
+func _on_self_heal_timer_timeout():
+	self_healing = false
 
 """Animations"""
 func enter_portal():
@@ -365,3 +404,4 @@ func _on_take_damage_animation_finished(anim_name):
 		
 func _on_appearance_animation_looped():
 	movement_animation_lock = false
+	
