@@ -10,6 +10,7 @@ const MAX_CHARGE = 10
 const MIN_CHARGE = -10
 const MAX_SPEED = 200
 const FORCE_COEFFICIENT = 10
+const PLANET_COLLISION_DAMAGE_COEFFICIENT = 0.3
 
 const MIN_X = -1000
 const MAX_X = 10000
@@ -39,6 +40,9 @@ var saber_cooldown = 1
 var saber_ready = true
 
 var action_lock
+var movement_animation_lock = false
+var flying_animation_speed_threshold = 20
+var was_idle = true
 
 var wormhole_available = false # initially true if the skill is available in the level
 var wormhole_threshold = 60
@@ -54,6 +58,7 @@ func _ready():
 	velocity = Vector2(0,0)
 	label = get_node("ChargeLabel")
 	$EnterPortal.get_animation("Animations/EnterPortal").track_set_key_value(0, 0, scale)
+	$Appearance.play("Idle")
 
 ## called when start button is pressed
 func start():
@@ -93,6 +98,16 @@ func _process(delta):
 
 		# Move!
 		set_velocity(velocity)
+		if velocity.length() > flying_animation_speed_threshold and not movement_animation_lock:
+			if was_idle:
+				was_idle = false
+				play_movement_animation("TakingOff")
+			else:
+				$Appearance.play("Flying")
+		elif velocity.length() < flying_animation_speed_threshold:
+			was_idle = true
+			play_movement_animation("Idle")
+			
 		move_and_slide()
 
 		if !nearby_enemies.is_empty() and saber_ready: #enemies nearby
@@ -136,12 +151,16 @@ func change_velocity():
 	if ratio > 1:
 		velocity /= ratio
 
+func play_movement_animation(anim_name):
+	movement_animation_lock = true
+	$Appearance.play(anim_name)
+
 func _on_Charge_detector_body_entered(body):
-	if body != self && body.is_in_group("ObstaclesWithDamage"):
+	if body != self && body.is_in_group("ObstaclesWithCharge"):
 		nearby_charges.append(body)
 
 func _on_Charge_detector_body_exited(body):
-	if body != self && body.is_in_group("ObstaclesWithDamage"):
+	if body != self && body.is_in_group("ObstaclesWithCharge"):
 		nearby_charges.erase(body)
 
 func _on_Charge_detector_area_entered(area):
@@ -155,6 +174,7 @@ func _on_Charge_detector_area_exited(area):
 
 """Active Movement"""
 func actively_slow(coefficient):
+	play_movement_animation("SlowingDown")
 	velocity = lerp(velocity, velocity.normalized() * INIT_SPEED * coefficient, 0.02)
 
 func check_near_edge():
@@ -258,13 +278,21 @@ func update_charge():
 """Taking damage"""
 func take_damage(damage):
 	if not is_invincible:
+		print(damage)
 		$TakeDamage.play("Animations/TakeDamage")
 		health -= damage
 		is_invincible = true
 		$Timers/InvincibilityTimer.start()
-		
+
+func collide_with_planet():
+	take_damage(velocity.length() * PLANET_COLLISION_DAMAGE_COEFFICIENT)
+	velocity = Vector2.ZERO
+
 func _on_Hurtbox_body_entered(body):
-	if body.is_in_group("Enemies") or body.is_in_group("ObstaclesWithDamage"):
+	print(velocity)
+	if body.is_in_group("Planets"):
+		collide_with_planet()
+	elif body.is_in_group("Enemies") or body.is_in_group("ObstaclesWithDamage"):
 		var target_velocity = (position - body.position).normalized() * INIT_SPEED / 10
 		velocity = lerp(velocity, target_velocity, 0.2)
 		take_damage(body.damage)
@@ -294,3 +322,6 @@ func enter_portal():
 func _on_take_damage_animation_finished(anim_name):
 	if anim_name == "Animations/EnterPortal":
 		visible = false
+		
+func _on_appearance_animation_looped():
+	movement_animation_lock = false
