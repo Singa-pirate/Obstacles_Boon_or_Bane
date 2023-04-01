@@ -54,3 +54,5 @@ shape = SubResource("1")
 sprite_frames = SubResource("SpriteFrames_8s4f1")
 autoplay = "default"
 frame_progress = 0.0121148
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
