@@ -1,3 +1,7 @@
+BoxContainer
+TextureButton
+Sprite2D
+Control
 CollisionShape2D
 Area2D
 CharacterBody2D

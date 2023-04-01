@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpimnqle8dn1v"]
+[gd_scene load_steps=3 format=3 uid="uid://cpimnqle8dn1v"]
 
 [ext_resource type="Script" path="res://Elements/Buttons/LevelButton.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://bpo6x2mq45bwy" path="res://Assets/m3x6.ttf" id="1_1ieht"]
 
 [node name="LevelButton" type="Button"]
-offset_right = 12.0
-offset_bottom = 20.0
+clip_contents = true
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1ieht")
+theme_override_font_sizes/font_size = 10
+flat = true
+icon_alignment = 1
 script = ExtResource("1")
