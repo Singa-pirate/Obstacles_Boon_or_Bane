@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Enemies/LoopingEnemy.gd" id="1_kkg3e"]
 [ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="2_qw76n"]
 
-[node name="LoopingEnemy" type="PathFollow2D" groups=["Enemies", "EnemiesWithHealth"]]
+[node name="LoopingEnemy" type="PathFollow2D"]
 script = ExtResource("1_kkg3e")
 
-[node name="Static" parent="." instance=ExtResource("2_qw76n")]
+[node name="Static" parent="." groups=["EnemiesWithHealth"] instance=ExtResource("2_qw76n")]

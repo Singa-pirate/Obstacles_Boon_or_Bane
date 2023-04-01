@@ -21,18 +21,18 @@ const levels = {
 }
 
 const chapter1_levels = {
-	1: preload("res://Levels/Chapter1/Level1.tscn"),
-	2: preload("res://Levels/Chapter1/Level2.tscn"),
-	3: preload("res://Levels/Chapter1/Level3.tscn"),
-	4: preload("res://Levels/Chapter1/Level4.tscn"),
-	5: preload("res://Levels/Chapter1/Level5.tscn"),
+	1: preload("res://Levels/Chapter1/C1Level1.tscn"),
+	2: preload("res://Levels/Chapter1/C1Level2.tscn"),
+	3: preload("res://Levels/Chapter1/C1Level3.tscn"),
+	4: preload("res://Levels/Chapter1/C1Level4.tscn"),
+	5: preload("res://Levels/Chapter1/C1Level5.tscn"),
 }
 
 const chapter2_levels = {
-	1: preload("res://Levels/Chapter2/Level1.tscn"),
-	2: preload("res://Levels/Chapter2/Level2.tscn"),
-	3: preload("res://Levels/Chapter2/Level3.tscn"),
-	4: preload("res://Levels/Chapter2/Level4.tscn")
+	1: preload("res://Levels/Chapter2/C2Level1.tscn"),
+	2: preload("res://Levels/Chapter2/C2Level2.tscn"),
+	3: preload("res://Levels/Chapter2/C2Level3.tscn"),
+	4: preload("res://Levels/Chapter2/C2Level4.tscn")
 }
 
 const chapter3_levels = {
@@ -70,6 +70,13 @@ func new_level_object(level_number):
 			health_bar.set_position(Vector2(-50, 20))
 			health_bar.set_scale(Vector2(0.1, 0.1))
 			child.add_child(health_bar)
+		if child.is_in_group("EnemyPath"):
+			var enemy = child.get_child(0).get_child(0)
+			var health_bar = HealthBar.instantiate()
+			health_bar.get_node("HealthBar").object = enemy
+			health_bar.set_position(Vector2(-50, 20))
+			health_bar.set_scale(Vector2(0.1, 0.1))
+			enemy.add_child(health_bar)
 		elif child.name == "Astronaut":
 			var health_bar = HealthBar.instantiate()
 			health_bar.get_node("HealthBar").object = child

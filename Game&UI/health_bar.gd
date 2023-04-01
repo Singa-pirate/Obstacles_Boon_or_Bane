@@ -2,7 +2,7 @@ extends ProgressBar
 
 
 var object
-
+var enemy
 
 func _process(delta):
 	if weakref(object).get_ref():
