@@ -1,7 +1,9 @@
+AnimatedSprite2D
+Node2D
+Node
 CollisionShape2D
 Area2D
 CharacterBody2D
-AnimatedSprite2D
 Timer
 AnimationPlayer
 Label

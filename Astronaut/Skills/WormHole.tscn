@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwlgmil76dg1g"]
+
+[ext_resource type="Script" path="res://Astronaut/Skills/wormhole.gd" id="1_s8h4g"]
+
+[node name="WormHole" type="Node2D"]
+script = ExtResource("1_s8h4g")

@@ -43,7 +43,7 @@ func get_nearest_character():
 
 
 func _on_target_area_body_entered(body):
-	if body.is_in_group("Character") and weakref(target) == null:
+	if body.is_in_group("Character") and (!weakref(target) or target == null):
 		target = body
 
 

@@ -3,3 +3,12 @@ res://Enemies/toward_character.gd
 res://Enemies/TowardCharacter.tscn
 res://Enemies/auto_focus.gd
 res://Enemies/splash_enemy.gd
+res://Astronaut/Astronaut.gd
+res://Astronaut/Skills/WormHole.tscn
+res://Astronaut/Skills/wormhole.gd
+res://Astronaut/Astronaut.tscn
+res://Levels/TestLevel.tscn
+res://Levels/test_level.gd
+res://Game&UI/Game.tscn
+res://Enemies/AutoFocus.tscn
+res://Enemies/SingleTarget.tscn
