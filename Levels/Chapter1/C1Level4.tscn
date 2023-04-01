@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="4_mevyw"]
 [ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="5_t4ox0"]
 [ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="6_l7rpv"]
-[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="7_o25tf"]
+[ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="7_o25tf"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8_gcntu"]
 [ext_resource type="PackedScene" uid="uid://da7g3sjo3xyuw" path="res://Enemies/LoopingEnemy.tscn" id="9_m2rii"]
 

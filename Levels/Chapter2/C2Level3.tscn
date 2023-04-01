@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cnny1ykrb8rm5" path="res://Obstacles/BlackHole.tscn" id="5_mqpj4"]
 [ext_resource type="PackedScene" uid="uid://b8hjr3w6sm1x8" path="res://Enemies/ConstantDirection.tscn" id="6_h70pr"]
 [ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="7_sbsrb"]
-[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="8_p84f5"]
+[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="8_p84f5"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="9_7yjlc"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="10_p4r5s"]
 
@@ -19,6 +19,8 @@ offset_left = 1040.0
 offset_top = 563.0
 offset_right = 1040.0
 offset_bottom = 563.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.82867, 1.82867)
 
 [node name="Astronaut" parent="." instance=ExtResource("3_xge75")]
