@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="2_tc0q7"]
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="3_m6b72"]
 [ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="4_fnq5e"]
-[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="5_ppl4w"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="5_ppl4w"]
 [ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="6_5oyng"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="7_ivxqa"]
 [ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="8_q47ic"]
@@ -17,8 +17,6 @@ offset_left = 723.0
 offset_top = 463.0
 offset_right = 723.0
 offset_bottom = 463.0
-grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(1.8, 1.8)
 
 [node name="RigidObstacle1" parent="." instance=ExtResource("3_m6b72")]

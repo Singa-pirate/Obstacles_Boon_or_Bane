@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dercjfrwiynva"]
 
-[ext_resource path="res://Assets/arrow.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://bdrou474ktfhx" path="res://Assets/arrow.png" id="1"]
 
 [node name="Indicator" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2( 97, 1 )
-texture = ExtResource( 1 )
+position = Vector2(97, 1)
+texture = ExtResource("1")

@@ -32,7 +32,8 @@ const chapter2_levels = {
 	1: preload("res://Levels/Chapter2/C2Level1.tscn"),
 	2: preload("res://Levels/Chapter2/C2Level2.tscn"),
 	3: preload("res://Levels/Chapter2/C2Level3.tscn"),
-	4: preload("res://Levels/Chapter2/C2Level4.tscn")
+	4: preload("res://Levels/Chapter2/C2Level4.tscn"),
+	5: preload("res://Levels/Chapter2/C2Level5.tscn")
 }
 
 const chapter3_levels = {
