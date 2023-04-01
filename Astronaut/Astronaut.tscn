@@ -128,39 +128,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2")
-}],
-"loop": true,
-"name": &"SlowingDown",
-"speed": 8.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -192,7 +160,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"TakingOff",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="1"]
@@ -240,7 +208,6 @@ offset_right = 24.0
 offset_bottom = 3.0
 scale = Vector2(0.790165, 0.790165)
 text = "+0"
-metadata/_edit_use_anchors_ = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 z_index = 1
@@ -275,6 +242,10 @@ one_shot = true
 wait_time = 1.5
 one_shot = true
 
+[node name="HealthRegenTimer" type="Timer" parent="Timers"]
+wait_time = 4.0
+one_shot = true
+
 [node name="SaberAttack" type="AnimationPlayer" parent="."]
 libraries = {
 "Animations": ExtResource("16_4t31j")
@@ -290,8 +261,6 @@ libraries = {
 "Animations": ExtResource("16_4t31j")
 }
 
-[connection signal="animation_finished" from="Appearance" to="." method="_on_appearance_animation_finished"]
-[connection signal="animation_looped" from="Appearance" to="." method="_on_appearance_animation_looped"]
 [connection signal="area_entered" from="Charge_detector" to="." method="_on_Charge_detector_area_entered"]
 [connection signal="area_exited" from="Charge_detector" to="." method="_on_Charge_detector_area_exited"]
 [connection signal="body_entered" from="Charge_detector" to="." method="_on_Charge_detector_body_entered"]
@@ -304,4 +273,5 @@ libraries = {
 [connection signal="timeout" from="Timers/InvisibilityTimer" to="." method="_on_InvisibilityTimer_timeout"]
 [connection signal="timeout" from="Timers/SaberTimer" to="." method="_on_SaberTimer_timeout"]
 [connection signal="timeout" from="Timers/InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
+[connection signal="timeout" from="Timers/HealthRegenTimer" to="." method="_on_health_regen_timer_timeout"]
 [connection signal="animation_finished" from="TakeDamage" to="." method="_on_take_damage_animation_finished"]
