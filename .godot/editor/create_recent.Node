@@ -1,3 +1,4 @@
+Timer
 AnimatedSprite2D
 Button
 BoxContainer
@@ -10,7 +11,6 @@ Sprite2D
 PathFollow2D
 Node2D
 Node
-Timer
 AnimationPlayer
 Label
 TextEdit

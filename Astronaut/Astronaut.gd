@@ -44,6 +44,16 @@ var portal
 var saber_cooldown = 1
 var saber_ready = true
 
+var action_lock
+var movement_animation_lock = false
+var flying_animation_speed_threshold = 20
+var was_idle = true
+
+var health_regen_available = false # initially true if the skill is available in the level
+var health_constant = 1
+var skill_constant = 2
+var health_regen_amount = 40
+
 var wormhole_available = false # initially true if the skill is available in the level
 var wormhole_threshold = 60
 const WormHole = preload("res://Astronaut/Skills/WormHole.tscn")
@@ -179,7 +189,6 @@ func _process(delta):
 		move_and_slide()
 		
 		orient_tanks(Vector2.RIGHT.angle_to(direction))
-		#print(rad_to_deg(Vector2.RIGHT.angle_to(direction)))
 
 		if !nearby_enemies.is_empty() and saber_ready: #enemies nearby
 			saber_attack()
@@ -193,6 +202,10 @@ func _process(delta):
 					break
 			if activate_wormhole:
 				wormhole_disappear()
+		
+		if health_regen_available:
+			if Input.is_action_just_pressed("health_regen"):
+				health_regen()
 
 """Passive movement due to environment"""
 func change_velocity():
@@ -321,6 +334,12 @@ func wormhole_reappear(p, v):
 	set_collision_mask_value(1, true)
 
 
+func health_regen():
+	health += health_regen_amount
+	health_constant = skill_constant
+	$Timers/HealthRegenTimer.start()
+
+
 func _on_NearbyObjectsDetector_body_entered(body):
 	if body.is_in_group("Enemies"):
 		nearby_enemies.append(body)
@@ -357,7 +376,7 @@ func take_damage(damage):
 		if self_healing:
 			damage *= SELF_HEAL_DAMAGE_COEFFICIENT
 		$TakeDamage.play("Animations/TakeDamage")
-		health -= damage
+		health -= health_constant * damage
 		is_invincible = true
 		$Timers/InvincibilityTimer.start()
 
@@ -393,6 +412,9 @@ func _on_InvincibilityTimer_timeout():
 	
 func _on_self_heal_timer_timeout():
 	self_healing = false
+
+func _on_health_regen_timer_timeout():
+	health_constant = 1
 
 """Animations"""
 func enter_portal():
