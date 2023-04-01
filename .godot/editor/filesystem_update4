@@ -1,14 +1,5 @@
 res://default_env.tres
-res://Game&UI/Game.tscn
-res://Obstacles/BlackHole.tscn
-res://Levels/TestLevel.tscn
-res://Obstacles/Meteor.tscn
-res://Enemies/ConstantDirectionBullet.tscn
-res://Astronaut/Astronaut.gd
-res://Enemies/constant_direction_bullet.gd
-res://Enemies/SplashEnemy.tscn
-res://Enemies/AutoFocus.tscn
-res://Enemies/single_target.gd
+res://Enemies/toward_character.gd
+res://Enemies/TowardCharacter.tscn
+res://Enemies/auto_focus.gd
 res://Enemies/splash_enemy.gd
-res://Enemies/SplashBullet.tscn
-res://Enemies/splash_bullet.gd

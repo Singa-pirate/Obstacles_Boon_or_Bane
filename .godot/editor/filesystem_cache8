@@ -1,8 +1,8 @@
 2a60927148abd1d33b818b535e306557
-::res://::1680270448
-default_env.tres::Environment::8588117271604781054::1680270310::0::1::::<><>::
+::res://::1680311374
+default_env.tres::Environment::8588117271604781054::1680272371::0::1::::<><>::
 icon.png::CompressedTexture2D::5025782442793217910::1674985482::1679383173::1::::<><>::
-::res://Assets/::1680270448
+::res://Assets/::1680272335
 arrow.png::CompressedTexture2D::2632968964145681777::1676013321::1679383173::1::::<><>::
 m3x6.ttf::FontFile::3470079364291005128::1674989450::1679383173::1::::<><>::
 Popup for level transition.png::CompressedTexture2D::2287769133197674625::1677217792::1679383173::1::::<><>::
@@ -22,8 +22,8 @@ Untitled_Artwork 17.png::CompressedTexture2D::8469560610200520591::1679383173::1
 Untitled_Artwork 18.png::CompressedTexture2D::4152834276018742420::1679383173::1679383173::1::::<><>::
 Untitled_Artwork 19.png::CompressedTexture2D::7524757054988937559::1679383173::1679383173::1::::<><>::
 Untitled_Artwork 20.png::CompressedTexture2D::958827154978925240::1679383173::1679383173::1::::<><>::
-::res://Assets/Bullets/::1680270432
-All_Fire_Bullet_Pixel_16x16.png::CompressedTexture2D::8727046270088675622::1662797137::1680270450::1::::<><>::
+::res://Assets/Bullets/::1680272335
+All_Fire_Bullet_Pixel_16x16.png::CompressedTexture2D::8727046270088675622::1680272335::1680272335::1::::<><>::
 ::res://Assets/Health Bar Asset/::1679383173
 beer (1).png::CompressedTexture2D::2594921877306631591::1677220845::1679383173::1::::<><>::
 beer (2).png::CompressedTexture2D::4581528700889559638::1677220845::1679383173::1::::<><>::
@@ -121,22 +121,26 @@ StartButton.tscn::PackedScene::-1::1679383173::0::1::::<><>::res://Elements/Butt
 Home_button.tscn::PackedScene::-1::1679383173::0::1::::<><>::
 Next_level_button.tscn::PackedScene::-1::1679383173::0::1::::<><>::
 Replay_level_button.tscn::PackedScene::-1::1679383173::0::1::::<><>::
-::res://Enemies/::1680270310
-AutoFocus.tscn::PackedScene::-1::1680268699::0::1::::<><>::res://Enemies/auto_focus.gd
+::res://Enemies/::1680272371
+AutoFocus.tscn::PackedScene::2289791956482700707::1680272371::0::1::::<><>::res://Enemies/auto_focus.gd<>uid://cnicoph73q5y8<>uid://cqc1uvancf30x<>uid://dnih257ljxkbg<>uid://dgw2bdk638ihm
 auto_focus.gd::GDScript::-1::1680269469::0::1::::<>CharacterBody2D<>::
 Constant2Directions.tscn::PackedScene::-1::1680269469::0::1::::<><>::res://Enemies/constant_2_directions.gd
-ConstantDirection.tscn::PackedScene::-1::1680268699::0::1::::<><>::res://Enemies/constant_direction.gd
-ConstantDirectionBullet.tscn::PackedScene::1728804960804261623::1680270310::0::1::::<><>::res://Enemies/constant_direction_bullet.gd
+ConstantDirection.tscn::PackedScene::4717681485530425463::1680269469::0::1::::<><>::res://Enemies/constant_direction.gd<>uid://d0pmw2o4i838r<>uid://bvfwlj7s64taq<>uid://b6dgqp5mk7lk4<>uid://cv3jrbayu24xy<>uid://ctmfxrxfbj205
+ConstantDirectionBullet.tscn::PackedScene::1728804960804261623::1680272335::0::1::::<><>::res://Enemies/constant_direction_bullet.gd<>uid://dwlpgawa28a03
 constant_2_directions.gd::GDScript::-1::1680269469::0::1::::<>CharacterBody2D<>::
 constant_direction.gd::GDScript::-1::1680269469::0::1::::<>CharacterBody2D<>::
-constant_direction_bullet.gd::GDScript::-1::1679383173::0::1::::<>Area2D<>::
+constant_direction_bullet.gd::GDScript::-1::1680272335::0::1::::<>Area2D<>::
 SingleTarget.tscn::PackedScene::-1::1679188178::0::1::::<><>::res://Enemies/single_target.gd
-single_target.gd::GDScript::-1::1679383173::0::1::::<>Area2D<>::
+single_target.gd::GDScript::-1::1680272335::0::1::::<>Area2D<>::
+SplashBullet.tscn::PackedScene::7672934263754889012::1680272371::0::1::::<><>::res://Enemies/splash_bullet.gd<>uid://dwlpgawa28a03
+SplashEnemy.tscn::PackedScene::549948142122036198::1680272371::0::1::::<><>::res://Enemies/splash_enemy.gd
+splash_bullet.gd::GDScript::-1::1680272335::0::1::::<>Area2D<>::
+splash_enemy.gd::GDScript::-1::1680272335::0::1::::<>CharacterBody2D<>::
 Static.tscn::PackedScene::-1::1679383173::0::1::::<><>::res://Enemies/static_enemy.gd<>res://Assets/PurpleEnemy/Gllob1 4.png<>res://Assets/PurpleEnemy/Gllob1.png<>res://Assets/PurpleEnemy/Gllob1 2.png<>res://Assets/PurpleEnemy/Gllob1 5.png<>res://Assets/PurpleEnemy/Gllob1 3.png
 static_enemy.gd::GDScript::-1::1679383173::0::1::::<>CharacterBody2D<>::
-::res://Game&UI/::1680270309
+::res://Game&UI/::1680272371
 Game.gd::GDScript::-1::1680171734::0::1::::<>Node<>::
-Game.tscn::PackedScene::509391848484484521::1680270309::0::1::::<><>::res://Game&UI/Game.gd
+Game.tscn::PackedScene::509391848484484521::1680272371::0::1::::<><>::res://Game&UI/Game.gd
 HealthBar.tscn::PackedScene::-1::1679383173::0::1::::<><>::res://Game&UI/health_bar.gd
 health_bar.gd::GDScript::-1::1679188177::0::1::::<>ProgressBar<>::
 Level_failed.gd::GDScript::-1::1679383173::0::1::::<>Node2D<>::
@@ -147,8 +151,8 @@ Level_transition.tscn::PackedScene::-1::1679383173::0::1::::<><>::res://Assets/P
 Chapter1.tscn::PackedScene::2749677688164693602::1680171734::0::1::::<><>::res://Game&UI/Chapter_selection_scenes/Level_selection.gd<>uid://cpimnqle8dn1v<>uid://57gpk2q3so6c<>uid://j6hxa3xq5v05<>uid://bpo6x2mq45bwy
 Chapter2.tscn::PackedScene::455160290922377701::1680171734::0::1::::<><>::res://Game&UI/Chapter_selection_scenes/Level_selection.gd<>uid://cpimnqle8dn1v<>uid://57gpk2q3so6c<>uid://j6hxa3xq5v05<>uid://bpo6x2mq45bwy
 Level_selection.gd::GDScript::-1::1680171734::0::1::::<>Node2D<>::
-::res://Levels/::1680270309
-TestLevel.tscn::PackedScene::4826805965002598694::1680270309::0::1::::<><>::uid://cnny1ykrb8rm5<>uid://bo0f3mx17skxt<>res://Elements/Buttons/StartButton.tscn<>res://Elements/Portal.tscn<>res://Levels/test_level.gd<>res://Elements/Indicator.tscn<>uid://dwdj11vyiqgme
+::res://Levels/::1680272371
+TestLevel.tscn::PackedScene::4826805965002598694::1680272371::0::1::::<><>::uid://bo0f3mx17skxt<>res://Elements/Buttons/StartButton.tscn<>res://Elements/Portal.tscn<>res://Levels/test_level.gd<>res://Elements/Indicator.tscn<>uid://7vgslcdathtj<>uid://h3nth1p6qwyo
 test_level.gd::GDScript::-1::1679383173::0::1::::<>Node<>::
 ::res://Levels/Chapter1/::1680171734
 Level1.gd::GDScript::-1::1680171734::0::1::::<>Node2D<>::
@@ -165,10 +169,10 @@ Level2.gd::GDScript::-1::1680171734::0::1::::<>Node2D<>::
 Level2.tscn::PackedScene::-1::1680171734::0::1::::<><>::res://Elements/Buttons/StartButton.tscn<>res://Levels/Chapter1/Level2.gd<>res://Elements/Indicator.tscn<>uid://cihvfsatpvpkr<>uid://dmvcwerj8vsth<>res://Enemies/Constant2Directions.tscn<>res://Elements/Portal.tscn<>res://Elements/Buttons/HomeButton.tscn
 Level3.gd::GDScript::-1::1680171734::0::1::::<>Node2D<>::
 Level3.tscn::PackedScene::-1::1680171734::0::1::::<><>::res://Elements/Buttons/StartButton.tscn<>uid://dmvcwerj8vsth<>res://Enemies/Static.tscn<>res://Elements/Portal.tscn<>uid://cihvfsatpvpkr<>res://Elements/Indicator.tscn<>res://Levels/Chapter1/Level3.gd<>res://Elements/Buttons/HomeButton.tscn
-::res://Obstacles/::1680270310
+::res://Obstacles/::1680270573
 BlackHole.tscn::PackedScene::5713638160734825906::1680268859::0::1::::<><>::res://Obstacles/black_hole.gd
 black_hole.gd::GDScript::-1::1679188177::0::1::::<>Area2D<>::
 meteor.gd::GDScript::-1::1679383630::0::1::::<>Area2D<>::
-Meteor.tscn::PackedScene::8710204027104393972::1680270310::0::1::::<><>::res://Obstacles/meteor.gd
+Meteor.tscn::PackedScene::8710204027104393972::1680270573::0::1::::<><>::res://Obstacles/meteor.gd
 RigidObstacle.tscn::PackedScene::8045041065831328109::1679383276::0::1::::<><>::res://Obstacles/rigid_obstacle.gd<>uid://co1jgg6sykatf
 rigid_obstacle.gd::GDScript::-1::1679383173::0::1::::<>CharacterBody2D<>::

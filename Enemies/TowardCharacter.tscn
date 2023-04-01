@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr3l0o4oc71io"]
+
+[ext_resource type="Script" path="res://Enemies/toward_character.gd" id="1_x436w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ie1c5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2byr"]
+radius = 50.4876
+
+[node name="TowardCharacter" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_x436w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ie1c5")
+
+[node name="TargetArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
+shape = SubResource("CircleShape2D_u2byr")
+
+[connection signal="body_entered" from="TargetArea" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="TargetArea" to="." method="_on_target_area_body_exited"]

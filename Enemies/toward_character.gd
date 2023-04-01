@@ -1,13 +1,20 @@
 extends CharacterBody2D
 
 
-const MAX_HEALTH = 20
-var health = MAX_HEALTH
+var damage = 3
+var speed = 0.5
 
-const Bullet = preload("res://Enemies/SplashBullet.tscn")
+var target
+
+var MAX_HEALTH = 10
+var health = MAX_HEALTH
 
 
 func _process(delta):
+	if target != null:
+		velocity = (target.position - position).normalized() * speed
+		move_and_slide()
+	
 	if health <= 0:
 		die()
 
@@ -35,10 +42,11 @@ func get_nearest_character():
 	return nearest_character
 
 
-func _on_timer_timeout():
-	var nearest_character = get_nearest_character()
-	if nearest_character != null:
-		var bullet = Bullet.instantiate()
-		bullet.position = position
-		bullet.target_position = nearest_character.position
-		get_parent().add_child(bullet)
+func _on_target_area_body_entered(body):
+	if body.is_in_group("Character") and weakref(target) == null:
+		target = body
+
+
+func _on_target_area_body_exited(body):
+	if body == target:
+		target = get_nearest_character()
