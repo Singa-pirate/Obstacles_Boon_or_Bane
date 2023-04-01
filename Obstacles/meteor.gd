@@ -12,7 +12,6 @@ func _physics_process(delta):
 
 
 func start():
-	print("meteor started")
 	actual_speed = 2
 
 
