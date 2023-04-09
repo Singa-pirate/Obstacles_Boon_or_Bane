@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://Elements/Portal.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="4"]
 [ext_resource type="Script" path="res://Levels/test_level.gd" id="5"]
 [ext_resource type="PackedScene" path="res://Elements/Indicator.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="6_q8wcn"]
@@ -17,14 +17,9 @@ offset_left = 781.0
 offset_top = 528.0
 offset_right = 781.0
 offset_bottom = 528.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Astronaut" parent="." instance=ExtResource("2")]
 position = Vector2(71, 303)
-
-[node name="Portal" parent="." instance=ExtResource("4")]
-position = Vector2(910, 100)
 
 [node name="Indicator" parent="." instance=ExtResource("6")]
 position = Vector2(71, 303)
@@ -41,3 +36,6 @@ offset_left = 794.0
 offset_top = 404.0
 offset_right = 794.0
 offset_bottom = 404.0
+
+[node name="Portal" parent="." instance=ExtResource("4")]
+position = Vector2(936, 184)

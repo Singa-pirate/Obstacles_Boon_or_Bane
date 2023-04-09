@@ -90,9 +90,10 @@ func add_small_tanks(number):
 func orient_tanks(angle):
 	var angle_increment = 2 * PI / tanks.size()
 	for i in range(tanks.size()):
-		var this_angle = angle + angle_increment * i
-		tanks[i].rotation_degrees = rad_to_deg(this_angle)
-		tanks[i].position = tank_offset * Vector2(cos(this_angle), sin(this_angle))
+		if weakref(tanks[i]).get_ref():
+			var this_angle = angle + angle_increment * i
+			tanks[i].rotation_degrees = rad_to_deg(this_angle)
+			tanks[i].position = tank_offset * Vector2(cos(this_angle), sin(this_angle))
 
 
 """Initialization"""
@@ -127,8 +128,6 @@ func _process(delta):
 			update_charge()
 
 	if (not action_lock):
-		# Self Healinkg
-		
 		if velocity.x > 10:
 			if $Appearance.flip_h == true:
 				$Appearance.flip_h = false
@@ -314,6 +313,8 @@ func wormhole_reappear(p, v):
 func health_regen():
 	health = min(health + health_regen_amount, MAX_HEALTH)
 	health_constant = skill_constant
+	for tank in tanks:
+		tank.health_constant = skill_constant
 	$Timers/HealthRegenTimer.start()
 
 
@@ -387,6 +388,8 @@ func _on_InvincibilityTimer_timeout():
 
 func _on_health_regen_timer_timeout():
 	health_constant = 1
+	for tank in tanks:
+		tank.health_constant = 1
 
 """Animations"""
 func enter_portal():

@@ -32,7 +32,7 @@ func get_nearest_character():
 	var nearest_character = null
 	for body in $TargetArea.get_overlapping_bodies():
 		if body.is_in_group("Character"):
-			var this_distance = (position - body.position).length()
+			var this_distance = (position - body.global_position).length()
 			if nearest_character == null:
 				nearest_character = body
 				distance = this_distance
@@ -43,7 +43,7 @@ func get_nearest_character():
 
 
 func _on_target_area_body_entered(body):
-	if body.is_in_group("Character") and (!weakref(target) or target == null):
+	if body.is_in_group("Character") and (!weakref(target).get_ref() or target == null):
 		target = body
 
 
