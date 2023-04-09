@@ -51,8 +51,8 @@ var was_idle = true
 
 var health_regen_available = false # initially true if the skill is available in the level
 var health_constant = 1
-var skill_constant = 2
-var health_regen_amount = 40
+var skill_constant = 0.6
+var health_regen_amount = 70
 
 var wormhole_available = false # initially true if the skill is available in the level
 var wormhole_threshold = 60
@@ -113,7 +113,7 @@ func start():
 	velocity = INIT_SPEED * direction
 	action_lock = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	if (health <= 0):
 		die()

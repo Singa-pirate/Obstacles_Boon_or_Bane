@@ -6,4 +6,4 @@ var enemy
 
 func _process(delta):
 	if weakref(object).get_ref():
-		value = object.health / object.MAX_HEALTH * 100
+		value = object.health * 100 / object.MAX_HEALTH

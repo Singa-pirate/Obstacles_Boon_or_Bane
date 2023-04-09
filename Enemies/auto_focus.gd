@@ -44,7 +44,6 @@ func _physics_process(delta):
 
 func take_damage(damage):
 	health -= damage
-	# play animation
 
 
 func die():

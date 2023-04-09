@@ -18,8 +18,8 @@ func _physics_process(delta):
 	else:
 		position += SPEED * (target_position - position).normalized()
 		rotation_degrees = rad_to_deg(Vector2.RIGHT.angle_to(target_position - position))
-		if (position - target_position).length() < 4:
-			queue_free()
+	if (position - target_position).length() < 4:
+		queue_free()
 
 
 func _on_SingleTarget_body_entered(body):

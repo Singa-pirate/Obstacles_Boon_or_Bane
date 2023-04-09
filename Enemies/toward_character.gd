@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 var damage = 3
-var speed = 0.5
+var speed = 50
 
 var target
 
@@ -12,7 +12,7 @@ var health = MAX_HEALTH
 
 func _process(delta):
 	if target != null:
-		velocity = (target.position - position).normalized() * speed
+		velocity = (target.global_position - position).normalized() * speed
 		move_and_slide()
 	
 	if health <= 0:

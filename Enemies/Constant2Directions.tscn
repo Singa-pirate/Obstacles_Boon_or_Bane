@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdq0pv1of4mx2"]
+[gd_scene load_steps=10 format=3 uid="uid://cqgnkql8vdvua"]
 
 [ext_resource type="Script" path="res://Enemies/constant_2_directions.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bn1cyrjhy5s4b" path="res://Assets/Monster 2/Untitled_Artwork 20.png" id="2_7wy2x"]

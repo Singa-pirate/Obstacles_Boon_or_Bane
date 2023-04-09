@@ -54,7 +54,7 @@ _data = {
 "animation": SubResource("Animation_7hcde")
 }
 
-[node name="AutoFocus" type="CharacterBody2D" groups=["Enemies"]]
+[node name="AutoFocus" type="CharacterBody2D" groups=["Enemies", "EnemiesWithHealth"]]
 script = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

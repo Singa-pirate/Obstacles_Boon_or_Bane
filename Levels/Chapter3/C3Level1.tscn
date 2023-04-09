@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://dchbi6xrueo6r"]
+
+[ext_resource type="Script" path="res://Levels/Chapter3/C3Level1.gd" id="1_5gcnl"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="1_kwuta"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="2_kfm1d"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="3_2uqqi"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="4_ybfrw"]
+[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="5_tp8a7"]
+[ext_resource type="PackedScene" uid="uid://dr3l0o4oc71io" path="res://Enemies/TowardCharacter.tscn" id="6_rdkpp"]
+[ext_resource type="PackedScene" uid="uid://7vgslcdathtj" path="res://Enemies/AutoFocus.tscn" id="7_42adx"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="8_lm45m"]
+
+[node name="C3Level1" type="Node2D"]
+script = ExtResource("1_5gcnl")
+
+[node name="Astronaut" parent="." instance=ExtResource("1_kwuta")]
+position = Vector2(111, 340)
+scale = Vector2(2.19174, 2.19174)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("2_kfm1d")]
+position = Vector2(477, 136)
+scale = Vector2(0.479593, 0.479593)
+
+[node name="Portal" parent="." instance=ExtResource("3_2uqqi")]
+position = Vector2(975, 110)
+
+[node name="HomeButton" parent="." instance=ExtResource("4_ybfrw")]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 56.0
+offset_bottom = 32.0
+
+[node name="Indicator" parent="." instance=ExtResource("5_tp8a7")]
+position = Vector2(111, 340)
+
+[node name="TowardCharacter" parent="." instance=ExtResource("6_rdkpp")]
+position = Vector2(418, 378)
+scale = Vector2(2.76651, 2.76651)
+
+[node name="TowardCharacter2" parent="." instance=ExtResource("6_rdkpp")]
+position = Vector2(563, 381)
+scale = Vector2(2.76235, 2.76235)
+
+[node name="AutoFocus" parent="." instance=ExtResource("7_42adx")]
+position = Vector2(695, 364)
+scale = Vector2(2.29258, 2.29258)
+
+[node name="TowardCharacter3" parent="." instance=ExtResource("6_rdkpp")]
+position = Vector2(811, 294)
+scale = Vector2(2.76582, 2.76582)
+
+[node name="TowardCharacter4" parent="." instance=ExtResource("6_rdkpp")]
+position = Vector2(904, 209)
+scale = Vector2(2.70249, 2.70249)
+
+[node name="StartButton" parent="." instance=ExtResource("8_lm45m")]
+offset_left = 822.0
+offset_top = 549.0
+offset_right = 822.0
+offset_bottom = 549.0
