@@ -17,3 +17,17 @@ func die():
 
 func take_damage(damage):
 	health -= health_constant * damage
+
+
+func wormhole_disappear():
+	$AnimatedSprite2D.modulate.a = 0
+	set_process_mode(4)
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+
+
+func wormhole_reappear():
+	$AnimatedSprite2D.modulate.a = 1
+	set_process_mode(0)
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)

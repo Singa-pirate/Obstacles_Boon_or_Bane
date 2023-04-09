@@ -298,6 +298,9 @@ func wormhole_disappear():
 	set_process_mode(4)
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
+	for tank in tanks:
+		if weakref(tank).get_ref():
+			tank.wormhole_disappear()
 
 
 func wormhole_reappear(p, v):
@@ -308,6 +311,9 @@ func wormhole_reappear(p, v):
 	set_process_mode(0)
 	set_collision_layer_value(1, true)
 	set_collision_mask_value(1, true)
+	for tank in tanks:
+		if weakref(tank).get_ref():
+			tank.wormhole_reappear()
 
 
 func health_regen():

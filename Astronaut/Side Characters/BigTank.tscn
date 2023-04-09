@@ -1,11 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://ciu5oskehri6g"]
+[gd_scene load_steps=5 format=3 uid="uid://ciu5oskehri6g"]
 
 [ext_resource type="Script" path="res://Astronaut/Side Characters/big_tank.gd" id="1_t7a4x"]
+[ext_resource type="Texture2D" uid="uid://co1jgg6sykatf" path="res://Assets/Obstacles/Green Circle.png" id="2_amyt2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vw10w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cghax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_amyt2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BigTank" type="CharacterBody2D" groups=["Character"]]
 script = ExtResource("1_t7a4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vw10w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0101903, 0.0101903)
+sprite_frames = SubResource("SpriteFrames_cghax")

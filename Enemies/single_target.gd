@@ -1,7 +1,7 @@
 extends Area2D
 
 
-var DAMAGE = 15 # to be changed
+var DAMAGE = 50 # to be changed
 
 const SPEED = 5
 
