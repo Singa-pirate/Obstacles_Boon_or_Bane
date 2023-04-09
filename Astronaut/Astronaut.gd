@@ -58,23 +58,10 @@ var wormhole_available = false # initially true if the skill is available in the
 var wormhole_threshold = 60
 const WormHole = preload("res://Astronaut/Skills/WormHole.tscn")
 
-var self_heal_available = false # initially true if the skill is available in the level
-var self_healing = false
-const SELF_HEAL_TOTAL_AMOUNT = 50
-const SELF_HEAL_TIME = 3
-const SELF_HEAL_DAMAGE_COEFFICIENT = 0.7
-
-
 var tanks = []
 const BigTank = preload("res://Astronaut/Side Characters/BigTank.tscn")
 const SmallTank = preload("res://Astronaut/Side Characters/SmallTank.tscn")
 const tank_offset = 50
-
-
-#var action_lock
-#var movement_animation_lock = false
-#
-#var was_idle = true
 
 
 func add_big_tank():
@@ -141,10 +128,6 @@ func _process(delta):
 
 	if (not action_lock):
 		# Self Healinkg
-		if self_healing:
-			health += SELF_HEAL_TOTAL_AMOUNT * delta / SELF_HEAL_TIME
-			if health > MAX_HEALTH:
-				health = MAX_HEALTH
 		
 		if velocity.x > 10:
 			if $Appearance.flip_h == true:
@@ -304,12 +287,6 @@ func saber_attack():
 		$Timers/SaberTimer.wait_time = saber_cooldown
 		$Timers/SaberTimer.start()
 
-func self_heal():
-	if self_heal_available:
-		self_heal_available = false
-		self_healing = true
-		$Timers/SelfHealTimer.start()
-
 
 func wormhole_disappear():
 	wormhole_available = false
@@ -335,7 +312,7 @@ func wormhole_reappear(p, v):
 
 
 func health_regen():
-	health += health_regen_amount
+	health = min(health + health_regen_amount, MAX_HEALTH)
 	health_constant = skill_constant
 	$Timers/HealthRegenTimer.start()
 
@@ -373,8 +350,6 @@ func update_charge():
 """Taking damage"""
 func take_damage(damage):
 	if not is_invincible:
-		if self_healing:
-			damage *= SELF_HEAL_DAMAGE_COEFFICIENT
 		$TakeDamage.play("Animations/TakeDamage")
 		health -= health_constant * damage
 		is_invincible = true
@@ -409,9 +384,6 @@ func _on_SaberTimer_timeout():
 
 func _on_InvincibilityTimer_timeout():
 	is_invincible = false
-	
-func _on_self_heal_timer_timeout():
-	self_healing = false
 
 func _on_health_regen_timer_timeout():
 	health_constant = 1

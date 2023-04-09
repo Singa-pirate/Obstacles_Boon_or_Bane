@@ -238,10 +238,6 @@ one_shot = true
 [node name="SaberTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="SelfHealTimer" type="Timer" parent="Timers"]
-wait_time = 3.0
-one_shot = true
-
 [node name="InvincibilityTimer" type="Timer" parent="Timers"]
 wait_time = 1.5
 one_shot = true
@@ -276,7 +272,6 @@ libraries = {
 [connection signal="body_exited" from="NearbyObjectsDetector" to="." method="_on_NearbyObjectsDetector_body_exited"]
 [connection signal="timeout" from="Timers/InvisibilityTimer" to="." method="_on_InvisibilityTimer_timeout"]
 [connection signal="timeout" from="Timers/SaberTimer" to="." method="_on_SaberTimer_timeout"]
-[connection signal="timeout" from="Timers/SelfHealTimer" to="." method="_on_self_heal_timer_timeout"]
 [connection signal="timeout" from="Timers/InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
 [connection signal="timeout" from="Timers/HealthRegenTimer" to="." method="_on_health_regen_timer_timeout"]
 [connection signal="animation_finished" from="TakeDamage" to="." method="_on_take_damage_animation_finished"]
