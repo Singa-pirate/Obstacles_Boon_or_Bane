@@ -1,7 +1,7 @@
 extends Area2D
 
 
-var DAMAGE = 5 # to be changed
+var damage = 5
 
 var unit_direction
 const SPEED = 20
@@ -18,4 +18,4 @@ func _physics_process(delta):
 
 func _on_ConstantDirectionBullet_body_entered(body):
 	if body.is_in_group("Character"):
-		body.take_damage(DAMAGE)
+		body.take_damage(damage)

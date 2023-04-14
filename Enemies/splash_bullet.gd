@@ -4,7 +4,7 @@ extends Area2D
 var target_position
 var SPEED = 4
 var error_margin = 3
-var damage = 2
+var damage
 
 
 func _physics_process(delta):

@@ -13,6 +13,7 @@ const bullet_position_offset2 = Vector2.ZERO
 
 var Bullet = preload("res://Enemies/ConstantDirectionBullet.tscn") # to be reset
 var Bullet2 = preload("res://Enemies/ConstantDirectionBullet.tscn")
+var bullet_damage = 5
 
 
 func _ready():
@@ -38,9 +39,11 @@ func _on_BulletTimer_timeout():
 	var bullet = Bullet.instantiate()
 	bullet.unit_direction = unit_direction
 	bullet.position = position + bullet_position_offset
+	bullet.damage = bullet_damage
 	get_parent().add_child(bullet)
 	
 	var bullet2 = Bullet2.instantiate()
 	bullet2.unit_direction = unit_direction2
 	bullet2.position = position + bullet_position_offset2
+	bullet.damage = bullet_damage
 	get_parent().add_child(bullet2)

@@ -15,6 +15,7 @@ const minimum_distance_to_origin = 2
 
 # bullet
 const Bullet = preload("res://Enemies/SingleTarget.tscn")
+var bullet_damage = 50
 
 
 func _ready():
@@ -80,4 +81,5 @@ func _on_BulletTimer_timeout():
 		var bullet = Bullet.instantiate()
 		bullet.target = target
 		bullet.position = position
+		bullet.damage = bullet_damage
 		get_parent().add_child(bullet)

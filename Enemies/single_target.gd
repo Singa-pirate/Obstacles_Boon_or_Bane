@@ -1,7 +1,7 @@
 extends Area2D
 
 
-var DAMAGE = 50 # to be changed
+var damage
 
 const SPEED = 5
 
@@ -24,5 +24,5 @@ func _physics_process(delta):
 
 func _on_SingleTarget_body_entered(body):
 	if body == target:
-		body.take_damage(DAMAGE)
+		body.take_damage(damage)
 		queue_free()

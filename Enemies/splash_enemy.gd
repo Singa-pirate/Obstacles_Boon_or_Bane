@@ -5,6 +5,7 @@ const MAX_HEALTH = 20
 var health = MAX_HEALTH
 
 const Bullet = preload("res://Enemies/SplashBullet.tscn")
+var bullet_damage = 2
 
 
 func _process(delta):
@@ -41,4 +42,5 @@ func _on_timer_timeout():
 		var bullet = Bullet.instantiate()
 		bullet.position = position
 		bullet.target_position = nearest_character.position
+		bullet.damage = bullet_damage
 		get_parent().add_child(bullet)
