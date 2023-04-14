@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const MAX_HEALTH = 20 # to be reset
+const MAX_HEALTH = 25 # to be reset
 var health = MAX_HEALTH
 
 var damage = 5 # to be reset

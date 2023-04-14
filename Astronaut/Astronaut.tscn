@@ -179,6 +179,7 @@ radius = 13.6015
 script = ExtResource("3")
 
 [node name="Saber" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 position = Vector2(9, 6)
 rotation = -0.785398
 scale = Vector2(0.860893, 0.860893)
@@ -198,7 +199,7 @@ shape = SubResource("1")
 [node name="Charge_detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Charge_detector"]
-scale = Vector2(2.01638, 2.01638)
+scale = Vector2(3.4571, 3.4571)
 shape = SubResource("3")
 
 [node name="ChargeLabel" type="RichTextLabel" parent="."]
@@ -236,6 +237,7 @@ scale = Vector2(0.999998, 0.999998)
 one_shot = true
 
 [node name="SaberTimer" type="Timer" parent="Timers"]
+process_mode = 3
 one_shot = true
 
 [node name="InvincibilityTimer" type="Timer" parent="Timers"]
@@ -247,6 +249,7 @@ wait_time = 4.0
 one_shot = true
 
 [node name="SaberAttack" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 "Animations": ExtResource("16_4t31j")
 }

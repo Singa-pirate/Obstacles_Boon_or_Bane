@@ -37,7 +37,9 @@ const chapter2_levels = {
 }
 
 const chapter3_levels = {
-	1: preload("res://Levels/Chapter3/C3Level1.tscn")
+	1: preload("res://Levels/Chapter3/C3Level1.tscn"),
+	2: preload("res://Levels/Chapter3/C3Level2.tscn"),
+	3: preload("res://Levels/Chapter3/C3Level3.tscn")
 }
 
 const Level_transition = preload("res://Game&UI/Level_transition.tscn")

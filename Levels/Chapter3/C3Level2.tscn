@@ -1,0 +1,122 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0hmucc171hxe"]
+
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="1_ob6pv"]
+[ext_resource type="Script" path="res://Levels/Chapter3/C3Level2.gd" id="1_yr3wr"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="2_peom0"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="3_4w553"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="4_xo2r6"]
+[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="5_aasv3"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="6_wbd6n"]
+[ext_resource type="PackedScene" uid="uid://ja4pddavwwau" path="res://Enemies/Static.tscn" id="7_hj1n2"]
+[ext_resource type="PackedScene" uid="uid://7vgslcdathtj" path="res://Enemies/AutoFocus.tscn" id="8_67prj"]
+[ext_resource type="PackedScene" uid="uid://cnny1ykrb8rm5" path="res://Obstacles/BlackHole.tscn" id="10_54dy5"]
+
+[node name="C3Level2" type="Node2D"]
+script = ExtResource("1_yr3wr")
+
+[node name="Astronaut" parent="." instance=ExtResource("1_ob6pv")]
+position = Vector2(46, 317)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(210, 228)
+scale = Vector2(0.329018, 0.329018)
+
+[node name="RigidObstacle2" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(209, 422)
+scale = Vector2(0.319501, 0.319501)
+
+[node name="RigidObstacle3" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(412, 52)
+scale = Vector2(0.336351, 0.336351)
+
+[node name="RigidObstacle4" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(408, 224)
+scale = Vector2(0.331636, 0.331636)
+
+[node name="RigidObstacle5" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(410, 423)
+scale = Vector2(0.330218, 0.330218)
+
+[node name="RigidObstacle6" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(407, 608)
+scale = Vector2(0.33145, 0.33145)
+
+[node name="RigidObstacle7" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(630, 50)
+scale = Vector2(0.321071, 0.321071)
+
+[node name="RigidObstacle8" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(628, 220)
+scale = Vector2(0.342357, 0.342357)
+
+[node name="RigidObstacle9" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(625, 421)
+scale = Vector2(0.330447, 0.330447)
+
+[node name="HomeButton" parent="." instance=ExtResource("3_4w553")]
+
+[node name="StartButton" parent="." instance=ExtResource("4_xo2r6")]
+offset_left = 106.0
+offset_top = 577.0
+offset_right = 106.0
+offset_bottom = 577.0
+
+[node name="Indicator" parent="." instance=ExtResource("5_aasv3")]
+position = Vector2(50, 318)
+scale = Vector2(0.443453, 0.443453)
+
+[node name="Portal" parent="." instance=ExtResource("6_wbd6n")]
+position = Vector2(1034, 497)
+
+[node name="RigidObstacle10" parent="." instance=ExtResource("2_peom0")]
+position = Vector2(622, 612)
+scale = Vector2(0.327266, 0.327266)
+
+[node name="Static1" parent="." instance=ExtResource("7_hj1n2")]
+position = Vector2(470, 90)
+
+[node name="Static2" parent="." instance=ExtResource("7_hj1n2")]
+position = Vector2(522, 126)
+
+[node name="Static3" parent="." instance=ExtResource("7_hj1n2")]
+position = Vector2(477, 171)
+
+[node name="Static4" parent="." instance=ExtResource("7_hj1n2")]
+position = Vector2(566, 183)
+
+[node name="Static5" parent="." instance=ExtResource("7_hj1n2")]
+position = Vector2(580, 118)
+
+[node name="Static6" parent="." instance=ExtResource("7_hj1n2")]
+position = Vector2(505, 501)
+scale = Vector2(3.36485, 3.36485)
+
+[node name="Static7" parent="." instance=ExtResource("7_hj1n2")]
+position = Vector2(594, 513)
+scale = Vector2(3.38135, 3.38135)
+
+[node name="Static8" parent="." instance=ExtResource("7_hj1n2")]
+position = Vector2(522, 576)
+scale = Vector2(3.514, 3.514)
+
+[node name="AutoFocus" parent="." instance=ExtResource("8_67prj")]
+position = Vector2(518, 322)
+
+[node name="BlackHole" parent="." instance=ExtResource("10_54dy5")]
+position = Vector2(1106, 492)
+
+[node name="MeteorTimer1" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="Timer2Starter" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="MeteorTimer2" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="MeteorTimer1" to="." method="_on_meteor_timer_1_timeout"]
+[connection signal="timeout" from="Timer2Starter" to="." method="_on_timer_2_starter_timeout"]
+[connection signal="timeout" from="MeteorTimer2" to="." method="_on_meteor_timer_2_timeout"]
