@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx0es1nqyoje1"]
+
+[ext_resource type="Script" path="res://Levels/Chapter3/C3Level5.gd" id="1_6a7gq"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="1_vrr40"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="2_afc6g"]
+[ext_resource type="PackedScene" uid="uid://b8hjr3w6sm1x8" path="res://Enemies/ConstantDirection.tscn" id="3_gkr2c"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="4_2m7wr"]
+[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="5_b68hx"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="6_3wt23"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="7_iy0so"]
+
+[node name="C3Level5" type="Node2D"]
+script = ExtResource("1_6a7gq")
+
+[node name="Astronaut" parent="." instance=ExtResource("1_vrr40")]
+position = Vector2(138, 372)
+scale = Vector2(1.79844, 1.79844)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("2_afc6g")]
+position = Vector2(348, 433)
+scale = Vector2(0.563969, 0.563969)
+
+[node name="RigidObstacle2" parent="." instance=ExtResource("2_afc6g")]
+position = Vector2(415, 183)
+scale = Vector2(0.588191, 0.588191)
+
+[node name="RigidObstacle3" parent="." instance=ExtResource("2_afc6g")]
+position = Vector2(712, 182)
+scale = Vector2(0.577807, 0.577807)
+
+[node name="RigidObstacle4" parent="." instance=ExtResource("2_afc6g")]
+position = Vector2(809, 423)
+scale = Vector2(0.580253, 0.580253)
+
+[node name="RigidObstacle5" parent="." instance=ExtResource("2_afc6g")]
+position = Vector2(578, 563)
+scale = Vector2(0.565617, 0.565617)
+
+[node name="ConstantDirection" parent="." instance=ExtResource("3_gkr2c")]
+position = Vector2(443, 328)
+scale = Vector2(5.86589, 5.86589)
+
+[node name="ConstantDirection2" parent="." instance=ExtResource("3_gkr2c")]
+position = Vector2(571, 242)
+scale = Vector2(7.92172, 7.92172)
+
+[node name="ConstantDirection3" parent="." instance=ExtResource("3_gkr2c")]
+position = Vector2(696, 328)
+scale = Vector2(2.85308, 2.85308)
+
+[node name="ConstantDirection4" parent="." instance=ExtResource("3_gkr2c")]
+position = Vector2(658, 446)
+scale = Vector2(3.26519, 3.26519)
+
+[node name="ConstantDirection5" parent="." instance=ExtResource("3_gkr2c")]
+position = Vector2(502, 447)
+scale = Vector2(1.93499, 1.93499)
+
+[node name="Portal" parent="." instance=ExtResource("4_2m7wr")]
+position = Vector2(1058, 214)
+
+[node name="Indicator" parent="." instance=ExtResource("5_b68hx")]
+position = Vector2(139, 372)
+scale = Vector2(0.926087, 0.926087)
+
+[node name="StartButton" parent="." instance=ExtResource("6_3wt23")]
+offset_left = 1018.0
+offset_top = 481.0
+offset_right = 1018.0
+offset_bottom = 481.0
+
+[node name="HomeButton" parent="." instance=ExtResource("7_iy0so")]

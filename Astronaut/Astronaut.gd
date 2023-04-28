@@ -306,6 +306,9 @@ func wormhole_disappear():
 func wormhole_reappear(p, v):
 	position = p
 	velocity = v
+	print("wormhold reappear")
+	print(p)
+	print(v)
 	$Appearance.modulate.a = 1
 	$ChargeLabel.modulate.a = 1
 	set_process_mode(0)
