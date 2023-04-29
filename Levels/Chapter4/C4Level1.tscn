@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://cj3q4xuro4ee"]
+
+[ext_resource type="Script" path="res://Levels/Chapter4/C4Level1.gd" id="1_qg3i0"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="2_3ravj"]
+[ext_resource type="PackedScene" uid="uid://h3nth1p6qwyo" path="res://Enemies/SplashEnemy.tscn" id="3_6gaq7"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="4_11nv4"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="5_qa7ot"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="6_5kudb"]
+[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="7_iw2ic"]
+[ext_resource type="PackedScene" uid="uid://djdksfg46bs1d" path="res://Elements/TankSelection.tscn" id="8_e7ho8"]
+
+[node name="C4Level1" type="Node2D"]
+script = ExtResource("1_qg3i0")
+
+[node name="Astronaut" parent="." instance=ExtResource("2_3ravj")]
+position = Vector2(173, 321)
+scale = Vector2(1.72553, 1.72553)
+
+[node name="SplashEnemy" parent="." instance=ExtResource("3_6gaq7")]
+position = Vector2(550, 331)
+scale = Vector2(2.1407, 2.1407)
+
+[node name="SplashEnemy2" parent="." instance=ExtResource("3_6gaq7")]
+position = Vector2(674, 335)
+scale = Vector2(2.12867, 2.12867)
+
+[node name="SplashEnemy3" parent="." instance=ExtResource("3_6gaq7")]
+position = Vector2(790, 336)
+scale = Vector2(2.06075, 2.06075)
+
+[node name="SplashEnemy4" parent="." instance=ExtResource("3_6gaq7")]
+position = Vector2(912, 337)
+scale = Vector2(2.06864, 2.06864)
+
+[node name="Portal" parent="." instance=ExtResource("4_11nv4")]
+position = Vector2(1049, 345)
+scale = Vector2(1.33843, 1.33843)
+
+[node name="StartButton" parent="." instance=ExtResource("5_qa7ot")]
+offset_left = 792.0
+offset_top = 549.0
+offset_right = 792.0
+offset_bottom = 549.0
+scale = Vector2(1.29442, 1.29442)
+
+[node name="HomeButton" parent="." instance=ExtResource("6_5kudb")]
+
+[node name="Indicator" parent="." instance=ExtResource("7_iw2ic")]
+position = Vector2(174, 321)
+scale = Vector2(0.681401, 0.681401)
+
+[node name="TankSelection" parent="." instance=ExtResource("8_e7ho8")]
+offset_left = 125.0
+offset_top = 524.0
+offset_right = 125.0
+offset_bottom = 524.0
+scale = Vector2(1.20327, 1.24547)

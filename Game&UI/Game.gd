@@ -17,7 +17,8 @@ const Level_selection_scenes = {
 const levels = {
 	1: chapter1_levels,
 	2: chapter2_levels,
-	3: chapter3_levels
+	3: chapter3_levels,
+	4: chapter4_levels
 }
 
 const chapter1_levels = {
@@ -42,6 +43,10 @@ const chapter3_levels = {
 	3: preload("res://Levels/Chapter3/C3Level3.tscn"),
 	4: preload("res://Levels/Chapter3/C3Level4.tscn"),
 	5: preload("res://Levels/Chapter3/C3Level5.tscn")
+}
+
+const chapter4_levels = {
+	1: preload("res://Levels/Chapter4/C4Level1.tscn")
 }
 
 const Level_transition = preload("res://Game&UI/Level_transition.tscn")
