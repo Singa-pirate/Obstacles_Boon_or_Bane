@@ -14,7 +14,7 @@ func _ready():
 	label = get_node("ChargeLabel")
 
 func _physics_process(delta):
-	if mouse_hovering:
+	if mouse_hovering and not Input.is_action_pressed("ui_shift"):
 		if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_scroll_up")) and charge < UPPER_BOUND:
 			charge += 1
 			update_charge()
