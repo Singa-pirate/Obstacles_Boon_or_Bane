@@ -13,7 +13,7 @@ var error_margin = 4
 func _physics_process(delta):
 	if (weakref(target).get_ref() and target.get_collision_layer_value(1)):
 		position += SPEED * (target.global_position - position).normalized()
-		target_position = target.position
+		target_position = target.global_position
 		rotation_degrees = rad_to_deg(Vector2.RIGHT.angle_to(target.global_position - position))
 	else:
 		position += SPEED * (target_position - position).normalized()

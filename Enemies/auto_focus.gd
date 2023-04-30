@@ -84,6 +84,7 @@ func _on_BulletTimer_timeout():
 	if target != null:
 		var bullet = Bullet.instantiate()
 		bullet.target = target
+		bullet.target_position = target.global_position
 		bullet.position = position
 		bullet.damage = bullet_damage
 		get_parent().add_child(bullet)

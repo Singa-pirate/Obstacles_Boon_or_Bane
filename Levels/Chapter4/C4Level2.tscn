@@ -1,3 +1,54 @@
-[gd_scene format=3 uid="uid://dcyd57rbtyxea"]
+[gd_scene load_steps=10 format=3 uid="uid://dcyd57rbtyxea"]
+
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="1_c6odu"]
+[ext_resource type="Script" path="res://Levels/Chapter4/C4Level2.gd" id="1_e65d0"]
+[ext_resource type="PackedScene" uid="uid://djdksfg46bs1d" path="res://Elements/TankSelection.tscn" id="2_ge0o1"]
+[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="3_oijvp"]
+[ext_resource type="PackedScene" uid="uid://7vgslcdathtj" path="res://Enemies/AutoFocus.tscn" id="4_as7g6"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="5_lielh"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="6_xmr04"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="7_7huj8"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="8_5d1i3"]
 
 [node name="C4Level2" type="Node2D"]
+script = ExtResource("1_e65d0")
+
+[node name="Astronaut" parent="." instance=ExtResource("1_c6odu")]
+position = Vector2(139, 333)
+scale = Vector2(1.94603, 1.94603)
+
+[node name="TankSelection" parent="." instance=ExtResource("2_ge0o1")]
+offset_left = 154.0
+offset_top = 515.0
+offset_right = 154.0
+offset_bottom = 515.0
+scale = Vector2(1.17502, 1.17502)
+
+[node name="Indicator" parent="." instance=ExtResource("3_oijvp")]
+position = Vector2(139, 332)
+scale = Vector2(0.835997, 0.835997)
+
+[node name="AutoFocus" parent="." instance=ExtResource("4_as7g6")]
+position = Vector2(397, 93)
+scale = Vector2(2.61924, 2.61924)
+
+[node name="AutoFocus2" parent="." instance=ExtResource("4_as7g6")]
+position = Vector2(713, 91)
+scale = Vector2(2.69222, 2.69222)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("5_lielh")]
+position = Vector2(561, 93)
+scale = Vector2(0.539663, 0.539663)
+
+[node name="Portal" parent="." instance=ExtResource("6_xmr04")]
+position = Vector2(989, 109)
+scale = Vector2(1.38325, 1.38325)
+
+[node name="HomeButton" parent="." instance=ExtResource("7_7huj8")]
+
+[node name="StartButton" parent="." instance=ExtResource("8_5d1i3")]
+offset_left = 893.0
+offset_top = 517.0
+offset_right = 893.0
+offset_bottom = 517.0
+scale = Vector2(1.35191, 1.35191)
