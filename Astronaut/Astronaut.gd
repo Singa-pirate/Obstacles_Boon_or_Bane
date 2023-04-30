@@ -62,6 +62,7 @@ var tanks = []
 const BigTank = preload("res://Astronaut/Side Characters/BigTank.tscn")
 const SmallTank = preload("res://Astronaut/Side Characters/SmallTank.tscn")
 const tank_offset = 50
+var using_small_tanks = false
 
 
 func add_big_tank():
@@ -72,28 +73,35 @@ func add_big_tank():
 	big_tank.position = tank_offset * direction
 	add_child(big_tank)
 	tanks.append(big_tank)
+	using_small_tanks = false
 
 
 func add_small_tanks(number):
 	for tank in tanks:
 		tank.queue_free()
 	tanks.clear()
-	var angle_increment = 2 * PI / number
+	var angle_increment = PI / 3 / number
 	for i in range(number):
 		var small_tank = SmallTank.instantiate()
-		var angle = Vector2.RIGHT.angle_to(direction) + angle_increment * i
+		var angle = Vector2.RIGHT.angle_to(direction) - PI / 6 + angle_increment * i
 		small_tank.position = tank_offset * Vector2(cos(angle), sin(angle))
 		add_child(small_tank)
 		tanks.append(small_tank)
+	using_small_tanks = true
 
 
 func orient_tanks(angle):
-	var angle_increment = 2 * PI / tanks.size()
-	for i in range(tanks.size()):
-		if weakref(tanks[i]).get_ref():
-			var this_angle = angle + angle_increment * i
-			tanks[i].rotation_degrees = rad_to_deg(this_angle)
-			tanks[i].position = tank_offset * Vector2(cos(this_angle), sin(this_angle))
+	if using_small_tanks:
+		var angle_increment = PI / 3 / tanks.size()
+		for i in range(tanks.size()):
+			if weakref(tanks[i]).get_ref():
+				var this_angle = angle - PI / 6 + angle_increment * i
+				tanks[i].rotation_degrees = rad_to_deg(this_angle)
+				tanks[i].position = tank_offset * Vector2(cos(this_angle), sin(this_angle))
+	else:
+		if weakref(tanks[0]).get_ref():
+			tanks[0].rotation_degrees = rad_to_deg(angle)
+			tanks[0].position = tank_offset * Vector2(cos(angle), sin(angle))
 
 
 """Initialization"""

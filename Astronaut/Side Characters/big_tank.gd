@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var MAX_HEALTH = 150
+var MAX_HEALTH = 200
 var health = MAX_HEALTH
 var health_constant = 1
 

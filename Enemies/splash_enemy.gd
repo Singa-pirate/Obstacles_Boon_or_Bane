@@ -6,7 +6,7 @@ var health = MAX_HEALTH
 
 var damage = 5
 const Bullet = preload("res://Enemies/SplashBullet.tscn")
-var bullet_damage = 5
+var bullet_damage = 20
 
 
 func _process(delta):

@@ -2,7 +2,7 @@ extends Area2D
 
 
 var target_position
-var SPEED = 4
+var SPEED = 6
 var error_margin = 3
 var damage
 

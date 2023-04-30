@@ -42,6 +42,7 @@ animations = [{
 }]
 
 [node name="SplashBullet" type="Area2D"]
+scale = Vector2(3.80044, 3.80044)
 script = ExtResource("1_03v73")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
