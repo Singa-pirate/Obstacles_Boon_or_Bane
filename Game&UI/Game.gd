@@ -17,7 +17,7 @@ const Level_selection_scenes = {
 const levels = {
 	1: chapter1_levels,
 	2: chapter2_levels,
-	3: chapter3_levels,
+	3: chapter4_levels,
 	4: chapter4_levels
 }
 

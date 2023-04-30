@@ -4,13 +4,18 @@ extends CharacterBody2D
 const MAX_HEALTH = 20
 var health = MAX_HEALTH
 
+var damage = 5
 const Bullet = preload("res://Enemies/SplashBullet.tscn")
-var bullet_damage = 2
+var bullet_damage = 5
 
 
 func _process(delta):
 	if health <= 0:
 		die()
+
+
+func start():
+	$Timer.start()
 
 
 func die():
@@ -41,6 +46,6 @@ func _on_timer_timeout():
 	if nearest_character != null:
 		var bullet = Bullet.instantiate()
 		bullet.position = position
-		bullet.target_position = nearest_character.position
+		bullet.target_position = nearest_character.global_position
 		bullet.damage = bullet_damage
 		get_parent().add_child(bullet)

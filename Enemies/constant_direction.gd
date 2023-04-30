@@ -21,6 +21,11 @@ func _physics_process(delta):
 	if health <= 0:
 		die()
 
+
+func start():
+	pass
+
+
 func reset_bullet_rate(duration):
 	$BulletTimer.wait_time = duration
 	

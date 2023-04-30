@@ -43,6 +43,10 @@ func _physics_process(delta):
 		target = get_nearest_character()
 
 
+func start():
+	$BulletTimer.start()
+
+
 func take_damage(damage):
 	health -= damage
 

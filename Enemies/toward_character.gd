@@ -19,6 +19,10 @@ func _process(delta):
 		die()
 
 
+func start():
+	pass
+
+
 func die():
 	queue_free()
 

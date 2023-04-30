@@ -12,6 +12,10 @@ func _process(delta):
 		die()
 
 
+func start():
+	pass
+
+
 func take_damage(damage):
 	health -= damage
 	# play animation
