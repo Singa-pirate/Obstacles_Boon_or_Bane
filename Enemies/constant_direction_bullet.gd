@@ -19,3 +19,4 @@ func _physics_process(delta):
 func _on_ConstantDirectionBullet_body_entered(body):
 	if body.is_in_group("Character"):
 		body.take_damage(damage)
+		queue_free()

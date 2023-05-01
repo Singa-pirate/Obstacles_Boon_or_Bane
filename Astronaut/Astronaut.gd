@@ -80,7 +80,7 @@ func add_small_tanks(number):
 	for tank in tanks:
 		tank.queue_free()
 	tanks.clear()
-	var angle_increment = PI / 3 / number
+	var angle_increment = PI / 3 / (number - 1)
 	for i in range(number):
 		var small_tank = SmallTank.instantiate()
 		var angle = Vector2.RIGHT.angle_to(direction) - PI / 6 + angle_increment * i
@@ -92,7 +92,7 @@ func add_small_tanks(number):
 
 func orient_tanks(angle):
 	if using_small_tanks:
-		var angle_increment = PI / 3 / tanks.size()
+		var angle_increment = PI / 3 / (tanks.size() - 1)
 		for i in range(tanks.size()):
 			if weakref(tanks[i]).get_ref():
 				var this_angle = angle - PI / 6 + angle_increment * i

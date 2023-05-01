@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjn13npmcmmst"]
+
+[ext_resource type="Script" path="res://Levels/Chapter4/C4Level3.gd" id="1_wjvea"]
+[ext_resource type="PackedScene" uid="uid://bo0f3mx17skxt" path="res://Astronaut/Astronaut.tscn" id="2_xi7da"]
+[ext_resource type="PackedScene" uid="uid://7vgslcdathtj" path="res://Enemies/AutoFocus.tscn" id="3_g6caq"]
+[ext_resource type="PackedScene" uid="uid://dmvcwerj8vsth" path="res://Obstacles/RigidObstacle.tscn" id="4_m6y1e"]
+[ext_resource type="PackedScene" uid="uid://cqgnkql8vdvua" path="res://Enemies/Constant2Directions.tscn" id="5_c4gqh"]
+[ext_resource type="PackedScene" uid="uid://cnl15k8ah6pfk" path="res://Elements/Portal.tscn" id="6_0502i"]
+[ext_resource type="PackedScene" uid="uid://dercjfrwiynva" path="res://Elements/Indicator.tscn" id="7_omp2n"]
+[ext_resource type="PackedScene" uid="uid://djdksfg46bs1d" path="res://Elements/TankSelection.tscn" id="8_r3tb4"]
+[ext_resource type="PackedScene" uid="uid://cg0qx65bp4rwr" path="res://Elements/Buttons/StartButton.tscn" id="9_t7d4n"]
+[ext_resource type="PackedScene" path="res://Elements/Buttons/HomeButton.tscn" id="10_012ej"]
+
+[node name="C4Level3" type="Node2D"]
+script = ExtResource("1_wjvea")
+
+[node name="Astronaut" parent="." instance=ExtResource("2_xi7da")]
+position = Vector2(144, 184)
+scale = Vector2(1.75275, 1.75275)
+
+[node name="AutoFocus" parent="." instance=ExtResource("3_g6caq")]
+position = Vector2(473, 184)
+scale = Vector2(2.56444, 2.56444)
+
+[node name="AutoFocus2" parent="." instance=ExtResource("3_g6caq")]
+position = Vector2(390, 508)
+scale = Vector2(2.83952, 2.83952)
+
+[node name="RigidObstacle" parent="." instance=ExtResource("4_m6y1e")]
+position = Vector2(659, 357)
+scale = Vector2(0.551536, 0.551536)
+
+[node name="Constant2Directions" parent="." instance=ExtResource("5_c4gqh")]
+position = Vector2(636, 237)
+scale = Vector2(1.98555, 1.98555)
+
+[node name="RigidObstacle2" parent="." instance=ExtResource("4_m6y1e")]
+position = Vector2(836, 119)
+scale = Vector2(0.518467, 0.518467)
+
+[node name="Constant2Directions2" parent="." instance=ExtResource("5_c4gqh")]
+position = Vector2(601, 524)
+scale = Vector2(2.22684, 2.22684)
+
+[node name="Portal" parent="." instance=ExtResource("6_0502i")]
+position = Vector2(917, 482)
+scale = Vector2(1.19498, 1.19498)
+
+[node name="Indicator" parent="." instance=ExtResource("7_omp2n")]
+position = Vector2(144, 183)
+scale = Vector2(0.619712, 0.619712)
+
+[node name="TankSelection" parent="." instance=ExtResource("8_r3tb4")]
+offset_left = 46.0
+offset_top = 513.0
+offset_right = 46.0
+offset_bottom = 513.0
+scale = Vector2(1.00758, 1.00758)
+
+[node name="StartButton" parent="." instance=ExtResource("9_t7d4n")]
+offset_left = 851.0
+offset_top = 301.0
+offset_right = 851.0
+offset_bottom = 301.0
+
+[node name="HomeButton" parent="." instance=ExtResource("10_012ej")]

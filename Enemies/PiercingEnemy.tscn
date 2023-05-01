@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjhfloa20bs33"]
+
+[ext_resource type="Script" path="res://Enemies/piercing_enemy.gd" id="1_3bmed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fy81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3w8i"]
+
+[node name="PiercingEnemy" type="CharacterBody2D" groups=["Enemies", "EnemiesWithHealth"]]
+script = ExtResource("1_3bmed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7fy81")
+
+[node name="Gun" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun"]
+position = Vector2(20, 0)
+scale = Vector2(1, 0.150755)
+shape = SubResource("RectangleShape2D_l3w8i")
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
