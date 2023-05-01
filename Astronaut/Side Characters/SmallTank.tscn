@@ -25,3 +25,8 @@ shape = SubResource("CircleShape2D_uc7fk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.0101254, 0.0101254)
 sprite_frames = SubResource("SpriteFrames_jbic6")
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

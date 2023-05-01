@@ -5,6 +5,8 @@ var MAX_HEALTH = 200
 var health = MAX_HEALTH
 var health_constant = 1
 
+var is_invincible = false
+
 
 func _process(delta):
 	if health <= 0:
@@ -16,7 +18,10 @@ func die():
 
 
 func take_damage(damage):
-	health -= health_constant * damage
+	if not is_invincible:
+		health -= health_constant * damage
+		is_invincible = true
+		$InvincibilityTimer.start()
 
 
 func wormhole_disappear():
@@ -31,3 +36,7 @@ func wormhole_reappear():
 	set_process_mode(0)
 	set_collision_layer_value(1, true)
 	set_collision_mask_value(1, true)
+
+
+func _on_invincibility_timer_timeout():
+	is_invincible = false
